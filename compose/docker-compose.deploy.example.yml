@@ -1,0 +1,30 @@
+# Generate a new secret_key_base with `mix phx.gen.secret`
+version: '2'
+
+services:
+  phoenix:
+    image: arkye/stiltzkey:latest
+    depends_on:
+      - postgres
+    environment:
+      MIX_ENV: prod
+      HOSTNAME: example.com
+      PORT: 80
+      SECRET_KEY_BASE: 6JlioTCLygI6FfeatExSxXFRHQGFi4Q2XGAGQ8AGQPywZJMfIrJErk55c7FeG5cX
+      POSTGRES_HOSTNAME: postgres
+      POSTGRES_DATABASE: stiltzkey
+      POOL_SIZE: 15
+      POSTGRES_USER: stiltzkey
+      POSTGRES_PASSWORD: stiltzkey
+    ports:
+      - 80:80
+    restart: unless-stopped
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: stiltzkey
+      POSTGRES_PASSWORD: stiltzkey
+    restart: unless-stopped
+    volumes:
+      - /path/to/postgres:/var/lib/postgresql/data

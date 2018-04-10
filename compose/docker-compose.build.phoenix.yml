@@ -1,0 +1,8 @@
+version: '3.5'
+
+services:
+  phoenix:
+    image: arkye/stiltzkey-phoenix:latest
+    build:
+      context: ../
+      dockerfile: ./compose/phoenix/Dockerfile

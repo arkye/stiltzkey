@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  phoenix:
+    image: arkye/stiltzkey:staging
+    build:
+      context: .
+      dockerfile: ./compose/prod/phoenix/Dockerfile
+    volumes:
+      - ./stiltzkey:/code

@@ -1,0 +1,24 @@
+version: '3.5'
+
+volumes:
+  postgres_test_data: {}
+
+services:
+  phoenix:
+    build:
+      context: .
+      dockerfile: ./compose/test/phoenix/Dockerfile
+    depends_on:
+      - postgres
+    env_file:
+      - ./compose/test/postgres.env
+      - ./compose/test/phoenix.env
+    volumes:
+      - ./stiltzkey:/code
+
+  postgres:
+    image: postgres
+    env_file:
+      - ./compose/test/postgres.env
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data

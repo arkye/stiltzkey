@@ -1,0 +1,29 @@
+version: '3.5'
+
+volumes:
+  postgres_dev_data: {}
+
+services:
+  phoenix:
+    image: arkye/stiltzkey:local
+    build:
+      context: .
+      dockerfile: ./compose/dev/phoenix/Dockerfile
+    depends_on:
+      - postgres
+    env_file:
+      - ./compose/dev/postgres.env
+      - ./compose/dev/phoenix.env
+    ports:
+      - 4000:4000
+    volumes:
+      - ./stiltzkey:/code
+
+  postgres:
+    image: postgres
+    env_file:
+      - ./compose/dev/postgres.env
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
