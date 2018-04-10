@@ -40,7 +40,6 @@ push production image:
 # Stage: deploy
 deploy staging:
   stage: deploy
-  image: cdrx/rancher-gitlab-deploy
   environment: staging
   script:
     - upgrade --environment $RANCHER_ENVIRONMENT --stack $RANCHER_STACK --service phoenix --no-finish-upgrade
@@ -52,7 +51,6 @@ deploy staging:
 # Not yet on production
 # deploy production:
 #   stage: deploy
-#   image: cdrx/rancher-gitlab-deploy
 #   environment: production
 #   script:
 #     - upgrade --environment $RANCHER_ENVIRONMENT --stack $RANCHER_STACK --service phoenix --no-finish-upgrade
