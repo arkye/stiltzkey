@@ -1,0 +1,28 @@
+<h2>Listing Poems</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for poem <- @poems do %>
+    <tr>
+      <td><%= poem.title %></td>
+      <td><%= poem.description %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: poem_path(@conn, :show, poem), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: poem_path(@conn, :edit, poem), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: poem_path(@conn, :delete, poem), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Poem", to: poem_path(@conn, :new) %></span>

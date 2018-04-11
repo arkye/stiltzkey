@@ -1,0 +1,5 @@
+<h2>Edit Poem</h2>
+
+<%= render "form.html", Map.put(assigns, :action, poem_path(@conn, :update, @poem)) %>
+
+<span><%= link "Back", to: poem_path(@conn, :index) %></span>

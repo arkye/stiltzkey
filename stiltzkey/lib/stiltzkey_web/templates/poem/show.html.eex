@@ -1,0 +1,18 @@
+<h2>Show Poem</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @poem.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @poem.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: poem_path(@conn, :edit, @poem) %></span>
+<span><%= link "Back", to: poem_path(@conn, :index) %></span>
