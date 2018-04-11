@@ -3,8 +3,16 @@ defmodule StiltzkeyWeb.UserControllerTest do
 
   alias Stiltzkey.Accounts
 
-  @create_attrs %{username: "some username"}
-  @update_attrs %{username: "some updated username"}
+  @create_attrs %{
+    username: "some username",
+    credential: %{
+      email: "some email",
+      password: "some password"
+    }
+  }
+  @update_attrs %{
+    username: "some updated username"
+  }
   @invalid_attrs %{username: nil}
 
   def fixture(:user) do
