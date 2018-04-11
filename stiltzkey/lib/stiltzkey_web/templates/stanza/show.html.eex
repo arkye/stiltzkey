@@ -1,0 +1,28 @@
+<h2>Show Stanza</h2>
+
+<ul>
+
+  <li>
+    <strong>Author:</strong>
+    <%= author_username(@stanza) %>
+  </li>
+
+  <li>
+    <strong>From Poem:</strong>
+    <%= link @poem.title, to: poem_path(@conn, :show, @poem) %>
+  </li>
+
+  <li>
+    <strong>Context:</strong>
+    <%= @stanza.context %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @stanza.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: stanza_path(@conn, :edit, @poem.id, @stanza) %></span>
+<span><%= link "Back", to: stanza_path(@conn, :index, @poem.id) %></span>

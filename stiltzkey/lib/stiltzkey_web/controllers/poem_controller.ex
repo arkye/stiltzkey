@@ -1,6 +1,8 @@
 defmodule StiltzkeyWeb.PoemController do
   use StiltzkeyWeb, :controller
 
+  import StiltzkeyWeb.AuthorHelper, only: [require_existing_author: 2]
+
   plug :require_existing_author
   plug :authorize_poem when action in [:edit, :update, :delete]
 
@@ -55,11 +57,6 @@ defmodule StiltzkeyWeb.PoemController do
     conn
     |> put_flash(:info, "Poem deleted successfully.")
     |> redirect(to: poem_path(conn, :index))
-  end
-
-  defp require_existing_author(conn, _) do
-    author = Papyrus.ensure_author_exists(conn.assigns.current_user)
-    assign(conn, :current_author, author)
   end
 
   defp authorize_poem(conn, _) do

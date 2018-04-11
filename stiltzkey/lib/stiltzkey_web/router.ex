@@ -27,6 +27,7 @@ defmodule StiltzkeyWeb.Router do
     pipe_through [:browser, :authenticate_user]
 
     resources "/poems", PoemController
+    resources "/poems/:poem_id/stanzas", StanzaController
   end
 
   # Other scopes may use custom stacks.

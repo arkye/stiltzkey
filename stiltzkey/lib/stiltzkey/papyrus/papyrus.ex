@@ -6,8 +6,21 @@ defmodule Stiltzkey.Papyrus do
   import Ecto.Query, warn: false
   alias Stiltzkey.Repo
 
-  alias Stiltzkey.Papyrus.{Poem, Author}
+  alias Stiltzkey.Papyrus.{Author, Poem, Stanza}
   alias Stiltzkey.Accounts
+
+  def ensure_author_exists(%Accounts.User{} = user) do
+    %Author{user_id: user.id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
+    |> Repo.insert()
+    |> handle_existing_author()
+  end
+
+  defp handle_existing_author({:ok, author}),  do: author
+  defp handle_existing_author({:error, changeset}) do
+    Repo.get_by!(Author, user_id: changeset.data.user_id)
+  end
 
   @doc """
   Returns the list of poems.
@@ -208,16 +221,107 @@ defmodule Stiltzkey.Papyrus do
     Author.changeset(author, %{})
   end
 
-  def ensure_author_exists(%Accounts.User{} = user) do
-    %Author{user_id: user.id}
-    |> Ecto.Changeset.change()
-    |> Ecto.Changeset.unique_constraint(:user_id)
-    |> Repo.insert()
-    |> handle_existing_author()
+  @doc """
+  Returns the list of stanzas.
+
+  ## Examples
+
+      iex> list_stanzas()
+      [%Stanza{}, ...]
+
+  """
+  def list_stanzas do
+    Stanza
+    |> Repo.all()
+    |> Repo.preload(author: [user: :credential])
+    |> Repo.preload(:poem)
   end
 
-  defp handle_existing_author({:ok, author}),  do: author
-  defp handle_existing_author({:error, changeset}) do
-    Repo.get_by!(Author, user_id: changeset.data.user_id)
+  @doc """
+  Gets a single stanza.
+
+  Raises `Ecto.NoResultsError` if the Stanza does not exist.
+
+  ## Examples
+
+      iex> get_stanza!(123)
+      %Stanza{}
+
+      iex> get_stanza!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_stanza!(id) do
+    Stanza
+    |> Repo.get!(id)
+    |> Repo.preload(author: [user: :credential])
+    |> Repo.preload(:poem)
+  end
+
+  @doc """
+  Creates a stanza.
+
+  ## Examples
+
+      iex> create_stanza(%{field: value})
+      {:ok, %Stanza{}}
+
+      iex> create_stanza(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_stanza(%Author{} = author, %Poem{} = poem, attrs \\ %{}) do
+    %Stanza{}
+    |> Stanza.changeset(attrs)
+    |> Ecto.Changeset.put_change(:author_id, author.id)
+    |> Ecto.Changeset.put_change(:poem_id, poem.id)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a stanza.
+
+  ## Examples
+
+      iex> update_stanza(stanza, %{field: new_value})
+      {:ok, %Stanza{}}
+
+      iex> update_stanza(stanza, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_stanza(%Stanza{} = stanza, attrs) do
+    stanza
+    |> Stanza.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Stanza.
+
+  ## Examples
+
+      iex> delete_stanza(stanza)
+      {:ok, %Stanza{}}
+
+      iex> delete_stanza(stanza)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_stanza(%Stanza{} = stanza) do
+    Repo.delete(stanza)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking stanza changes.
+
+  ## Examples
+
+      iex> change_stanza(stanza)
+      %Ecto.Changeset{source: %Stanza{}}
+
+  """
+  def change_stanza(%Stanza{} = stanza) do
+    Stanza.changeset(stanza, %{})
   end
 end

@@ -1,0 +1,28 @@
+<h2>Listing <%= link @poem.title, to: poem_path(@conn, :show, @poem) %> Stanzas</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Context</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for stanza <- @stanzas do %>
+    <tr>
+      <td><%= stanza.context %></td>
+      <td><%= stanza.description %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: stanza_path(@conn, :show, @poem.id, stanza), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: stanza_path(@conn, :edit, @poem.id, stanza), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: stanza_path(@conn, :delete, @poem.id, stanza), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Stanza", to: stanza_path(@conn, :new, @poem.id)  %></span>

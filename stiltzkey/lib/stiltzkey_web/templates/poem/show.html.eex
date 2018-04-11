@@ -17,6 +17,10 @@
     <%= @poem.description %>
   </li>
 
+  <li>
+    <%= link "Stanzas", to: stanza_path(@conn, :index, @poem) %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: poem_path(@conn, :edit, @poem) %></span>
