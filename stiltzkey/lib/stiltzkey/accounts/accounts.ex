@@ -6,7 +6,19 @@ defmodule Stiltzkey.Accounts do
   import Ecto.Query, warn: false
   alias Stiltzkey.Repo
 
-  alias Stiltzkey.Accounts.User
+  alias Stiltzkey.Accounts.{User, Credential}
+
+  def authenticate_by_email_password(email, _password) do
+    query =
+      from u in User,
+        inner_join: c in assoc(u, :credential),
+        where: c.email == ^email
+
+    case Repo.one(query) do
+      %User{} = user -> {:ok, user}
+      nil -> {:error, :unauthorized}
+    end
+  end
 
   @doc """
   Returns the list of users.
@@ -18,7 +30,9 @@ defmodule Stiltzkey.Accounts do
 
   """
   def list_users do
-    Repo.all(User)
+    User
+    |> Repo.all()
+    |> Repo.preload(:credential)
   end
 
   @doc """
@@ -35,7 +49,11 @@ defmodule Stiltzkey.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    User
+    |> Repo.get!(id)
+    |> Repo.preload(:credential)
+  end
 
   @doc """
   Creates a user.
@@ -52,6 +70,7 @@ defmodule Stiltzkey.Accounts do
   def create_user(attrs \\ %{}) do
     %User{}
     |> User.changeset(attrs)
+    |> Ecto.Changeset.cast_assoc(:credential, with: &Credential.changeset/2)
     |> Repo.insert()
   end
 
@@ -70,6 +89,7 @@ defmodule Stiltzkey.Accounts do
   def update_user(%User{} = user, attrs) do
     user
     |> User.changeset(attrs)
+    |> Ecto.Changeset.cast_assoc(:credential, with: &Credential.changeset/2)
     |> Repo.update()
   end
 
@@ -101,8 +121,6 @@ defmodule Stiltzkey.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
-
-  alias Stiltzkey.Accounts.Credential
 
   @doc """
   Returns the list of credentials.

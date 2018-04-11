@@ -2,9 +2,11 @@ defmodule Stiltzkey.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Stiltzkey.Accounts.Credential
 
   schema "users" do
     field :username, :string
+    has_one :credential, Credential
 
     timestamps()
   end
