@@ -3,6 +3,11 @@
 <ul>
 
   <li>
+      <strong>Author:</strong>
+      <%= author_username(@poem) %>
+  </li>
+
+  <li>
     <strong>Title:</strong>
     <%= @poem.title %>
   </li>

@@ -1,6 +1,9 @@
 defmodule StiltzkeyWeb.PoemController do
   use StiltzkeyWeb, :controller
 
+  plug :require_existing_author
+  plug :authorize_poem when action in [:edit, :update, :delete]
+
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Poem
 
@@ -15,7 +18,7 @@ defmodule StiltzkeyWeb.PoemController do
   end
 
   def create(conn, %{"poem" => poem_params}) do
-    case Papyrus.create_poem(poem_params) do
+    case Papyrus.create_poem(conn.assigns.current_author, poem_params) do
       {:ok, poem} ->
         conn
         |> put_flash(:info, "Poem created successfully.")
@@ -30,31 +33,45 @@ defmodule StiltzkeyWeb.PoemController do
     render(conn, "show.html", poem: poem)
   end
 
-  def edit(conn, %{"id" => id}) do
-    poem = Papyrus.get_poem!(id)
-    changeset = Papyrus.change_poem(poem)
-    render(conn, "edit.html", poem: poem, changeset: changeset)
+  def edit(conn, _) do
+    changeset = Papyrus.change_poem(conn.assigns.poem)
+    render(conn, "edit.html", changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "poem" => poem_params}) do
-    poem = Papyrus.get_poem!(id)
-
-    case Papyrus.update_poem(poem, poem_params) do
+  def update(conn, %{"poem" => poem_params}) do
+    case Papyrus.update_poem(conn.assigns.poem, poem_params) do
       {:ok, poem} ->
         conn
         |> put_flash(:info, "Poem updated successfully.")
         |> redirect(to: poem_path(conn, :show, poem))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", poem: poem, changeset: changeset)
+        render(conn, "edit.html", changeset: changeset)
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    poem = Papyrus.get_poem!(id)
-    {:ok, _poem} = Papyrus.delete_poem(poem)
+  def delete(conn, _) do
+    {:ok, _poem} = Papyrus.delete_poem(conn.assigns.poem)
 
     conn
     |> put_flash(:info, "Poem deleted successfully.")
     |> redirect(to: poem_path(conn, :index))
+  end
+
+  defp require_existing_author(conn, _) do
+    author = Papyrus.ensure_author_exists(conn.assigns.current_user)
+    assign(conn, :current_author, author)
+  end
+
+  defp authorize_poem(conn, _) do
+    poem = Papyrus.get_poem!(conn.params["id"])
+
+    if conn.assigns.current_author.id == poem.author_id do
+      assign(conn, :poem, poem)
+    else
+      conn
+      |> put_flash(:error, "You can't modify that poem")
+      |> redirect(to: poem_path(conn, :index))
+      |> halt()
+    end
   end
 end

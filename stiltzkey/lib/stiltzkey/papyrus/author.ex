@@ -2,9 +2,11 @@ defmodule Stiltzkey.Papyrus.Author do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Stiltzkey.Papyrus.Poem
 
   schema "authors" do
-    field :user_id, :id
+    has_many :poems, Poem
+    belongs_to :user, Stiltzkey.Accounts.User
 
     timestamps()
   end

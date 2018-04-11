@@ -6,7 +6,8 @@ defmodule Stiltzkey.Papyrus do
   import Ecto.Query, warn: false
   alias Stiltzkey.Repo
 
-  alias Stiltzkey.Papyrus.Poem
+  alias Stiltzkey.Papyrus.{Poem, Author}
+  alias Stiltzkey.Accounts
 
   @doc """
   Returns the list of poems.
@@ -18,7 +19,9 @@ defmodule Stiltzkey.Papyrus do
 
   """
   def list_poems do
-    Repo.all(Poem)
+    Poem
+    |> Repo.all()
+    |> Repo.preload(author: [user: :credential])
   end
 
   @doc """
@@ -35,7 +38,11 @@ defmodule Stiltzkey.Papyrus do
       ** (Ecto.NoResultsError)
 
   """
-  def get_poem!(id), do: Repo.get!(Poem, id)
+  def get_poem!(id) do
+    Poem
+    |> Repo.get!(id)
+    |> Repo.preload(author: [user: :credential])
+  end
 
   @doc """
   Creates a poem.
@@ -49,9 +56,10 @@ defmodule Stiltzkey.Papyrus do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_poem(attrs \\ %{}) do
+  def create_poem(%Author{} = author, attrs \\ %{}) do
     %Poem{}
     |> Poem.changeset(attrs)
+    |> Ecto.Changeset.put_change(:author_id, author.id)
     |> Repo.insert()
   end
 
@@ -102,8 +110,6 @@ defmodule Stiltzkey.Papyrus do
     Poem.changeset(poem, %{})
   end
 
-  alias Stiltzkey.Papyrus.Author
-
   @doc """
   Returns the list of authors.
 
@@ -131,7 +137,11 @@ defmodule Stiltzkey.Papyrus do
       ** (Ecto.NoResultsError)
 
   """
-  def get_author!(id), do: Repo.get!(Author, id)
+  def get_author!(id) do
+    Author
+    |> Repo.get!(id)
+    |> Repo.preload(user: :credential)
+  end
 
   @doc """
   Creates a author.
@@ -196,5 +206,18 @@ defmodule Stiltzkey.Papyrus do
   """
   def change_author(%Author{} = author) do
     Author.changeset(author, %{})
+  end
+
+  def ensure_author_exists(%Accounts.User{} = user) do
+    %Author{user_id: user.id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
+    |> Repo.insert()
+    |> handle_existing_author()
+  end
+
+  defp handle_existing_author({:ok, author}),  do: author
+  defp handle_existing_author({:error, changeset}) do
+    Repo.get_by!(Author, user_id: changeset.data.user_id)
   end
 end
