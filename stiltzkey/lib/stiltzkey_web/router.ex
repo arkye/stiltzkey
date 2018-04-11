@@ -23,6 +23,12 @@ defmodule StiltzkeyWeb.Router do
                                               singleton: true
   end
 
+  scope "/papyrus", StiltzkeyWeb do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/poems", PoemController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", StiltzkeyWeb do
   #   pipe_through :api
@@ -30,13 +36,13 @@ defmodule StiltzkeyWeb.Router do
 
   defp authenticate_user(conn, _) do
     case get_session(conn, :user_id) do
-      user_id ->
-        assign(conn, :current_user, Stiltzkey.Accounts.get_user!(user_id))
       nil ->
         conn
         |> Phoenix.Controller.put_flash(:error, "Login required")
         |> Phoenix.Controller.redirect(to: "/")
         |> halt()
+      user_id ->
+        assign(conn, :current_user, Stiltzkey.Accounts.get_user!(user_id))
     end
   end
 end
