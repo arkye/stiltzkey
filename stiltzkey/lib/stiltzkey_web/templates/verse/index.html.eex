@@ -1,0 +1,28 @@
+<h2>Listing <%= link @stanza.context, to: stanza_path(@conn, :show, @stanza.poem_id, @stanza) %> Verses</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for verse <- @verses do %>
+    <tr>
+      <td><%= verse.key %></td>
+      <td><%= verse.value %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: verse_path(@conn, :show, @stanza.poem_id, @stanza.id, verse), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: verse_path(@conn, :edit, @stanza.poem_id, @stanza.id, verse), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: verse_path(@conn, :delete, @stanza.poem_id, @stanza.id, verse), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Verse", to: verse_path(@conn, :new, @stanza.poem_id, @stanza.id) %></span>

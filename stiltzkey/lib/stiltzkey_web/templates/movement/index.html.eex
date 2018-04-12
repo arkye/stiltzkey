@@ -1,0 +1,28 @@
+<h2>Listing Movements</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for movement <- @movements do %>
+    <tr>
+      <td><%= movement.name %></td>
+      <td><%= movement.description %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: movement_path(@conn, :show, movement), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: movement_path(@conn, :edit, movement), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: movement_path(@conn, :delete, movement), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Movement", to: movement_path(@conn, :new) %></span>

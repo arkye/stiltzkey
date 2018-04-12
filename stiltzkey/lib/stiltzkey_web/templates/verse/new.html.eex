@@ -1,0 +1,5 @@
+<h2>New Verse</h2>
+
+<%= render "form.html", Map.put(assigns, :action, verse_path(@conn, :create, @stanza.poem_id, @stanza.id)) %>
+
+<span><%= link "Back", to: verse_path(@conn, :index, @stanza.poem_id, @stanza.id) %></span>
