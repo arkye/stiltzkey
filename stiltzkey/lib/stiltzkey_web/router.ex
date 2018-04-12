@@ -28,6 +28,7 @@ defmodule StiltzkeyWeb.Router do
 
     resources "/poems", PoemController
     resources "/poems/:poem_id/stanzas", StanzaController
+    resources "/poems/:poem_id/stanzas/:stanza_id/verses", VerseController
   end
 
   # Other scopes may use custom stacks.

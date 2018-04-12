@@ -2,11 +2,13 @@ defmodule Stiltzkey.Papyrus.Stanza do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Stiltzkey.Papyrus.{Author, Poem}
+  alias Stiltzkey.Papyrus.{Author, Poem, Verse}
 
   schema "stanzas" do
     field :context, :string
     field :description, :string
+
+    has_many :verses, Verse
 
     belongs_to :author, Author
     belongs_to :poem, Poem

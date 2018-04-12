@@ -22,6 +22,10 @@
     <%= @stanza.description %>
   </li>
 
+  <li>
+    <%= link "Verses", to: verse_path(@conn, :index, @poem.id, @stanza.id) %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: stanza_path(@conn, :edit, @poem.id, @stanza) %></span>

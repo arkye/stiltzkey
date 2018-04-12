@@ -6,4 +6,7 @@ defmodule Stiltzkey.PapyrusTest do
 
   describe "stanzas" do
   end
+
+  describe "verses" do
+  end
 end

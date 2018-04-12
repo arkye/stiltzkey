@@ -1,0 +1,33 @@
+<h2>Show Verse</h2>
+
+<ul>
+
+  <li>
+    <strong>Author:</strong>
+    <%= author_username(@verse) %>
+  </li>
+
+  <li>
+    <strong>From Poem:</strong>
+    <%= link @stanza.poem.title, to: poem_path(@conn, :show, @stanza.poem_id) %>
+  </li>
+
+  <li>
+    <strong>From Stanza:</strong>
+    <%= link @stanza.context, to: stanza_path(@conn, :show, @stanza.poem_id, @stanza) %>
+  </li>
+
+  <li>
+    <strong>Key:</strong>
+    <%= @verse.key %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @verse.value %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: verse_path(@conn, :edit, @stanza.poem_id, @stanza.id, @verse) %></span>
+<span><%= link "Back", to: verse_path(@conn, :index, @stanza.poem_id, @stanza.id) %></span>

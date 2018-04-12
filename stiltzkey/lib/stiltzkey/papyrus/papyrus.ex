@@ -6,7 +6,7 @@ defmodule Stiltzkey.Papyrus do
   import Ecto.Query, warn: false
   alias Stiltzkey.Repo
 
-  alias Stiltzkey.Papyrus.{Author, Poem, Stanza}
+  alias Stiltzkey.Papyrus.{Author, Poem, Stanza, Verse}
   alias Stiltzkey.Accounts
 
   def ensure_author_exists(%Accounts.User{} = user) do
@@ -133,7 +133,9 @@ defmodule Stiltzkey.Papyrus do
 
   """
   def list_authors do
-    Repo.all(Author)
+    Author
+    |> Repo.all()
+    |> Repo.preload(user: :credential)
   end
 
   @doc """
@@ -323,5 +325,109 @@ defmodule Stiltzkey.Papyrus do
   """
   def change_stanza(%Stanza{} = stanza) do
     Stanza.changeset(stanza, %{})
+  end
+
+  @doc """
+  Returns the list of verses.
+
+  ## Examples
+
+      iex> list_verses()
+      [%Verse{}, ...]
+
+  """
+  def list_verses do
+    Verse
+    |> Repo.all()
+    |> Repo.preload(author: [user: :credential])
+    |> Repo.preload(:stanza)
+  end
+
+  @doc """
+  Gets a single verse.
+
+  Raises `Ecto.NoResultsError` if the Verse does not exist.
+
+  ## Examples
+
+      iex> get_verse!(123)
+      %Verse{}
+
+      iex> get_verse!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_verse!(id) do
+    Verse
+    |> Repo.get!(id)
+    |> Repo.preload(author: [user: :credential])
+    |> Repo.preload(:stanza)
+  end
+
+  @doc """
+  Creates a verse.
+
+  ## Examples
+
+      iex> create_verse(%{field: value})
+      {:ok, %Verse{}}
+
+      iex> create_verse(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_verse(%Author{} = author, %Stanza{} = stanza, attrs \\ %{}) do
+    %Verse{}
+    |> Verse.changeset(attrs)
+    |> Ecto.Changeset.put_change(:author_id, author.id)
+    |> Ecto.Changeset.put_change(:stanza_id, stanza.id)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a verse.
+
+  ## Examples
+
+      iex> update_verse(verse, %{field: new_value})
+      {:ok, %Verse{}}
+
+      iex> update_verse(verse, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_verse(%Verse{} = verse, attrs) do
+    verse
+    |> Verse.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Verse.
+
+  ## Examples
+
+      iex> delete_verse(verse)
+      {:ok, %Verse{}}
+
+      iex> delete_verse(verse)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_verse(%Verse{} = verse) do
+    Repo.delete(verse)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking verse changes.
+
+  ## Examples
+
+      iex> change_verse(verse)
+      %Ecto.Changeset{source: %Verse{}}
+
+  """
+  def change_verse(%Verse{} = verse) do
+    Verse.changeset(verse, %{})
   end
 end
