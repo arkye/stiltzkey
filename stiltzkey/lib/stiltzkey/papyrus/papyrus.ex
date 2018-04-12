@@ -6,7 +6,7 @@ defmodule Stiltzkey.Papyrus do
   import Ecto.Query, warn: false
   alias Stiltzkey.Repo
 
-  alias Stiltzkey.Papyrus.{Author, Poem, Stanza, Verse}
+  alias Stiltzkey.Papyrus.{Author, Enthusiast, Leader, Poem, Poet, Stanza, Verse}
   alias Stiltzkey.Accounts
 
   def ensure_author_exists(%Accounts.User{} = user) do
@@ -429,5 +429,304 @@ defmodule Stiltzkey.Papyrus do
   """
   def change_verse(%Verse{} = verse) do
     Verse.changeset(verse, %{})
+  end
+
+  @doc """
+  Returns the list of leaders.
+
+  ## Examples
+
+      iex> list_leaders()
+      [%Leader{}, ...]
+
+  """
+  def list_leaders do
+    Leader
+    |> Repo.all()
+    |> Repo.preload(user: :credential)
+  end
+
+  @doc """
+  Gets a single leader.
+
+  Raises `Ecto.NoResultsError` if the Leader does not exist.
+
+  ## Examples
+
+      iex> get_leader!(123)
+      %Leader{}
+
+      iex> get_leader!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_leader!(id) do
+    Leader
+    |> Repo.get!(id)
+    |> Repo.preload(user: :credential)
+  end
+
+  @doc """
+  Creates a leader.
+
+  ## Examples
+
+      iex> create_leader(%{field: value})
+      {:ok, %Leader{}}
+
+      iex> create_leader(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_leader(attrs \\ %{}) do
+    %Leader{}
+    |> Leader.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a leader.
+
+  ## Examples
+
+      iex> update_leader(leader, %{field: new_value})
+      {:ok, %Leader{}}
+
+      iex> update_leader(leader, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_leader(%Leader{} = leader, attrs) do
+    leader
+    |> Leader.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Leader.
+
+  ## Examples
+
+      iex> delete_leader(leader)
+      {:ok, %Leader{}}
+
+      iex> delete_leader(leader)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_leader(%Leader{} = leader) do
+    Repo.delete(leader)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking leader changes.
+
+  ## Examples
+
+      iex> change_leader(leader)
+      %Ecto.Changeset{source: %Leader{}}
+
+  """
+  def change_leader(%Leader{} = leader) do
+    Leader.changeset(leader, %{})
+  end
+
+  @doc """
+  Returns the list of poets.
+
+  ## Examples
+
+      iex> list_poets()
+      [%Poet{}, ...]
+
+  """
+  def list_poets do
+    Poet
+    |> Repo.all()
+    |> Repo.preload(user: :credential)
+  end
+
+  @doc """
+  Gets a single poet.
+
+  Raises `Ecto.NoResultsError` if the Poet does not exist.
+
+  ## Examples
+
+      iex> get_poet!(123)
+      %Poet{}
+
+      iex> get_poet!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_poet!(id) do
+    Poet
+    |> Repo.get!(id)
+    |> Repo.preload(user: :credential)
+  end
+
+  @doc """
+  Creates a poet.
+
+  ## Examples
+
+      iex> create_poet(%{field: value})
+      {:ok, %Poet{}}
+
+      iex> create_poet(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_poet(attrs \\ %{}) do
+    %Poet{}
+    |> Poet.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a poet.
+
+  ## Examples
+
+      iex> update_poet(poet, %{field: new_value})
+      {:ok, %Poet{}}
+
+      iex> update_poet(poet, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_poet(%Poet{} = poet, attrs) do
+    poet
+    |> Poet.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Poet.
+
+  ## Examples
+
+      iex> delete_poet(poet)
+      {:ok, %Poet{}}
+
+      iex> delete_poet(poet)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_poet(%Poet{} = poet) do
+    Repo.delete(poet)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking poet changes.
+
+  ## Examples
+
+      iex> change_poet(poet)
+      %Ecto.Changeset{source: %Poet{}}
+
+  """
+  def change_poet(%Poet{} = poet) do
+    Poet.changeset(poet, %{})
+  end
+
+  @doc """
+  Returns the list of enthusiasts.
+
+  ## Examples
+
+      iex> list_enthusiasts()
+      [%Enthusiast{}, ...]
+
+  """
+  def list_enthusiasts do
+    Enthusiast
+    |> Repo.all()
+    |> Repo.preload(user: :credential)
+  end
+
+  @doc """
+  Gets a single enthusiast.
+
+  Raises `Ecto.NoResultsError` if the Enthusiast does not exist.
+
+  ## Examples
+
+      iex> get_enthusiast!(123)
+      %Enthusiast{}
+
+      iex> get_enthusiast!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_enthusiast!(id) do
+    Enthusiast
+    |> Repo.get!(id)
+    |> Repo.preload(user: :credential)
+  end
+  @doc """
+  Creates a enthusiast.
+
+  ## Examples
+
+      iex> create_enthusiast(%{field: value})
+      {:ok, %Enthusiast{}}
+
+      iex> create_enthusiast(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_enthusiast(attrs \\ %{}) do
+    %Enthusiast{}
+    |> Enthusiast.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a enthusiast.
+
+  ## Examples
+
+      iex> update_enthusiast(enthusiast, %{field: new_value})
+      {:ok, %Enthusiast{}}
+
+      iex> update_enthusiast(enthusiast, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_enthusiast(%Enthusiast{} = enthusiast, attrs) do
+    enthusiast
+    |> Enthusiast.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Enthusiast.
+
+  ## Examples
+
+      iex> delete_enthusiast(enthusiast)
+      {:ok, %Enthusiast{}}
+
+      iex> delete_enthusiast(enthusiast)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_enthusiast(%Enthusiast{} = enthusiast) do
+    Repo.delete(enthusiast)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking enthusiast changes.
+
+  ## Examples
+
+      iex> change_enthusiast(enthusiast)
+      %Ecto.Changeset{source: %Enthusiast{}}
+
+  """
+  def change_enthusiast(%Enthusiast{} = enthusiast) do
+    Enthusiast.changeset(enthusiast, %{})
   end
 end

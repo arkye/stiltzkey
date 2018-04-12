@@ -9,4 +9,13 @@ defmodule Stiltzkey.PapyrusTest do
 
   describe "verses" do
   end
+
+  describe "leaders" do
+  end
+
+  describe "poets" do
+  end
+
+  describe "enthusiasts" do
+  end
 end
