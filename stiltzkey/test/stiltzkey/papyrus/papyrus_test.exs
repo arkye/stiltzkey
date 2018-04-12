@@ -21,4 +21,7 @@ defmodule Stiltzkey.PapyrusTest do
 
   describe "movements" do
   end
+
+  describe "pandoras" do
+  end
 end

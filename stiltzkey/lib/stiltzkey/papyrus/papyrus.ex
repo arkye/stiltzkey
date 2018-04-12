@@ -6,7 +6,7 @@ defmodule Stiltzkey.Papyrus do
   import Ecto.Query, warn: false
   alias Stiltzkey.Repo
 
-  alias Stiltzkey.Papyrus.{Author, Enthusiast, Leader, Movement, Poem, Poet, Stanza, Verse}
+  alias Stiltzkey.Papyrus.{Author, Enthusiast, Leader, Movement, Pandora, Poem, Poet, Stanza, Verse}
   alias Stiltzkey.Accounts
 
   def ensure_author_exists(%Accounts.User{} = user) do
@@ -868,5 +868,106 @@ defmodule Stiltzkey.Papyrus do
   """
   def change_movement(%Movement{} = movement) do
     Movement.changeset(movement, %{})
+  end
+
+  @doc """
+  Returns the list of pandoras.
+
+  ## Examples
+
+      iex> list_pandoras()
+      [%Pandora{}, ...]
+
+  """
+  def list_pandoras do
+    Pandora
+    |> Repo.all()
+    |> Repo.preload(:poem)
+  end
+
+  @doc """
+  Gets a single pandora.
+
+  Raises `Ecto.NoResultsError` if the Pandora does not exist.
+
+  ## Examples
+
+      iex> get_pandora!(123)
+      %Pandora{}
+
+      iex> get_pandora!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_pandora!(id) do
+    Pandora
+    |> Repo.get!(id)
+    |> Repo.preload(:poem)
+  end
+
+  @doc """
+  Creates a pandora.
+
+  ## Examples
+
+      iex> create_pandora(%{field: value})
+      {:ok, %Pandora{}}
+
+      iex> create_pandora(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_pandora(%Poem{} = poem, attrs \\ %{}) do
+    %Pandora{}
+    |> Pandora.changeset(attrs)
+    |> Ecto.Changeset.put_change(:poem_id, poem.id)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a pandora.
+
+  ## Examples
+
+      iex> update_pandora(pandora, %{field: new_value})
+      {:ok, %Pandora{}}
+
+      iex> update_pandora(pandora, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_pandora(%Pandora{} = pandora, attrs) do
+    pandora
+    |> Pandora.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Pandora.
+
+  ## Examples
+
+      iex> delete_pandora(pandora)
+      {:ok, %Pandora{}}
+
+      iex> delete_pandora(pandora)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_pandora(%Pandora{} = pandora) do
+    Repo.delete(pandora)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking pandora changes.
+
+  ## Examples
+
+      iex> change_pandora(pandora)
+      %Ecto.Changeset{source: %Pandora{}}
+
+  """
+  def change_pandora(%Pandora{} = pandora) do
+    Pandora.changeset(pandora, %{})
   end
 end
