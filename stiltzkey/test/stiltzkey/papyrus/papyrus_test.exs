@@ -18,4 +18,7 @@ defmodule Stiltzkey.PapyrusTest do
 
   describe "enthusiasts" do
   end
+
+  describe "movements" do
+  end
 end

@@ -6,7 +6,7 @@ defmodule Stiltzkey.Papyrus do
   import Ecto.Query, warn: false
   alias Stiltzkey.Repo
 
-  alias Stiltzkey.Papyrus.{Author, Enthusiast, Leader, Poem, Poet, Stanza, Verse}
+  alias Stiltzkey.Papyrus.{Author, Enthusiast, Leader, Movement, Poem, Poet, Stanza, Verse}
   alias Stiltzkey.Accounts
 
   def ensure_author_exists(%Accounts.User{} = user) do
@@ -20,6 +20,45 @@ defmodule Stiltzkey.Papyrus do
   defp handle_existing_author({:ok, author}),  do: author
   defp handle_existing_author({:error, changeset}) do
     Repo.get_by!(Author, user_id: changeset.data.user_id)
+  end
+
+  def ensure_leader_exists(%Accounts.User{} = user) do
+    %Leader{user_id: user.id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
+    |> Repo.insert()
+    |> handle_existing_leader()
+  end
+
+  defp handle_existing_leader({:ok, leader}),  do: leader
+  defp handle_existing_leader({:error, changeset}) do
+    Repo.get_by!(Leader, user_id: changeset.data.user_id)
+  end
+
+  def ensure_poet_exists(%Accounts.User{} = user) do
+    %Poet{user_id: user.id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
+    |> Repo.insert()
+    |> handle_existing_poet()
+  end
+
+  defp handle_existing_poet({:ok, poet}),  do: poet
+  defp handle_existing_poet({:error, changeset}) do
+    Repo.get_by!(Poet, user_id: changeset.data.user_id)
+  end
+
+  def ensure_enthusiast_exists(%Accounts.User{} = user) do
+    %Enthusiast{user_id: user.id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
+    |> Repo.insert()
+    |> handle_existing_enthusiast()
+  end
+
+  defp handle_existing_enthusiast({:ok, enthusiast}),  do: enthusiast
+  defp handle_existing_enthusiast({:error, changeset}) do
+    Repo.get_by!(Enthusiast, user_id: changeset.data.user_id)
   end
 
   @doc """
@@ -728,5 +767,106 @@ defmodule Stiltzkey.Papyrus do
   """
   def change_enthusiast(%Enthusiast{} = enthusiast) do
     Enthusiast.changeset(enthusiast, %{})
+  end
+
+  @doc """
+  Returns the list of movements.
+
+  ## Examples
+
+      iex> list_movements()
+      [%Movement{}, ...]
+
+  """
+  def list_movements do
+    Movement
+    |> Repo.all()
+    |> Repo.preload(leader: [user: :credential])
+  end
+
+  @doc """
+  Gets a single movement.
+
+  Raises `Ecto.NoResultsError` if the Movement does not exist.
+
+  ## Examples
+
+      iex> get_movement!(123)
+      %Movement{}
+
+      iex> get_movement!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_movement!(id) do
+    Movement
+    |> Repo.get!(id)
+    |> Repo.preload(leader: [user: :credential])
+  end
+
+  @doc """
+  Creates a movement.
+
+  ## Examples
+
+      iex> create_movement(%{field: value})
+      {:ok, %Movement{}}
+
+      iex> create_movement(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_movement(%Leader{} = leader, attrs \\ %{}) do
+    %Movement{}
+    |> Movement.changeset(attrs)
+    |> Ecto.Changeset.put_change(:leader_id, leader.id)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a movement.
+
+  ## Examples
+
+      iex> update_movement(movement, %{field: new_value})
+      {:ok, %Movement{}}
+
+      iex> update_movement(movement, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_movement(%Movement{} = movement, attrs) do
+    movement
+    |> Movement.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Movement.
+
+  ## Examples
+
+      iex> delete_movement(movement)
+      {:ok, %Movement{}}
+
+      iex> delete_movement(movement)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_movement(%Movement{} = movement) do
+    Repo.delete(movement)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking movement changes.
+
+  ## Examples
+
+      iex> change_movement(movement)
+      %Ecto.Changeset{source: %Movement{}}
+
+  """
+  def change_movement(%Movement{} = movement) do
+    Movement.changeset(movement, %{})
   end
 end

@@ -2,8 +2,12 @@ defmodule Stiltzkey.Papyrus.Enthusiast do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Stiltzkey.Papyrus.Movement
+
   schema "enthusiasts" do
     belongs_to :user, Stiltzkey.Accounts.User
+
+    many_to_many :movements, Movement, join_through: "movements_enthusiasts"
 
     timestamps()
   end

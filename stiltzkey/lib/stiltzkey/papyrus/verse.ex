@@ -2,7 +2,7 @@ defmodule Stiltzkey.Papyrus.Verse do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Stiltzkey.Papyrus.{Author, Stanza}
+  alias Stiltzkey.Papyrus.{Author, Movement, Stanza}
 
   schema "verses" do
     field :key, :string
@@ -10,6 +10,8 @@ defmodule Stiltzkey.Papyrus.Verse do
 
     belongs_to :author, Author
     belongs_to :stanza, Stanza
+
+    many_to_many :movements, Movement, join_through: "movements_verses"
 
     timestamps()
   end
