@@ -5,6 +5,7 @@ volumes:
 
 services:
   phoenix:
+    image: arkye/stiltzkey:test
     build:
       context: .
       dockerfile: ./compose/test/phoenix/Dockerfile

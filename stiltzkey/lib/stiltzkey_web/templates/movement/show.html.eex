@@ -1,0 +1,23 @@
+<h2>Show Movement</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @movement.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @movement.description %>
+  </li>
+
+  <li>
+    <strong>Leader:</strong>
+    <%= leader_username(@movement) %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: movement_path(@conn, :edit, @movement) %></span>
+<span><%= link "Back", to: movement_path(@conn, :index) %></span>

@@ -1,0 +1,5 @@
+<h2>New Stanza</h2>
+
+<%= render "form.html", Map.put(assigns, :action, stanza_path(@conn, :create, @poem.id)) %>
+
+<span><%= link "Back", to: stanza_path(@conn, :index, @poem.id) %></span>
