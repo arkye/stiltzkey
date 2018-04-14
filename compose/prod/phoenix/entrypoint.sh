@@ -16,9 +16,11 @@ make clean
 make
 
 cd /code/assets
-node_modules/brunch/bin/brunch build --production
+yarn install
+node node_modules/brunch/bin/brunch build --production
 
 cd /code
+mkdir -p priv/static
 mix phx.digest
 
 printf "\n## Creating Database\n\n"

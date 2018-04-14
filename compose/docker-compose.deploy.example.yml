@@ -8,9 +8,11 @@ services:
       - postgres
     environment:
       MIX_ENV: prod
+      NODE_ENV: production
       HOSTNAME: example.com
       PORT: 80
       SECRET_KEY_BASE: 6JlioTCLygI6FfeatExSxXFRHQGFi4Q2XGAGQ8AGQPywZJMfIrJErk55c7FeG5cX
+      GUARDIAN_SECRET_KEY: HNinpKh9Ne3tr8BpjCpAEh0xzCqTIG3PWsfkR2AtzvUaRIpbs6oIQ9RcmjmGPekJ
       POSTGRES_HOSTNAME: postgres
       POSTGRES_DATABASE: stiltzkey
       POOL_SIZE: 15
