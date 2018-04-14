@@ -31,6 +31,20 @@ config :stiltzkey, Stiltzkey.Repo,
   database: System.get_env("POSTGRES_DATABASE"),
   hostname: System.get_env("POSTGRES_HOSTNAME")
 
+# Configure Guardian Authentication
+config :stiltzkey, StiltzkeyWeb.Helpers.Auth.Guardian,
+  issuer: "stiltzkey",
+  secret_key: System.get_env("GUARDIAN_SECRET_KEY"),
+  ttl: {1, :days}
+
+config :stiltzkey, StiltzkeyWeb.Helpers.Auth.AccessPipeline,
+  module: StiltzkeyWeb.Helpers.Auth.Guardian,
+  error_handler: StiltzkeyWeb.Helpers.Auth.NoErrorHandler
+
+config :stiltzkey, StiltzkeyWeb.Helpers.Auth.EnsureAccessPipeline,
+  module: StiltzkeyWeb.Helpers.Auth.Guardian,
+  error_handler: StiltzkeyWeb.Helpers.Auth.ErrorHandler
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

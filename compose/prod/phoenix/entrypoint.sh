@@ -10,9 +10,14 @@ printf "\n## Updating Dependencies\n\n"
 mix deps.get --only prod
 mix compile
 
-printf "\n## Compiling Assets\n\n"
-cd assets
+printf "\n## Compiling Submodules\n\n"
+cd deps/argon2_elixir
+make clean
+make
+
+cd /code/assets
 node_modules/brunch/bin/brunch build --production
+
 cd /code
 mix phx.digest
 

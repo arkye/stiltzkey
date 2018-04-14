@@ -1,5 +1,5 @@
-<h2>Edit User</h2>
+<%= link "Back", to: user_path(@conn, :show, @user), class: "btn btn-default" %>
+
+<h2>Edit Profile</h2>
 
 <%= render "form.html", Map.put(assigns, :action, user_path(@conn, :update, @user)) %>
-
-<span><%= link "Back", to: user_path(@conn, :index) %></span>

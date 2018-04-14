@@ -1,8 +1,12 @@
 defmodule StiltzkeyWeb.UserController do
   use StiltzkeyWeb, :controller
 
+  alias StiltzkeyWeb.Helpers.Auth.Guardian
+
   alias Stiltzkey.Accounts
-  alias Stiltzkey.Accounts.User
+  alias Stiltzkey.Accounts.{User, Credential}
+
+  plug :authorize_user when action in [:edit, :update, :delete]
 
   def index(conn, _params) do
     users = Accounts.list_users()
@@ -18,8 +22,9 @@ defmodule StiltzkeyWeb.UserController do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         conn
+        |> Guardian.Plug.sign_in(user)
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: page_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -30,23 +35,36 @@ defmodule StiltzkeyWeb.UserController do
     render(conn, "show.html", user: user)
   end
 
-  def edit(conn, %{"id" => id}) do
-    user = Accounts.get_user!(id)
-    changeset = Accounts.change_user(user)
-    render(conn, "edit.html", user: user, changeset: changeset)
+  def edit(conn, _) do
+    changeset = conn.assigns.current_user |> Accounts.change_user()
+    render(conn, "edit.html", changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Accounts.get_user!(id)
-
-    case Accounts.update_user(user, user_params) do
-      {:ok, user} ->
+  def update(conn, %{"user" => params}) do
+    credential = conn.assigns.current_user.credential
+    case validate_password(credential, params["credential"]) do
+      %User{} = user ->
+        case Accounts.update_user(user, params) do
+          {:ok, user} ->
+            conn
+            |> put_flash(:info, "User updated successfully.")
+            |> redirect(to: user_path(conn, :show, user))
+          {:error, %Ecto.Changeset{} = changeset} ->
+            render(conn, "edit.html", user: user, changeset: changeset)
+        end
+      {:error, :unauthorized} ->
         conn
-        |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: user_path(conn, :show, user))
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", user: user, changeset: changeset)
+        |> put_flash(:error, "Password invalid.")
+        |> redirect(to: user_path(conn, :edit, conn.assigns.current_user.id))
     end
+  end
+
+  defp validate_password(%Credential{email: email}, %{"password" => password}) do
+    Accounts.authenticate_by_email_password(email, password)
+  end
+
+  defp validate_password(_, params) do
+    {:error, :unauthorized}
   end
 
   def delete(conn, %{"id" => id}) do
@@ -56,5 +74,19 @@ defmodule StiltzkeyWeb.UserController do
     conn
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: user_path(conn, :index))
+  end
+
+  defp authorize_user(%{params: %{"id" => id}} = conn, _) do
+    if conn.assigns.current_user.id == String.to_integer(id) do
+      case conn.assigns do
+        %{user: _user} -> conn
+        _ -> assign(conn, :user, conn.assigns.current_user)
+      end
+    else
+      conn
+      |> put_flash(:error, "You can't modify that user")
+      |> redirect(to: page_path(conn, :index))
+      |> halt()
+    end
   end
 end

@@ -4,13 +4,13 @@ defmodule StiltzkeyWeb.PoemController do
   import StiltzkeyWeb.AuthorHelper, only: [require_existing_author: 2]
 
   plug :require_existing_author
-  plug :authorize_poem when action in [:edit, :update, :delete]
+  plug :authorize_poem when action in [:show, :edit, :update, :delete]
 
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Poem
 
   def index(conn, _params) do
-    poems = Papyrus.list_poems()
+    poems = Papyrus.list_poems_from_author(conn.assigns.current_author)
     render(conn, "index.html", poems: poems)
   end
 
@@ -66,7 +66,7 @@ defmodule StiltzkeyWeb.PoemController do
       assign(conn, :poem, poem)
     else
       conn
-      |> put_flash(:error, "You can't modify that poem")
+      |> put_flash(:error, "You can't see or modify that poem")
       |> redirect(to: poem_path(conn, :index))
       |> halt()
     end
