@@ -1,6 +1,7 @@
 defmodule StiltzkeyWeb.SessionController do
   use StiltzkeyWeb, :controller
 
+  alias StiltzkeyWeb.Helpers.Auth.Guardian
   alias Stiltzkey.Accounts
 
   def new(conn, _) do
@@ -9,12 +10,12 @@ defmodule StiltzkeyWeb.SessionController do
 
   def create(conn, %{"user" => %{"email" => email, "password" => password}}) do
     case Accounts.authenticate_by_email_password(email, password) do
-      {:ok, user} ->
+      %Accounts.User{} = user ->
         conn
+        |> Guardian.Plug.sign_in(user)
+        |> assign(:current_user, user)
         |> put_flash(:info, "Welcome back!")
-        |> put_session(:user_id, user.id)
-        |> configure_session(renew: true)
-        |> redirect(to: "/")
+        |> redirect(to: page_path(conn, :index))
       {:error, :unauthorized} ->
         conn
         |> put_flash(:error, "Bad email/password combination")
@@ -24,7 +25,7 @@ defmodule StiltzkeyWeb.SessionController do
 
   def delete(conn, _) do
     conn
-    |> configure_session(drop: true)
-    |> redirect(to: "/")
+    |> Guardian.Plug.sign_out()
+    |> redirect(to: page_path(conn, :index))
   end
 end

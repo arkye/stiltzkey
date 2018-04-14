@@ -8,15 +8,19 @@ defmodule Stiltzkey.Accounts do
 
   alias Stiltzkey.Accounts.{User, Credential}
 
-  def authenticate_by_email_password(email, _password) do
-    query =
-      from u in User,
-        inner_join: c in assoc(u, :credential),
-        where: c.email == ^email
+  def authenticate_by_email_password(email, password) do
+    query = from c in Credential, where: c.email == ^email
+    Repo.one(query)
+    |> validate_password(password)
+  end
 
-    case Repo.one(query) do
-      %User{} = user -> {:ok, user}
-      nil -> {:error, :unauthorized}
+  defp validate_password(nil, _),  do: {:error, :unauthorized}
+
+  defp validate_password(credential, password) do
+    %Credential{password: stored_password, user_id: user_id} = credential
+    case Comeonin.Argon2.checkpw(password, stored_password) do
+      true -> get_user!(user_id)
+      false -> {:error, :unauthorized}
     end
   end
 

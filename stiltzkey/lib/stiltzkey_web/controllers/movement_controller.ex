@@ -4,13 +4,13 @@ defmodule StiltzkeyWeb.MovementController do
   import StiltzkeyWeb.LeaderHelper, only: [require_existing_leader: 2]
 
   plug :require_existing_leader
-  plug :authorize_movement when action in [:edit, :update, :delete]
+  plug :authorize_movement when action in [:show, :edit, :update, :delete]
 
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Movement
 
   def index(conn, _params) do
-    movements = Papyrus.list_movements()
+    movements = Papyrus.list_movements_from_leader(conn.assigns.current_leader)
     render(conn, "index.html", movements: movements)
   end
 
@@ -62,7 +62,7 @@ defmodule StiltzkeyWeb.MovementController do
   defp authorize_movement(conn, _) do
     movement = Papyrus.get_movement!(conn.params["id"])
 
-    if conn.assigns.current_author.id == movement.author_id do
+    if conn.assigns.current_leader.id == movement.leader_id do
       assign(conn, :movement, movement)
     else
       conn

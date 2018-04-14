@@ -5,13 +5,14 @@ defmodule StiltzkeyWeb.StanzaController do
 
   plug :require_existing_author
   plug :require_poem
-  plug :authorize_stanza when action in [:edit, :update, :delete]
+  plug :require_poem_ownership when action in [:index]
+  plug :authorize_stanza when action in [:show, :edit, :update, :delete]
 
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Stanza
 
   def index(conn, _params) do
-    stanzas = Papyrus.list_stanzas()
+    stanzas = Papyrus.list_stanzas_from_poem(conn.assigns.poem)
     render(conn, "index.html", stanzas: stanzas)
   end
 
@@ -65,6 +66,17 @@ defmodule StiltzkeyWeb.StanzaController do
     assign(conn, :poem, poem)
   end
 
+  defp require_poem_ownership(conn, _) do
+    if conn.assigns.poem.author_id == conn.assigns.current_author.id do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You can't see that stanzas")
+      |> redirect(to: page_path(conn, :index))
+      |> halt()
+    end
+  end
+
   defp authorize_stanza(conn, _) do
     stanza = Papyrus.get_stanza!(conn.params["id"])
 
@@ -72,7 +84,7 @@ defmodule StiltzkeyWeb.StanzaController do
       assign(conn, :stanza, stanza)
     else
       conn
-      |> put_flash(:error, "You can't modify that stanza")
+      |> put_flash(:error, "You can't see or modify that stanza")
       |> redirect(to: stanza_path(conn, :index, conn.assigns.poem.id))
       |> halt()
     end

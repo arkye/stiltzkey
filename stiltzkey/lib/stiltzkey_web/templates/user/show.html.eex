@@ -1,4 +1,4 @@
-<h2>Show User</h2>
+<h2>Show Profile</h2>
 
 <ul>
 
@@ -13,5 +13,6 @@
   </li>
 </ul>
 
-<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: user_path(@conn, :index) %></span>
+<%= if @user.id == @current_user.id do %>
+<%= link "Edit", to: user_path(@conn, :edit, @user), class: "btn btn-primary" %>
+<% end %>

@@ -5,13 +5,14 @@ defmodule StiltzkeyWeb.VerseController do
 
   plug :require_existing_author
   plug :require_stanza
-  plug :authorize_verse when action in [:edit, :update, :delete]
+  plug :require_stanza_ownership when action in [:index]
+  plug :authorize_verse when action in [:show, :edit, :update, :delete]
 
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Verse
 
   def index(conn, _params) do
-    verses = Papyrus.list_verses()
+    verses = Papyrus.list_verses_from_stanza(conn.assigns.stanza)
     render(conn, "index.html", verses: verses)
   end
 
@@ -65,6 +66,17 @@ defmodule StiltzkeyWeb.VerseController do
     assign(conn, :stanza, stanza)
   end
 
+  defp require_stanza_ownership(conn, _) do
+    if conn.assigns.stanza.author_id == conn.assigns.current_author.id do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You can't see that verses")
+      |> redirect(to: page_path(conn, :index))
+      |> halt()
+    end
+  end
+
   defp authorize_verse(conn, _) do
     verse = Papyrus.get_verse!(conn.params["id"])
 
@@ -72,7 +84,7 @@ defmodule StiltzkeyWeb.VerseController do
       assign(conn, :verse, verse)
     else
       conn
-      |> put_flash(:error, "You can't modify that verse")
+      |> put_flash(:error, "You can't see or modify that verse")
       |> redirect(to: verse_path(conn, :index, conn.assigns.stanza.poem_id, conn.assigns.stanza.id))
       |> halt()
     end
