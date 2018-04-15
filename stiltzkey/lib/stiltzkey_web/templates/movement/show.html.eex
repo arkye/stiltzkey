@@ -1,101 +1,135 @@
-<h2>Show Movement</h2>
-
-<ul>
-
+<ol class="breadcrumb">
   <li>
-    <strong>Name:</strong>
+    <%= link "Home", to: page_path(@conn, :index) %>
+  </li>
+  <li>
+    <%= link "Movements", to: movement_path(@conn, :index) %>
+  </li>
+  <li class="active">
     <%= @movement.name %>
   </li>
+</ol>
 
-  <li>
-    <strong>Description:</strong>
-    <%= @movement.description %>
+<div class="page-header">
+  <h1>Movement: <small><%= @movement.name %></small></h1>
+</div>
+
+<ul class="list-group">
+
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Description
+    </h4>
+    <p class="list-group-item-text">
+      <%= @movement.description %>
+    </p>
   </li>
 
-  <li>
-    <strong>Leader:</strong>
-    <%= leader_username(@movement) %>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Leader
+    </h4>
+    <p class="list-group-item-text">
+      <%= link leader_username(@movement), to: user_path(@conn, :show, leader_user(@movement)) %>
+    </p>
+  </li>
+
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Verses
+    </h4>
+    <p class="list-group-item-text">
+      The values below are NOT the real values for the key!
+    </p>
+    <p class="list-group-item-text">
+      Click on the button <code>Show Value</code> to pop out the real value.
+    </p>
+    <ul class="list-group">
+      <%= for verse <- @movement.verses do %>
+      <li class="list-group-item">
+        <span class="badge">
+          <%= link "Show Value", to: movement_path(@conn, :show_value, @movement, verse), class: "badge" %>
+        </span>
+        <h5 class="list-group-item-heading">
+          <%= verse.stanza.poem.title %> /
+          <%= verse.stanza.context %> /
+          <%= verse.key %>
+        </h5>
+        <p class="list-group-item-text">
+          <%= verse.value %>
+        </p>
+      </li>
+      <% end %>
+    </ul>
+    <%= if @role == :leader or @role == :poet do %>
+    <%= form_for @verse, movement_path(@conn, :add_verse, @movement), fn f -> %>
+    <div class="form-group">
+      <%= label f, :key, class: "control-label" %>
+      <%= select f, :id, @my_verses, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= submit "Add Verse", class: "btn btn-block btn-primary" %>
+    </div>
+    <% end %>
+    <% end %>
+  </li>
+
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Poets
+    </h4>
+    <p class="list-group-item-text">
+      Poets can add verses to the Movement
+    </p>
+    <ul class="list-group">
+      <%= for poet <- @movement.poets do %>
+      <li class="list-group-item">
+        <%= link poet.user.username, to: user_path(@conn, :show, poet.user.id) %>
+      </li>
+      <% end %>
+    </ul>
+    <%= if @role == :leader do %>
+    <%= form_for @poet, movement_path(@conn, :add_poet, @movement), fn f -> %>
+    <div class="form-group">
+      <%= label f, :username, class: "control-label" %>
+      <%= text_input f, :username, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= submit "Add Poet", class: "btn btn-block btn-primary" %>
+    </div>
+    <% end %>
+    <% end %>
+  </li>
+
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Enthusiasts
+    </h4>
+    <p class="list-group-item-text">
+      Enthusiasts can ONLY read Movement's verses
+    </p>
+    <ul class="list-group">
+      <%= for enthusiast <- @movement.enthusiasts do %>
+      <li class="list-group-item">
+        <%= link enthusiast.user.username, to: user_path(@conn, :show, enthusiast.user.id) %>
+      </li>
+      <% end %>
+    </ul>
+    <%= if @role == :leader do %>
+    <%= form_for @enthusiast, movement_path(@conn, :add_enthusiast, @movement), fn f -> %>
+      <div class="form-group">
+        <%= label f, :username, class: "control-label" %>
+        <%= text_input f, :username, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= submit "Add Enthusiast", class: "btn btn-block btn-primary" %>
+      </div>
+    <% end %>
+    <% end %>
   </li>
 
 </ul>
 
-<h4>Verses</h4>
-
-<%= for verse <- @movement.verses do %>
-<tr>
-  <td><%= verse.key %></td>
-  <td><%= verse.value %></td>
-</tr>
-<% end %>
-
-<%= if @role == :leader or @role == :poet do %>
-<%= form_for @verse, movement_path(@conn, :add_verse, @movement), fn f -> %>
-<div class="form-group">
-  <%= label f, :key, class: "control-label" %>
-  <%= select f, :id, @my_verses, class: "form-control" %>
-</div>
-<div class="form-group">
-  <%= submit "Add Verse", class: "btn btn-primary" %>
-</div>
-<% end %>
-<% end %>
-
-<h4>Poets</h4>
-
-<%= for poet <- @movement.poets do %>
-<tr>
-  <td><%= poet.user.username %></td>
-</tr>
-<% end %>
-
 <%= if @role == :leader do %>
-<%= form_for @poet, movement_path(@conn, :add_poet, @movement), fn f -> %>
-  <%= if @poet.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= label f, :username, class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
-    <%= error_tag f, :username %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Add Poet", class: "btn btn-primary" %>
-  </div>
-<% end %>
-<% end %>
-
-<h4>Enthusiasts</h4>
-
-<%= for enthusiast <- @movement.enthusiasts do %>
-<tr>
-  <td><%= enthusiast.user.username %></td>
-</tr>
-<% end %>
-
-<%= if @role == :leader do %>
-<%= form_for @enthusiast, movement_path(@conn, :add_enthusiast, @movement), fn f -> %>
-  <%= if @enthusiast.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= label f, :username, class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
-    <%= error_tag f, :username %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Add Enthusiast", class: "btn btn-primary" %>
-  </div>
-<% end %>
-<% end %>
-
-
-<span><%= link "Edit", to: movement_path(@conn, :edit, @movement) %></span>
-<span><%= link "Back", to: movement_path(@conn, :index) %></span>
+<%= link "Edit", to: movement_path(@conn, :edit, @movement), class: "btn btn-block btn-primary"%>
+<%= end %>
