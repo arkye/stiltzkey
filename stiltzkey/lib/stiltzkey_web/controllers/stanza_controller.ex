@@ -1,12 +1,12 @@
 defmodule StiltzkeyWeb.StanzaController do
   use StiltzkeyWeb, :controller
 
-  import StiltzkeyWeb.AuthorHelper, only: [require_existing_author: 2]
+  import StiltzkeyWeb.Helpers.Plug.Papyrus, only: [assign_author: 2]
 
-  plug :require_existing_author
+  plug :assign_author
   plug :require_poem
   plug :require_poem_ownership when action in [:index]
-  plug :authorize_stanza when action in [:show, :edit, :update, :delete]
+  plug :authorize_if_author when action in [:show, :edit, :update, :delete]
 
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Stanza
@@ -77,7 +77,7 @@ defmodule StiltzkeyWeb.StanzaController do
     end
   end
 
-  defp authorize_stanza(conn, _) do
+  defp authorize_if_author(conn, _) do
     stanza = Papyrus.get_stanza!(conn.params["id"])
 
     if conn.assigns.current_author.id == stanza.author_id do

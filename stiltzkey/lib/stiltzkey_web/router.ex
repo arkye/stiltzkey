@@ -1,7 +1,7 @@
 defmodule StiltzkeyWeb.Router do
   use StiltzkeyWeb, :router
 
-  import StiltzkeyWeb.UserHelper, only: [assign_user_if_exists: 2]
+  import StiltzkeyWeb.Helpers.Plug.Accounts, only: [assign_user_if_exists: 2]
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -41,21 +41,20 @@ defmodule StiltzkeyWeb.Router do
 
   scope "/profile", StiltzkeyWeb do
     pipe_through [:browser, :authenticate]
-    
+
     resources "/", UserController, only: [:show, :edit, :update, :delete]
   end
 
   scope "/papyrus", StiltzkeyWeb do
     pipe_through [:browser, :authenticate]
 
-    resources "/movements", MovementController
     resources "/poems", PoemController
     resources "/poems/:poem_id/stanzas", StanzaController
     resources "/poems/:poem_id/stanzas/:stanza_id/verses", VerseController
-  end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", StiltzkeyWeb do
-  #   pipe_through :api
-  # end
+    resources "/movements", MovementController
+    post "/movements/:id/poet", MovementController, :add_poet
+    post "/movements/:id/enthusiast", MovementController, :add_enthusiast
+    post "/movements/:id/verse", MovementController, :add_verse
+  end
 end

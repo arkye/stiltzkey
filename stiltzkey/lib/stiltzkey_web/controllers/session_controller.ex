@@ -13,8 +13,7 @@ defmodule StiltzkeyWeb.SessionController do
       %Accounts.User{} = user ->
         conn
         |> Guardian.Plug.sign_in(user)
-        |> assign(:current_user, user)
-        |> put_flash(:info, "Welcome back!")
+        |> put_flash(:info, "Welcome #{user.username}!")
         |> redirect(to: page_path(conn, :index))
       {:error, :unauthorized} ->
         conn

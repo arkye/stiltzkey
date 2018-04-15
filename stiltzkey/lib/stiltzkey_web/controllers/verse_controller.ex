@@ -1,12 +1,12 @@
 defmodule StiltzkeyWeb.VerseController do
   use StiltzkeyWeb, :controller
 
-  import StiltzkeyWeb.AuthorHelper, only: [require_existing_author: 2]
+  import StiltzkeyWeb.Helpers.Plug.Papyrus, only: [assign_author: 2]
 
-  plug :require_existing_author
+  plug :assign_author
   plug :require_stanza
   plug :require_stanza_ownership when action in [:index]
-  plug :authorize_verse when action in [:show, :edit, :update, :delete]
+  plug :authorize_if_leader when action in [:show, :edit, :update, :delete]
 
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Verse
@@ -77,7 +77,7 @@ defmodule StiltzkeyWeb.VerseController do
     end
   end
 
-  defp authorize_verse(conn, _) do
+  defp authorize_if_leader(conn, _) do
     verse = Papyrus.get_verse!(conn.params["id"])
 
     if conn.assigns.current_author.id == verse.author_id do

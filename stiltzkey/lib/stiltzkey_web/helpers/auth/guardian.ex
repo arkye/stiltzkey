@@ -5,6 +5,7 @@ defmodule StiltzkeyWeb.Helpers.Auth.Guardian do
 
   alias Stiltzkey.Accounts
   alias Stiltzkey.Accounts.User
+  alias Guardian
 
   def subject_for_token(%User{id: id}, _claims) do
     subject = to_string(id)
@@ -14,8 +15,11 @@ defmodule StiltzkeyWeb.Helpers.Auth.Guardian do
 
   def resource_from_claims(claims) do
     id = claims["sub"]
-    user = Accounts.get_user!(id)
-
-    {:ok, user}
+    try do
+      user = Accounts.get_user!(id)
+      {:ok, user}
+    rescue
+      _ -> {:error, :not_found}
+    end
   end
 end
