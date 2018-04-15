@@ -19,5 +19,83 @@
 
 </ul>
 
+<h4>Verses</h4>
+
+<%= for verse <- @movement.verses do %>
+<tr>
+  <td><%= verse.key %></td>
+  <td><%= verse.value %></td>
+</tr>
+<% end %>
+
+<%= if @role == :leader or @role == :poet do %>
+<%= form_for @verse, movement_path(@conn, :add_verse, @movement), fn f -> %>
+<div class="form-group">
+  <%= label f, :key, class: "control-label" %>
+  <%= select f, :id, @my_verses, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= submit "Add Verse", class: "btn btn-primary" %>
+</div>
+<% end %>
+<% end %>
+
+<h4>Poets</h4>
+
+<%= for poet <- @movement.poets do %>
+<tr>
+  <td><%= poet.user.username %></td>
+</tr>
+<% end %>
+
+<%= if @role == :leader do %>
+<%= form_for @poet, movement_path(@conn, :add_poet, @movement), fn f -> %>
+  <%= if @poet.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :username, class: "control-label" %>
+    <%= text_input f, :username, class: "form-control" %>
+    <%= error_tag f, :username %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Add Poet", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<% end %>
+
+<h4>Enthusiasts</h4>
+
+<%= for enthusiast <- @movement.enthusiasts do %>
+<tr>
+  <td><%= enthusiast.user.username %></td>
+</tr>
+<% end %>
+
+<%= if @role == :leader do %>
+<%= form_for @enthusiast, movement_path(@conn, :add_enthusiast, @movement), fn f -> %>
+  <%= if @enthusiast.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :username, class: "control-label" %>
+    <%= text_input f, :username, class: "form-control" %>
+    <%= error_tag f, :username %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Add Enthusiast", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<% end %>
+
+
 <span><%= link "Edit", to: movement_path(@conn, :edit, @movement) %></span>
 <span><%= link "Back", to: movement_path(@conn, :index) %></span>

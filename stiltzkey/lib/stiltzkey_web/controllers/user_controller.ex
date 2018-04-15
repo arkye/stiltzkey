@@ -1,10 +1,10 @@
 defmodule StiltzkeyWeb.UserController do
   use StiltzkeyWeb, :controller
 
-  alias StiltzkeyWeb.Helpers.Auth.Guardian
-
   alias Stiltzkey.Accounts
   alias Stiltzkey.Accounts.{User, Credential}
+  alias Stiltzkey.Papyrus
+  alias StiltzkeyWeb.SessionController
 
   plug :authorize_user when action in [:edit, :update, :delete]
 
@@ -21,13 +21,26 @@ defmodule StiltzkeyWeb.UserController do
   def create(conn, %{"user" => user_params}) do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
+        Papyrus.create_author(user)
+        Papyrus.create_enthusiast(user)
+        Papyrus.create_leader(user)
+        Papyrus.create_poet(user)
+
         conn
-        |> Guardian.Plug.sign_in(user)
-        |> put_flash(:info, "User created successfully.")
-        |> redirect(to: page_path(conn, :index))
+        |> SessionController.create(to_session(user_params))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
+  end
+
+  defp to_session(user_params) do
+    credential = user_params["credential"]
+    %{
+      "user" => %{
+        "email" => credential["email"],
+        "password" => credential["password"]
+      }
+    }
   end
 
   def show(conn, %{"id" => id}) do
@@ -63,7 +76,7 @@ defmodule StiltzkeyWeb.UserController do
     Accounts.authenticate_by_email_password(email, password)
   end
 
-  defp validate_password(_, params) do
+  defp validate_password(_, _) do
     {:error, :unauthorized}
   end
 
