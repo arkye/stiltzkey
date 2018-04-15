@@ -4,62 +4,10 @@ defmodule Stiltzkey.Papyrus do
   """
 
   import Ecto.Query, warn: false
-  alias Stiltzkey.Repo
 
-  alias Stiltzkey.Papyrus.{Author, Enthusiast, Leader, Movement, Pandora, Poem, Poet, Stanza, Verse}
   alias Stiltzkey.Accounts
-
-  def ensure_author_exists(%Accounts.User{} = user) do
-    %Author{user_id: user.id}
-    |> Ecto.Changeset.change()
-    |> Ecto.Changeset.unique_constraint(:user_id)
-    |> Repo.insert()
-    |> handle_existing_author()
-  end
-
-  defp handle_existing_author({:ok, author}),  do: author
-  defp handle_existing_author({:error, changeset}) do
-    Repo.get_by!(Author, user_id: changeset.data.user_id)
-  end
-
-  def ensure_leader_exists(%Accounts.User{} = user) do
-    %Leader{user_id: user.id}
-    |> Ecto.Changeset.change()
-    |> Ecto.Changeset.unique_constraint(:user_id)
-    |> Repo.insert()
-    |> handle_existing_leader()
-  end
-
-  defp handle_existing_leader({:ok, leader}),  do: leader
-  defp handle_existing_leader({:error, changeset}) do
-    Repo.get_by!(Leader, user_id: changeset.data.user_id)
-  end
-
-  def ensure_poet_exists(%Accounts.User{} = user) do
-    %Poet{user_id: user.id}
-    |> Ecto.Changeset.change()
-    |> Ecto.Changeset.unique_constraint(:user_id)
-    |> Repo.insert()
-    |> handle_existing_poet()
-  end
-
-  defp handle_existing_poet({:ok, poet}),  do: poet
-  defp handle_existing_poet({:error, changeset}) do
-    Repo.get_by!(Poet, user_id: changeset.data.user_id)
-  end
-
-  def ensure_enthusiast_exists(%Accounts.User{} = user) do
-    %Enthusiast{user_id: user.id}
-    |> Ecto.Changeset.change()
-    |> Ecto.Changeset.unique_constraint(:user_id)
-    |> Repo.insert()
-    |> handle_existing_enthusiast()
-  end
-
-  defp handle_existing_enthusiast({:ok, enthusiast}),  do: enthusiast
-  defp handle_existing_enthusiast({:error, changeset}) do
-    Repo.get_by!(Enthusiast, user_id: changeset.data.user_id)
-  end
+  alias Stiltzkey.Papyrus.{Author, Enthusiast, Leader, Movement, Pandora, Poem, Poet, Stanza, Verse}
+  alias Stiltzkey.Repo
 
   @doc """
   Returns the list of poems.
@@ -183,6 +131,12 @@ defmodule Stiltzkey.Papyrus do
     |> Repo.preload(user: :credential)
   end
 
+  def get_author_by_user!(%Accounts.User{id: id}) do
+    query = from a in Author, where: a.user_id == ^id
+    Repo.one!(query)
+    |> Repo.preload(user: :credential)
+  end
+
   @doc """
   Gets a single author.
 
@@ -203,6 +157,8 @@ defmodule Stiltzkey.Papyrus do
     |> Repo.preload(user: :credential)
   end
 
+
+
   @doc """
   Creates a author.
 
@@ -215,9 +171,10 @@ defmodule Stiltzkey.Papyrus do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_author(attrs \\ %{}) do
-    %Author{}
-    |> Author.changeset(attrs)
+  def create_author(%Accounts.User{id: id}) do
+    %Author{user_id: id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
     |> Repo.insert()
   end
 
@@ -519,6 +476,12 @@ defmodule Stiltzkey.Papyrus do
     |> Repo.preload(user: :credential)
   end
 
+  def get_leader_by_user!(%Accounts.User{id: id}) do
+    query = from l in Leader, where: l.user_id == ^id
+    Repo.one!(query)
+    |> Repo.preload(user: :credential)
+  end
+
   @doc """
   Gets a single leader.
 
@@ -551,9 +514,10 @@ defmodule Stiltzkey.Papyrus do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_leader(attrs \\ %{}) do
-    %Leader{}
-    |> Leader.changeset(attrs)
+  def create_leader(%Accounts.User{id: id}) do
+    %Leader{user_id: id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
     |> Repo.insert()
   end
 
@@ -619,6 +583,13 @@ defmodule Stiltzkey.Papyrus do
     |> Repo.preload(user: :credential)
   end
 
+  def get_poet_by_user!(%Accounts.User{id: id}) do
+    query = from p in Poet, where: p.user_id == ^id
+    Repo.one!(query)
+    |> Repo.preload(user: :credential)
+    |> Repo.preload(:movements)
+  end
+
   @doc """
   Gets a single poet.
 
@@ -637,6 +608,15 @@ defmodule Stiltzkey.Papyrus do
     Poet
     |> Repo.get!(id)
     |> Repo.preload(user: :credential)
+    |> Repo.preload(:movements)
+  end
+
+  def get_poet_by_username!(username) do
+    user = Accounts.get_user_by_username!(username)
+    query = from p in Poet, where: p.user_id == ^user.id
+    Repo.one!(query)
+    |> Repo.preload(user: :credential)
+    |> Repo.preload(:movements)
   end
 
   @doc """
@@ -651,9 +631,10 @@ defmodule Stiltzkey.Papyrus do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_poet(attrs \\ %{}) do
-    %Poet{}
-    |> Poet.changeset(attrs)
+  def create_poet(%Accounts.User{id: id}) do
+    %Poet{user_id: id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
     |> Repo.insert()
   end
 
@@ -719,6 +700,21 @@ defmodule Stiltzkey.Papyrus do
     |> Repo.preload(user: :credential)
   end
 
+  def get_enthusiast_by_user!(%Accounts.User{id: id}) do
+    query = from e in Enthusiast, where: e.user_id == ^id
+    Repo.one!(query)
+    |> Repo.preload(user: :credential)
+    |> Repo.preload(:movements)
+  end
+
+  def get_enthusiast_by_username!(username) do
+    user = Accounts.get_user_by_username!(username)
+    query = from e in Enthusiast, where: e.user_id == ^user.id
+    Repo.one!(query)
+    |> Repo.preload(user: :credential)
+    |> Repo.preload(:movements)
+  end
+
   @doc """
   Gets a single enthusiast.
 
@@ -738,6 +734,7 @@ defmodule Stiltzkey.Papyrus do
     |> Repo.get!(id)
     |> Repo.preload(user: :credential)
   end
+
   @doc """
   Creates a enthusiast.
 
@@ -750,9 +747,10 @@ defmodule Stiltzkey.Papyrus do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_enthusiast(attrs \\ %{}) do
-    %Enthusiast{}
-    |> Enthusiast.changeset(attrs)
+  def create_enthusiast(%Accounts.User{id: id}) do
+    %Enthusiast{user_id: id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
     |> Repo.insert()
   end
 
@@ -842,6 +840,9 @@ defmodule Stiltzkey.Papyrus do
     Movement
     |> Repo.get!(id)
     |> Repo.preload(leader: [user: :credential])
+    |> Repo.preload(poets: [:movements, [user: :credential]])
+    |> Repo.preload(enthusiasts: [:movements, [user: :credential]])
+    |> Repo.preload(verses: [:stanza, author: [user: :credential]])
   end
 
   @doc """
@@ -878,6 +879,30 @@ defmodule Stiltzkey.Papyrus do
   def update_movement(%Movement{} = movement, attrs) do
     movement
     |> Movement.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def add_poet_to_movement(%Movement{} = movement, %Poet{} = poet) do
+    movement = movement |> Repo.preload(:poets)
+    movement
+    |> Movement.changeset(%{})
+    |> Ecto.Changeset.put_assoc(:poets, movement.poets ++ [poet])
+    |> Repo.update()
+  end
+
+  def add_enthusiast_to_movement(%Movement{} = movement, %Enthusiast{} = enthusiast) do
+    movement = movement |> Repo.preload(:enthusiasts)
+    movement
+    |> Movement.changeset(%{})
+    |> Ecto.Changeset.put_assoc(:enthusiasts, movement.enthusiasts ++ [enthusiast])
+    |> Repo.update()
+  end
+
+  def add_verse_to_movement(%Movement{} = movement, %Verse{} = verse) do
+    movement = movement |> Repo.preload(:verses)
+    movement
+    |> Movement.changeset(%{})
+    |> Ecto.Changeset.put_assoc(:verses, movement.verses ++ [verse])
     |> Repo.update()
   end
 

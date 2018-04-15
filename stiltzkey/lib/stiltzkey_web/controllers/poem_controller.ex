@@ -1,10 +1,10 @@
 defmodule StiltzkeyWeb.PoemController do
   use StiltzkeyWeb, :controller
 
-  import StiltzkeyWeb.AuthorHelper, only: [require_existing_author: 2]
+  import StiltzkeyWeb.Helpers.Plug.Papyrus, only: [assign_author: 2]
 
-  plug :require_existing_author
-  plug :authorize_poem when action in [:show, :edit, :update, :delete]
+  plug :assign_author
+  plug :authorize_if_author when action in [:show, :edit, :update, :delete]
 
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Poem
@@ -59,7 +59,7 @@ defmodule StiltzkeyWeb.PoemController do
     |> redirect(to: poem_path(conn, :index))
   end
 
-  defp authorize_poem(conn, _) do
+  defp authorize_if_author(conn, _) do
     poem = Papyrus.get_poem!(conn.params["id"])
 
     if conn.assigns.current_author.id == poem.author_id do
