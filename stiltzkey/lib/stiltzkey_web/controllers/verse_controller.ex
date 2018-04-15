@@ -37,6 +37,13 @@ defmodule StiltzkeyWeb.VerseController do
     render(conn, "show.html", verse: verse)
   end
 
+  def show_value(conn, %{"id" => id}) do
+    verse = Papyrus.get_verse!(id)
+    conn
+    |> put_flash(:info, Cipher.decrypt(verse.value))
+    |> render("show.html", verse: verse)
+  end
+
   def edit(conn, _) do
     changeset = Papyrus.change_verse(conn.assigns.verse)
     render(conn, "edit.html", changeset: changeset)

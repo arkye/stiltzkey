@@ -45,6 +45,12 @@ config :stiltzkey, StiltzkeyWeb.Helpers.Auth.EnsureAccessPipeline,
   module: StiltzkeyWeb.Helpers.Auth.Guardian,
   error_handler: StiltzkeyWeb.Helpers.Auth.ErrorHandler
 
+# Configure Cipher Hashing
+config :cipher, runtime_phrases: true,
+  keyphrase: System.get_env("CIPHER_KEYPHRASE"),
+  ivphrase: System.get_env("CIPHER_IVPHRASE"),
+  magic_token: System.get_env("CIPHER_MAGIC_TOKEN")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

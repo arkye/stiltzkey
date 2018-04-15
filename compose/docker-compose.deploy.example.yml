@@ -1,4 +1,3 @@
-# Generate a new secret_key_base with `mix phx.gen.secret`
 version: '2'
 
 services:
@@ -7,17 +6,19 @@ services:
     depends_on:
       - postgres
     environment:
-      MIX_ENV: prod
-      NODE_ENV: production
-      HOSTNAME: example.com
-      PORT: 80
-      SECRET_KEY_BASE: 6JlioTCLygI6FfeatExSxXFRHQGFi4Q2XGAGQ8AGQPywZJMfIrJErk55c7FeG5cX
+      CIPHER_KEYPHRASE: stiltzkeyprodkeyphrase
+      CIPHER_IVPHRASE: stiltzkeyprodivphrase
+      CIPHER_MAGIC_TOKEN: stiltzkeyprodmagictoken
       GUARDIAN_SECRET_KEY: HNinpKh9Ne3tr8BpjCpAEh0xzCqTIG3PWsfkR2AtzvUaRIpbs6oIQ9RcmjmGPekJ
-      POSTGRES_HOSTNAME: postgres
-      POSTGRES_DATABASE: stiltzkey
+      HOSTNAME: example.com
+      MIX_ENV: prod
       POOL_SIZE: 15
-      POSTGRES_USER: stiltzkey
+      PORT: 80
+      POSTGRES_DATABASE: stiltzkey
+      POSTGRES_HOSTNAME: postgres
       POSTGRES_PASSWORD: stiltzkey
+      POSTGRES_USER: stiltzkey
+      SECRET_KEY_BASE: 6JlioTCLygI6FfeatExSxXFRHQGFi4Q2XGAGQ8AGQPywZJMfIrJErk55c7FeG5cX
     ports:
       - 80:80
     restart: unless-stopped
