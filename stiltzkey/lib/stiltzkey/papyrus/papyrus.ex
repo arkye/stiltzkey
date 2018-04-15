@@ -356,21 +356,21 @@ defmodule Stiltzkey.Papyrus do
     Verse
     |> Repo.all()
     |> Repo.preload(author: [user: :credential])
-    |> Repo.preload(:stanza)
+    |> Repo.preload(stanza: :poem)
   end
 
   def list_verses_from_author(%Author{id: id}) do
     query = from v in Verse, where: v.author_id == ^id
     Repo.all(query)
     |> Repo.preload(author: [user: :credential])
-    |> Repo.preload(:stanza)
+    |> Repo.preload(stanza: :poem)
   end
 
   def list_verses_from_stanza(%Stanza{id: id}) do
     query = from v in Verse, where: v.stanza_id == ^id
     Repo.all(query)
     |> Repo.preload(author: [user: :credential])
-    |> Repo.preload(:stanza)
+    |> Repo.preload(stanza: :poem)
   end
 
   @doc """
@@ -391,7 +391,7 @@ defmodule Stiltzkey.Papyrus do
     Verse
     |> Repo.get!(id)
     |> Repo.preload(author: [user: :credential])
-    |> Repo.preload(:stanza)
+    |> Repo.preload(stanza: :poem)
   end
 
   @doc """
@@ -842,7 +842,7 @@ defmodule Stiltzkey.Papyrus do
     |> Repo.preload(leader: [user: :credential])
     |> Repo.preload(poets: [:movements, [user: :credential]])
     |> Repo.preload(enthusiasts: [:movements, [user: :credential]])
-    |> Repo.preload(verses: [:stanza, author: [user: :credential]])
+    |> Repo.preload(verses: [stanza: :poem, author: [user: :credential]])
   end
 
   @doc """

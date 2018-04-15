@@ -42,11 +42,13 @@ defmodule Stiltzkey.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      # Hashing
+      # Password Hashing
       {:comeonin, "~> 4.1"},
       {:argon2_elixir, "~> 1.2"},
       # Authentication
-      {:guardian, "~> 1.0"}
+      {:guardian, "~> 1.0"},
+      # String Hashing
+      {:cipher, "~> 1.3.4"}
     ]
   end
 

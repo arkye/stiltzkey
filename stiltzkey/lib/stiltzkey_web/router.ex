@@ -51,8 +51,10 @@ defmodule StiltzkeyWeb.Router do
     resources "/poems", PoemController
     resources "/poems/:poem_id/stanzas", StanzaController
     resources "/poems/:poem_id/stanzas/:stanza_id/verses", VerseController
+    get "/poems/:poem_id/stanzas/:stanza_id/verses/:id/value", VerseController, :show_value
 
     resources "/movements", MovementController
+    get "/movements/:id/verse/:verse_id/value", MovementController, :show_value
     post "/movements/:id/poet", MovementController, :add_poet
     post "/movements/:id/enthusiast", MovementController, :add_enthusiast
     post "/movements/:id/verse", MovementController, :add_verse

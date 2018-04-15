@@ -1,33 +1,87 @@
-<h2>Show Verse</h2>
-
-<ul>
-
+<ol class="breadcrumb">
   <li>
-    <strong>Author:</strong>
-    <%= author_username(@verse) %>
+    <%= link "Home", to: page_path(@conn, :index) %>
   </li>
-
   <li>
-    <strong>From Poem:</strong>
+    <%= link "Poems", to: poem_path(@conn, :index) %>
+  </li>
+  <li>
     <%= link @stanza.poem.title, to: poem_path(@conn, :show, @stanza.poem_id) %>
   </li>
-
   <li>
-    <strong>From Stanza:</strong>
+    <%= link "Stanzas", to: stanza_path(@conn, :index, @stanza.poem_id) %>
+  </li>
+  <li>
     <%= link @stanza.context, to: stanza_path(@conn, :show, @stanza.poem_id, @stanza) %>
   </li>
-
   <li>
-    <strong>Key:</strong>
+    <%= link "Verses", to: verse_path(@conn, :index, @stanza.poem_id, @stanza) %>
+  </li>
+  <li class="active">
     <%= @verse.key %>
   </li>
+</ol>
 
-  <li>
-    <strong>Value:</strong>
-    <%= @verse.value %>
+<div class="page-header">
+  <h1>Verse: <small><%= @verse.key %></small></h1>
+</div>
+
+
+<ul class="list-group">
+
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Author
+    </h4>
+    <p class="list-group-item-text">
+      <%= link author_username(@verse), to: user_path(@conn, :show, author_user(@verse)) %>
+    </p>
   </li>
 
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Poem
+    </h4>
+    <p class="list-group-item-text">
+      <%= link @stanza.poem.title, to: poem_path(@conn, :show, @stanza.poem_id) %>
+    </p>
+  </li>
+
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Stanza
+    </h4>
+    <p class="list-group-item-text">
+      <%= link @stanza.context, to: stanza_path(@conn, :show, @stanza.poem_id, @stanza) %>
+    </p>
+  </li>
+
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">
+      Key
+    </h4>
+    <p class="list-group-item-text">
+      <%= @verse.key %>
+    </p>
+  </li>
+
+  <li class="list-group-item">
+    <span class="badge">
+      <%= link "Show Value", to: verse_path(@conn, :show_value, @stanza.poem_id, @stanza, @verse), class: "badge" %>
+    </span>
+    <h4 class="list-group-item-heading">
+      Value
+    </h4>
+    <p class="list-group-item-text">
+      The value below is NOT the real value for the key!
+    </p>
+    <p class="list-group-item-text">
+      Click on the button <code>Show Value</code> to pop out the real value.
+    </p>
+    <p class="list-group-item-text">
+      <%= @verse.value %>
+    </p>
+  </li>
 </ul>
 
-<span><%= link "Edit", to: verse_path(@conn, :edit, @stanza.poem_id, @stanza.id, @verse) %></span>
-<span><%= link "Back", to: verse_path(@conn, :index, @stanza.poem_id, @stanza.id) %></span>
+  <%= link "Edit", to: verse_path(@conn, :edit, @stanza.poem_id, @stanza.id, @verse), class: "btn btn-primary btn-block" %>
