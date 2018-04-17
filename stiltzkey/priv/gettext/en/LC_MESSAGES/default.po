@@ -1,0 +1,130 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:203
+msgid " using "
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:13
+msgid "A platform designed to allow you whisper your secrets safely!"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:70
+msgid "Any Author can join a Movement as a Leader, Poet or Enthusiast. Leader is the author that created the movement and can invite poets and enthusiasts, add/read verses, and edit the movement settings. Poet can only add/read verses. Enthusiast can only read verses."
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:102
+msgid "Born from the Ashes"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:133
+msgid "Connect with Stiltzkey"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:86
+msgid "Developed as free software using Elixir's Framework Phoenix"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:119
+msgid "Follow and chat with the Stiltzkey magic movement!"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:17
+msgid "Get started"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/layout/app.html.eex:47
+msgid "Guest"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/layout/app.html.eex:57
+msgid "Language"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:199
+msgid "Made with ❤ by "
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:55
+msgid "Make Your Verses"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/layout/app.html.eex:100
+msgid "My Movements"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/layout/app.html.eex:93
+msgid "My Poems"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/layout/app.html.eex:86
+msgid "My Profile"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:39
+msgid "Safe and Private"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/layout/app.html.eex:31
+#: lib/stiltzkey_web/templates/layout/app.html.eex:114
+msgid "Sign in"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/layout/app.html.eex:27
+#: lib/stiltzkey_web/templates/layout/app.html.eex:107
+msgid "Sign out"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/layout/app.html.eex:34
+#: lib/stiltzkey_web/templates/layout/app.html.eex:121
+msgid "Sign up"
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:43
+msgid "Stiltzkey uses two-staged encryption in order to protect your secrets from malicious attacks. Only you and your movement partners can see the secrets defined by you. You can choose which secret you want to share to your comrades and which secrets you want to keep private."
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:59
+msgid "Your secret is called by Stiltzkey as Verse. A collection of verses is a Stanza. A collection of stanzas is a Poem. Every verse, stanza, and poem is defined by an Author, which can share its secrets by defining a Movement - a group interested in a specific type of poetry."
+msgstr ""
+
+#, elixir-format
+#: lib/stiltzkey_web/templates/page/index.html.eex:105
+msgid "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the brazillian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}."
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/stiltzkey_web/templates/page/index.html.eex:223
+msgid ", and "
+msgstr ""
