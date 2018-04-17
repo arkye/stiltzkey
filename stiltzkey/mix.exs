@@ -4,7 +4,7 @@ defmodule Stiltzkey.Mixfile do
   def project do
     [
       app: :stiltzkey,
-      version: "0.0.1",
+      version: "0.0.4",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -20,7 +20,7 @@ defmodule Stiltzkey.Mixfile do
   def application do
     [
       mod: {Stiltzkey.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :set_locale]
     ]
   end
 
@@ -40,7 +40,7 @@ defmodule Stiltzkey.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
+      {:gettext, "~> 0.13.1"},
       {:cowboy, "~> 1.0"},
       # Password Hashing
       {:comeonin, "~> 4.1"},
@@ -48,7 +48,9 @@ defmodule Stiltzkey.Mixfile do
       # Authentication
       {:guardian, "~> 1.0"},
       # String Hashing
-      {:cipher, "~> 1.3.4"}
+      {:cipher, "~> 1.3.4"},
+      # i18n in Endpoint
+      {:set_locale, "~> 0.2.4"}
     ]
   end
 
