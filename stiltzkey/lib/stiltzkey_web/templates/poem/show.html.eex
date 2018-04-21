@@ -1,27 +1,68 @@
-<h2>Show Poem</h2>
+<div class="container">
 
-<ul>
+  <br>
+  <br>
 
-  <li>
-      <strong>Author:</strong>
-      <%= author_username(@poem) %>
-  </li>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
 
-  <li>
-    <strong>Title:</strong>
-    <%= @poem.title %>
-  </li>
+      <nav class="stkz-breadcrumbs">
+        <div class="nav-wrapper">
+          <div class="col s12 m10 l8 xl6">
+            <%= link gettext("Home"), to: page_path(@conn, :index), class: "breadcrumb" %>
+            <%= link gettext("My Poems"), to: poem_path(@conn, :index), class: "breadcrumb" %>
+            <a class="breadcrumb">
+              <%= gettext "Poem" %>:
+              <%= @poem.title %>
+            </a>
+          </div>
+        </div>
+      </nav>
 
-  <li>
-    <strong>Description:</strong>
-    <%= @poem.description %>
-  </li>
+      <div class="card z-depth-3">
+        <h3 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            book
+          </i>
+          <%= gettext "Show Poem" %>
+        </h3>
+        <div class="card-content">
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              person
+            </i>
+            <input disabled value="<%= author_username(@poem) %>" type="text" class="stzk-c-content">
+            <label for="author" class="stzk-c-content">
+              <%= gettext("Author") %>
+            </label>
+          </div>
 
-  <li>
-    <%= link "Stanzas", to: stanza_path(@conn, :index, @poem) %>
-  </li>
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              title
+            </i>
+            <input disabled value="<%= @poem.title %>" type="text" class="stzk-c-content">
+            <label for="title" class="stzk-c-content">
+              <%= gettext("Title") %>
+            </label>
+          </div>
 
-</ul>
-
-<span><%= link "Edit", to: poem_path(@conn, :edit, @poem) %></span>
-<span><%= link "Back", to: poem_path(@conn, :index) %></span>
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              assignment
+            </i>
+            <input disabled value="<%= @poem.description %>" type="text" class="stzk-c-content">
+            <label for="description" class="stzk-c-content">
+              <%= gettext("Description") %>
+            </label>
+          </div>
+        </div>
+        <div class="card-action">
+          <%= link gettext("Stanzas"), to: stanza_path(@conn, :index, @poem) %>
+          <%= link gettext("Edit"), to: poem_path(@conn, :edit, @poem) %>
+          <%= link gettext("Delete"), to: poem_path(@conn, :delete, @poem), method: :delete, data: [confirm: gettext("Are you sure?")] %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

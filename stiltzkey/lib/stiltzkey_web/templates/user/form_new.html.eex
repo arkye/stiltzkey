@@ -52,6 +52,6 @@
 </div>
 
 <div class="card-action">
-  <%= submit gettext("Submit"), class: "btn btn-primary" %>
+  <%= submit gettext("Submit"), class: "btn-small" %>
 </div>
 <% end %>

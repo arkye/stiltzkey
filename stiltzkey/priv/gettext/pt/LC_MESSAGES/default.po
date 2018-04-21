@@ -65,12 +65,17 @@ msgstr "Meus Movimentos"
 
 #: lib/stiltzkey_web/templates/layout/app.html.eex:111
 #: lib/stiltzkey_web/templates/page/index.html.eex:22
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:13
+#: lib/stiltzkey_web/templates/poem/index.html.eex:14
+#: lib/stiltzkey_web/templates/poem/index.html.eex:25
+#: lib/stiltzkey_web/templates/poem/new.html.eex:13
+#: lib/stiltzkey_web/templates/poem/show.html.eex:13
 msgid "My Poems"
 msgstr "Meus Poemas"
 
 #: lib/stiltzkey_web/templates/layout/app.html.eex:100
 #: lib/stiltzkey_web/templates/user/edit.html.eex:13
-#: lib/stiltzkey_web/templates/user/show.html.eex:14
+#: lib/stiltzkey_web/templates/user/show.html.eex:15
 msgid "My Profile"
 msgstr "Meu Perfil"
 
@@ -114,10 +119,11 @@ msgstr " e "
 #: lib/stiltzkey_web/templates/session/new.html.eex:23
 #: lib/stiltzkey_web/templates/user/form.html.eex:30
 #: lib/stiltzkey_web/templates/user/form_new.html.eex:30
-#: lib/stiltzkey_web/templates/user/show.html.eex:45
+#: lib/stiltzkey_web/templates/user/show.html.eex:49
 msgid "E-mail"
 msgstr ""
 
+#: lib/stiltzkey_web/templates/poem/form.html.eex:8
 #: lib/stiltzkey_web/templates/user/form.html.eex:8
 #: lib/stiltzkey_web/templates/user/form_new.html.eex:8
 msgid "Oops, something went wrong! Please check the errors below."
@@ -145,12 +151,15 @@ msgstr "Enviar"
 
 #: lib/stiltzkey_web/templates/user/form.html.eex:20
 #: lib/stiltzkey_web/templates/user/form_new.html.eex:20
-#: lib/stiltzkey_web/templates/user/show.html.eex:35
+#: lib/stiltzkey_web/templates/user/show.html.eex:39
 msgid "Username"
 msgstr "Nome de Usuário"
 
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:16
+#: lib/stiltzkey_web/templates/poem/index.html.eex:41
+#: lib/stiltzkey_web/templates/poem/show.html.eex:62
 #: lib/stiltzkey_web/templates/user/edit.html.eex:15
-#: lib/stiltzkey_web/templates/user/show.html.eex:52
+#: lib/stiltzkey_web/templates/user/show.html.eex:56
 msgid "Edit"
 msgstr "Atualizar"
 
@@ -158,11 +167,71 @@ msgstr "Atualizar"
 msgid "Edit Profile"
 msgstr "Atualizar Perfil"
 
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:12
+#: lib/stiltzkey_web/templates/poem/index.html.eex:12
+#: lib/stiltzkey_web/templates/poem/new.html.eex:12
+#: lib/stiltzkey_web/templates/poem/show.html.eex:12
 #: lib/stiltzkey_web/templates/user/edit.html.eex:12
 #: lib/stiltzkey_web/templates/user/show.html.eex:12
 msgid "Home"
 msgstr "Página Inicial"
 
-#: lib/stiltzkey_web/templates/user/show.html.eex:25
+#: lib/stiltzkey_web/templates/user/show.html.eex:17
+#: lib/stiltzkey_web/templates/user/show.html.eex:29
 msgid "Show Profile"
 msgstr "Visualizar Perfil"
+
+#: lib/stiltzkey_web/templates/poem/index.html.eex:42
+#: lib/stiltzkey_web/templates/poem/show.html.eex:63
+msgid "Are you sure?"
+msgstr "Você tem certeza?"
+
+#: lib/stiltzkey_web/templates/poem/index.html.eex:42
+#: lib/stiltzkey_web/templates/poem/show.html.eex:63
+msgid "Delete"
+msgstr "Remover"
+
+#: lib/stiltzkey_web/templates/poem/index.html.eex:50
+#: lib/stiltzkey_web/templates/poem/new.html.eex:26
+msgid "New Poem"
+msgstr "Novo Poema"
+
+#: lib/stiltzkey_web/templates/poem/index.html.eex:40
+msgid "Show"
+msgstr "Visualizar"
+
+#: lib/stiltzkey_web/templates/poem/index.html.eex:39
+#: lib/stiltzkey_web/templates/poem/show.html.eex:61
+msgid "Stanzas"
+msgstr "Estrofes"
+
+#: lib/stiltzkey_web/templates/poem/show.html.eex:36
+msgid "Author"
+msgstr "Autor"
+
+#: lib/stiltzkey_web/templates/poem/form.html.eex:29
+#: lib/stiltzkey_web/templates/poem/show.html.eex:56
+msgid "Description"
+msgstr "Descrição"
+
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:27
+msgid "Edit Poem"
+msgstr "Atualizar Poema"
+
+#: lib/stiltzkey_web/templates/poem/new.html.eex:15
+msgid "New"
+msgstr "Novo"
+
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:14
+#: lib/stiltzkey_web/templates/poem/show.html.eex:15
+msgid "Poem"
+msgstr "Poema"
+
+#: lib/stiltzkey_web/templates/poem/show.html.eex:27
+msgid "Show Poem"
+msgstr "Visualizar Poema"
+
+#: lib/stiltzkey_web/templates/poem/form.html.eex:20
+#: lib/stiltzkey_web/templates/poem/show.html.eex:46
+msgid "Title"
+msgstr "Título"

@@ -1,23 +1,37 @@
 <%= form_for @changeset, @action, fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
+<div class="card-content">
 
-  <div class="form-group">
-    <%= label f, :title, class: "control-label" %>
-    <%= text_input f, :title, class: "form-control" %>
+<%= if @changeset.action do %>
+  <div id="alert_panel" class="row">
+    <div class="col s12">
+      <div class="card-panel red lighten-3 z-depth-3 black-text">
+        <%= gettext "Oops, something went wrong! Please check the errors below." %>
+        <i id="alert_close" class="fa fa-times right"></i>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+  <div class="input-field">
+    <i class="material-icons stzk-icon prefix">
+      title
+    </i>
+    <%= text_input f, :title, class: class_decorate(f, :title) %>
+    <%= label f, :title, do: gettext("Title") %>
     <%= error_tag f, :title %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :description, class: "control-label" %>
-    <%= text_input f, :description, class: "form-control" %>
+  <div class="input-field">
+    <i class="material-icons stzk-icon prefix">
+      assignment
+    </i>
+    <%= text_input f, :description, class: class_decorate(f, :description) %>
+    <%= label f, :description, do: gettext("Description") %>
     <%= error_tag f, :description %>
   </div>
+</div>
 
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
-  </div>
+<div class="card-action">
+  <%= submit "Submit", class: "btn-small" %>
+</div>
 <% end %>
