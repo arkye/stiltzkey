@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body class="blue-grey darken-2">
-    <nav class="blue-grey darken-4 z-depth-2" role="navigation">
+  <body>
+    <nav class="z-depth-2" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="<%= page_path(@conn, :index) %>" class="brand-logo stiltzkey-font">
+        <a id="logo-container" href="<%= page_path(@conn, :index) %>" class="brand-logo stzk-f">
           Stiltzkey
         </a>
 
@@ -36,11 +36,11 @@
 <% end %>
         </ul>
 
-        <ul id="nav-mobile" class="sidenav blue-grey darken-4">
-          <li class="sidenav-header blue-grey darken-4">
+        <ul id="nav-mobile" class="sidenav">
+          <li class="sidenav-header">
             <div class="row">
               <div class="col s12">
-                <p class="center-align stiltzkey-color">
+                <p class="center-align">
 <%= if assigns[:current_user] do %>
                   <%= link @current_user.username, to: user_path(@conn, :show, @current_user) %>
 <% else %>
@@ -52,26 +52,36 @@
 
             <ul class="collapsible">
               <li>
-                <a class="collapsible-header white-text waves-effect">
-                  <i class="material-icons white-text">language</i>
-                  <%= gettext "Language" %>
+                <a class="collapsible-header waves-effect">
+                  <i class="material-icons">
+                    <span class="stzk-icon stzk-c-content stzk-language">
+                      language
+                    </span>
+                  </i>
+                  <span class="stzk-language">
+                    <%= gettext "Language" %>
+                  </span>
                 </a>
-                <div class="collapsible-body z-depth-3 blue-grey darken-2">
+                <div class="collapsible-body z-depth-3">
                   <ul>
                     <li>
-                      <a href="<%= page_path(@conn, :index, locale: :en) %>" class="waves-effect white-text">
-                        <img src="/images/country_flag_us.svg" class="country-icon"></img>
-                        English
+                      <a href="<%= page_path(@conn, :index, locale: :en) %>" class="waves-effect">
+                        <img src="/images/country_flag_us.svg" class="stzk-country"></img>
+                        <span class="stzk-language-li">
+                          English
+                        </span>
                       </a>
                     </li>
                     <li>
-                      <a href="<%= page_path(@conn, :index, locale: :pt) %>" class="waves-effect white-text">
-                        <img src="/images/country_flag_br.svg" class="country-icon"></img>
-                        Português
+                      <a href="<%= page_path(@conn, :index, locale: :pt) %>" class="waves-effect">
+                        <img src="/images/country_flag_br.svg" class="stzk-country"></img>
+                        <span class="stzk-language-li">
+                          Português
+                        </span>
                       </a>
                     </li>
                     <li>
-                      <div class="divider blue-grey darken-4"></div>
+                      <div class="divider stzk-bg-primary"></div>
                     </li>
                   </ul>
                 </div>
@@ -80,51 +90,75 @@
           </li>
 
 <%= if assigns[:current_user] do %>
-          <li class="blue-grey darken-2">
-            <a href="<%= user_path(@conn, :show, @current_user) %>" class="waves-effect white-text">
-              <i class="material-icons white-text">account_circle</i>
+          <li class="stzk-bg-primary-l">
+            <a href="<%= user_path(@conn, :show, @current_user) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-icon stzk-c-content">
+                  account_circle
+                </span>
+              </i>
               <%= gettext "My Profile" %>
             </a>
           </li>
 
-          <li class="blue-grey darken-2">
-            <a href="<%= poem_path(@conn, :index) %>" class="waves-effect white-text">
-              <i class="material-icons white-text">chrome_reader_mode</i>
+          <li class="stzk-bg-primary-l">
+            <a href="<%= poem_path(@conn, :index) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  chrome_reader_mode
+                </span>
+              </i>
               <%= gettext "My Poems" %>
             </a>
           </li>
 
-          <li class="blue-grey darken-2">
-            <a href="<%= movement_path(@conn, :index) %>" class="waves-effect white-text">
-              <i class="material-icons white-text">volume_up</i>
+          <li class="stzk-bg-primary-l">
+            <a href="<%= movement_path(@conn, :index) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  volume_up
+                </span>
+              </i>
               <%= gettext "My Movements" %>
             </a>
           </li>
 
-          <li class="blue-grey darken-2">
-            <a href="#" data-csrf="<%= get_csrf_token() %>" data-method="delete" data-to="<%= session_path(@conn, :delete) %>" rel="nofollow" class="waves-effect white-text">
-              <i class="material-icons white-text">exit_to_app</i>
+          <li class="stzk-bg-primary-l">
+            <a href="#" data-csrf="<%= get_csrf_token() %>" data-method="delete" data-to="<%= session_path(@conn, :delete) %>" rel="nofollow" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  exit_to_app
+                </span>
+              </i>
               <%= gettext "Sign out" %>
             </a>
           </li>
 <% else %>
-          <li class="blue-grey darken-2">
-            <a href="<%= session_path(@conn, :new) %>" class="waves-effect white-text">
-              <i class="material-icons white-text">person</i>
+          <li class="stzk-bg-primary-l">
+            <a href="<%= session_path(@conn, :new) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  person
+                </span>
+              </i>
               <%= gettext "Sign in" %>
             </a>
           </li>
 
-          <li class="blue-grey darken-2">
-            <a href="<%= user_path(@conn, :new) %>" class="waves-effect white-text">
-              <i class="material-icons white-text">person_add</i>
+          <li class="stzk-bg-primary-l">
+            <a href="<%= user_path(@conn, :new) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  person_add
+                </span>
+              </i>
               <%= gettext "Sign up" %>
             </a>
           </li>
 <% end %>
-          <li class="sidenav-footer blue-grey darken-4">
+          <li class="sidenav-footer">
             <div class="row">
-              <div class="social-icons">
+              <div class="stzk-sidenav-social">
                 <div class="col s2">
                   <a href="https://github.com/arkye/stiltzkey" target="_blank">
                     <i class="fa fa-lg fa-github-alt"></i>
@@ -169,30 +203,23 @@
     </nav>
 
 <%= if get_flash(@conn, :info) do %>
-    <div id="alert_panel" class="row">
-      <div class="col s12">
-        <div class="card-panel blue lighten-3 z-depth-3">
-          <%= get_flash(@conn, :info) %>
-          <i id="alert_close" class="fa fa-times right"></i>
-        </div>
-      </div>
+    <div id="alert_panel" class="card-panel stzk-alert blue lighten-3">
+      <%= get_flash(@conn, :info) %>
+      <i id="alert_close" class="fa fa-times right"></i>
     </div>
 <% end %>
 
 <%= if get_flash(@conn, :error) do %>
-    <div id="alert_panel" class="row">
-      <div class="col s12">
-        <div class="card-panel red lighten-3 z-depth-3">
-            <%= get_flash(@conn, :error) %>
-            <i id="alert_close" class="fa fa-times right"></i>
-        </div>
-      </div>
+    <div id="alert_panel" class="card-panel stzk-alert red lighten-3">
+        <%= get_flash(@conn, :error) %>
+        <i id="alert_close" class="fa fa-times right"></i>
     </div>
 <% end %>
 
     <main role="main">
       <%= render @view_module, @view_template, assigns %>
     </main>
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>
       $(".sidenav").sidenav();

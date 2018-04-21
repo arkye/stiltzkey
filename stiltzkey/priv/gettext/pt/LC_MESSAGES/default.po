@@ -11,120 +11,158 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2\n"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:203
+#: lib/stiltzkey_web/templates/page/index.html.eex:236
 msgid " using "
 msgstr " utilizando "
 
-#, elixir-format
 #: lib/stiltzkey_web/templates/page/index.html.eex:13
 msgid "A platform designed to allow you whisper your secrets safely!"
 msgstr "A plataforma projetada para você sussurrar seus segredos de forma segura!"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:70
+#: lib/stiltzkey_web/templates/page/index.html.eex:90
 msgid "Any Author can join a Movement as a Leader, Poet or Enthusiast. Leader is the author that created the movement and can invite poets and enthusiasts, add/read verses, and edit the movement settings. Poet can only add/read verses. Enthusiast can only read verses."
 msgstr "Qualquer Autor pode participar do Movimento como Líder, Poeta ou Entusiasta. Líder é o autor que criou o movimento e pode convidar poetas e entusiastas, adicionar/ler versos e editar as configurações do movimento. Poeta pode apenas adicionar/ler versos. Entusiasta pode apenas ler versos."
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:102
+#: lib/stiltzkey_web/templates/page/index.html.eex:128
 msgid "Born from the Ashes"
 msgstr "Nascido das Cinzas"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:133
+#: lib/stiltzkey_web/templates/page/index.html.eex:166
 msgid "Connect with Stiltzkey"
 msgstr "Conecte-se ao Stiltzkey"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:86
+#: lib/stiltzkey_web/templates/page/index.html.eex:109
 msgid "Developed as free software using Elixir's Framework Phoenix"
 msgstr "Desenvolvido como software livre utilizando o Framework Phoenix"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:119
+#: lib/stiltzkey_web/templates/page/index.html.eex:148
 msgid "Follow and chat with the Stiltzkey magic movement!"
 msgstr "Siga e converse com o movimento mágico de Stiltzkey!"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:17
+#: lib/stiltzkey_web/templates/page/index.html.eex:24
 msgid "Get started"
 msgstr "Comece agora"
 
-#, elixir-format
 #: lib/stiltzkey_web/templates/layout/app.html.eex:47
 msgid "Guest"
 msgstr "Visitante"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/layout/app.html.eex:57
+#: lib/stiltzkey_web/templates/layout/app.html.eex:62
 msgid "Language"
 msgstr "Idioma"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:199
+#: lib/stiltzkey_web/templates/page/index.html.eex:232
 msgid "Made with ❤ by "
 msgstr "Feito com ❤ por "
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:55
+#: lib/stiltzkey_web/templates/page/index.html.eex:69
 msgid "Make Your Verses"
 msgstr "Faça Seus Versos"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/layout/app.html.eex:100
+#: lib/stiltzkey_web/templates/layout/app.html.eex:122
 msgid "My Movements"
 msgstr "Meus Movimentos"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/layout/app.html.eex:93
+#: lib/stiltzkey_web/templates/layout/app.html.eex:111
+#: lib/stiltzkey_web/templates/page/index.html.eex:22
 msgid "My Poems"
 msgstr "Meus Poemas"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/layout/app.html.eex:86
+#: lib/stiltzkey_web/templates/layout/app.html.eex:100
+#: lib/stiltzkey_web/templates/user/edit.html.eex:13
+#: lib/stiltzkey_web/templates/user/show.html.eex:14
 msgid "My Profile"
 msgstr "Meu Perfil"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:39
+#: lib/stiltzkey_web/templates/page/index.html.eex:51
 msgid "Safe and Private"
 msgstr "Seguro e Privado"
 
-#, elixir-format
 #: lib/stiltzkey_web/templates/layout/app.html.eex:31
-#: lib/stiltzkey_web/templates/layout/app.html.eex:114
+#: lib/stiltzkey_web/templates/layout/app.html.eex:144
+#: lib/stiltzkey_web/templates/session/new.html.eex:13
 msgid "Sign in"
 msgstr "Acesse"
 
-#, elixir-format
 #: lib/stiltzkey_web/templates/layout/app.html.eex:27
-#: lib/stiltzkey_web/templates/layout/app.html.eex:107
+#: lib/stiltzkey_web/templates/layout/app.html.eex:133
 msgid "Sign out"
 msgstr "Sair"
 
-#, elixir-format
 #: lib/stiltzkey_web/templates/layout/app.html.eex:34
-#: lib/stiltzkey_web/templates/layout/app.html.eex:121
+#: lib/stiltzkey_web/templates/layout/app.html.eex:155
+#: lib/stiltzkey_web/templates/user/new.html.eex:13
 msgid "Sign up"
 msgstr "Registre-se"
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:43
+#: lib/stiltzkey_web/templates/page/index.html.eex:55
 msgid "Stiltzkey uses two-staged encryption in order to protect your secrets from malicious attacks. Only you and your movement partners can see the secrets defined by you. You can choose which secret you want to share to your comrades and which secrets you want to keep private."
 msgstr "Stiltzkey utiliza encriptação em dois estágios com o objetivo de proteger seus segredos de ataques maliciosos. Apenas você e seus companheiros de movimento podem ver os segredos definidos por você. Você pode escolher quais segredos deseja compartilhar com seus camaradas e quais segredos deseja manter em privado."
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:59
+#: lib/stiltzkey_web/templates/page/index.html.eex:73
 msgid "Your secret is called by Stiltzkey as Verse. A collection of verses is a Stanza. A collection of stanzas is a Poem. Every verse, stanza, and poem is defined by an Author, which can share its secrets by defining a Movement - a group interested in a specific type of poetry."
-msgstr "Seu segredo é chamado pelo Stiltzkey de Verso. Um conjunto de versos forma uma Estrofe. Um conjunto de estrofes forma um Poema. Cada verso, estrofe e poema é definido por um Autor, este que pode compartilhar seus segredos definido um Movimento - um grupo interessado em um tipo específico de poesia."
+msgstr "Seu segredo é chamado pelo Stiltzkey de Verso. Um conjunto de versos forma uma Estrofe. Um conjunto de estrofes forma um Poema. Cada verso, estrofe e poema é definido por um Autor, este que pode compartilhar seus segredos ao definir um Movimento - um grupo interessado em um tipo específico de poesia."
 
-#, elixir-format
-#: lib/stiltzkey_web/templates/page/index.html.eex:105
+#: lib/stiltzkey_web/templates/page/index.html.eex:131
 msgid "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the brazillian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}."
 msgstr "Desenvolvido pelo LAPPIS - Laboratório Avançado de Pesquisa, Produção e Inovação de Software, localizado na Universidade de Brasília (UnB/FGA), na qual segue os princípios de software livre e desenvolvimento ágil. Stiltzkey é escrito utilizando a linguagem de programação funcional brasileira Elixir e o framework Phoenix. Com o Github, Docker, Docker Compose, GitLab CI/CD e Rancher, Stiltzkey segue a estrutura do Git Flow para integração e entrega contínua. O projeto está em seu estágio inicial, iniciado em 9 de Abril de 2018, atualmente na versão %{vsn} e com os seguintes contribuidores: %{contributors}."
 
-#, elixir-format, fuzzy
-#: lib/stiltzkey_web/templates/page/index.html.eex:223
+#: lib/stiltzkey_web/templates/page/index.html.eex:256
 msgid ", and "
 msgstr " e "
+
+#: lib/stiltzkey_web/templates/session/new.html.eex:23
+#: lib/stiltzkey_web/templates/user/form.html.eex:30
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:30
+#: lib/stiltzkey_web/templates/user/show.html.eex:45
+msgid "E-mail"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/user/form.html.eex:8
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:8
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr "Ops, algo de errado não está certo! Por favor, verifique os erros abaixo."
+
+#: lib/stiltzkey_web/templates/session/new.html.eex:32
+#: lib/stiltzkey_web/templates/user/form.html.eex:39
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:39
+msgid "Password"
+msgstr "Senha"
+
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:48
+msgid "Password Confirmation"
+msgstr "Confirmação de Senha"
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:86
+msgid "Spread the Poetry!"
+msgstr "Compartilhe a Poesia!"
+
+#: lib/stiltzkey_web/templates/session/new.html.eex:37
+#: lib/stiltzkey_web/templates/user/form.html.eex:46
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:55
+msgid "Submit"
+msgstr "Enviar"
+
+#: lib/stiltzkey_web/templates/user/form.html.eex:20
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:20
+#: lib/stiltzkey_web/templates/user/show.html.eex:35
+msgid "Username"
+msgstr "Nome de Usuário"
+
+#: lib/stiltzkey_web/templates/user/edit.html.eex:15
+#: lib/stiltzkey_web/templates/user/show.html.eex:52
+msgid "Edit"
+msgstr "Atualizar"
+
+#: lib/stiltzkey_web/templates/user/edit.html.eex:26
+msgid "Edit Profile"
+msgstr "Atualizar Perfil"
+
+#: lib/stiltzkey_web/templates/user/edit.html.eex:12
+#: lib/stiltzkey_web/templates/user/show.html.eex:12
+msgid "Home"
+msgstr "Página Inicial"
+
+#: lib/stiltzkey_web/templates/user/show.html.eex:25
+msgid "Show Profile"
+msgstr "Visualizar Perfil"

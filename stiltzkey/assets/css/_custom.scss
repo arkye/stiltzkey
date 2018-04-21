@@ -1,75 +1,76 @@
-$stiltzkey-color: #a86;
-$stiltzkey-color-dark: #864;
-$stiltzkey-color-darker: #642;
+/*
+ * Content:
+ * [1] - Colors
+ * [2] - Fonts
+ * [3] - Alerts
+ * [4] - Icons
+ * [5] - Sidenav
+ * [6] - Parallax
+ * [7] - Cards
+ */
+
+// [1] - Colors
+
+body {
+  background-color: $primary-color-light;
+}
+
+.stzk-bg-primary {
+  background-color: $primary-color;
+}
+
+.stzk-bg-primary-l {
+  background-color: $primary-color-light;
+}
+
+.stzk-bg-secondary {
+  background-color: $secondary-color;
+}
+
+.stzk-c-content {
+  color: $content-color;
+}
+
+.stzk-c-secondary {
+  color: $secondary-color;
+}
+
+// [2] - Fonts
 
 p {
   line-height: 2rem;
 }
 
-nav ul a, nav .brand-logo {
-  color: $stiltzkey-color;
+.stzk-f {
+  font-family: "Times New Roman", Times, serif;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
 }
 
-.country-icon {
-  display: inline-block;
-  vertical-align: middle;
-  height: 16px;
-  width: 20px;
-  margin-right: 10px;
+// [3] - Alerts
+
+.stzk-alert {
+  position: fixed;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  z-index: 10;
 }
 
-.icon-block {
-  padding: 0 15px;
-}
+// [4] - Icons
 
-.icon-block .material-icons {
+.stzk-icon {
   font-size: inherit;
 }
 
-footer .page-footer {
-  margin: 0;
-}
-
-.parallax-container {
-  min-height: 380px;
-  line-height: 0;
-  height: auto;
-  color: rgba(255,255,255,.9);
-}
-
-.parallax-text {
-  color: white;
-  text-shadow:
-   -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
-}
-
-.parallax-container .section {
-  width: 100%;
-}
-
-@media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
-}
-
-
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-}
-
-.sidenav-header {
-  padding: 15px 15px 15px 15px;
-}
+// [5] - Sidenav
 
 .sidenav-footer {
   margin-bottom: 0px;
@@ -79,7 +80,7 @@ footer .page-footer {
 
     margin-bottom: 0;
 
-    .social-icons {
+    .stzk-sidenav-social {
       a {
         opacity: 0.7;
         padding: 0;
@@ -94,34 +95,85 @@ footer .page-footer {
   }
 }
 
-.sidenav-trigger {
-  color: $stiltzkey-color;
+.stzk-country {
+  display: inline-block;
+  vertical-align: middle;
+  height: 16px;
+  width: 20px;
+  margin-left: 3px;
 }
 
-.btn-large {
-  background-color: $stiltzkey-color-dark;
-  &:hover {
-    background-color: $stiltzkey-color-darker;
+.stzk-language {
+  margin-left: 15px;
+}
+
+.stzk-language-li {
+  margin-left: 30px;
+}
+
+// [6] - Parallax
+
+.parallax-container {
+  min-height: 500px;
+  height: auto;
+}
+
+.parallax-container .section {
+  width: 100%;
+  height: inherit;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
   }
 }
 
-.stiltzkey-color {
-  color: $stiltzkey-color;
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
 }
 
-.stiltzkey-color-dark {
-  color: $stiltzkey-color-dark;
-}
-
-.stiltzkey-color-darker {
-  color: $stiltzkey-color-darker;
-}
-
-.stiltzkey-font {
-  font-family: "Times New Roman", Times, serif;
+.parallax-text {
+  color: white;
   text-shadow:
-   -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
+   -1px -1px 0 rgba(0, 0, 0, 0.5),
+    1px -1px 0 rgba(0, 0, 0, 0.5),
+    -1px 1px 0 rgba(0, 0, 0, 0.5),
+     1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+// [7] - Cards
+
+.card {
+  background-color: $primary-color-l;
+  color: $content-color;
+
+  .header {
+    padding-top: 10px;
+    margin-left: 20px;
+
+    .stzk-icon {
+      margin-right: 20px;
+    }
+  }
+
+  .card-content {
+    background-color: $primary-color;
+  }
+}
+
+// [8] - Breadcrumbs
+
+.stkz-breadcrumbs {
+  background-color: rgba(0,0,0,0);
+}
+
+.breadcrumb {
+  font-size: 12px;
 }

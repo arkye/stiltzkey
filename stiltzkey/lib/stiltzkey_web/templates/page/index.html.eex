@@ -1,24 +1,30 @@
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
     <div class="container">
-      <br>
-      <br>
-
-      <h1 class="header center stiltzkey-font stiltzkey-color">
+      <h1 class="header row center stzk-f stzk-c-secondary">
         Stiltzkey
       </h1>
 
+      <br>
+      <br>
+
       <div class="row center">
-        <h5 class="header col s12 light parallax-text">
+        <h5 class="col s12 header parallax-text">
           <%= gettext "A platform designed to allow you whisper your secrets safely!" %>
         </h5>
-      </div>
-      <div class="row center">
-          <%= link gettext("Get started"), to: user_path(@conn, :new), class: "btn-large waves-effect" %>
       </div>
 
       <br>
       <br>
+
+      <div class="row center">
+<%= if assigns[:current_user] do %>
+        <%= link gettext("My Poems"), to: poem_path(@conn, :index), class: "btn-large waves-effect" %>
+<% else %>
+        <%= link gettext("Get started"), to: user_path(@conn, :new), class: "btn-large waves-effect" %>
+<% end %>
+      </div>
+
     </div>
   </div>
 
@@ -28,12 +34,18 @@
 
 <div class="container">
   <div class="section">
+
+    <br>
+    <br>
+
     <div class="row">
 
       <div class="col s12 m4">
-        <div class="icon-block white-text">
+        <div class="stzk-c-content">
           <h2 class="center">
-            <i class="material-icons">verified_user</i>
+            <i class="material-icons stzk-icon">
+              verified_user
+            </i>
           </h2>
           <h5 class="center">
             <%= gettext "Safe and Private" %>
@@ -46,9 +58,11 @@
       </div>
 
       <div class="col s12 m4">
-        <div class="icon-block white-text">
+        <div class="stzk-c-content">
           <h2 class="center">
-            <i class="material-icons">format_align_left</i>
+            <i class="material-icons stzk-icon">
+              format_align_left
+            </i>
           </h2>
 
           <h5 class="center">
@@ -62,9 +76,15 @@
       </div>
 
       <div class="col s12 m4">
-        <div class="icon-block white-text">
-          <h2 class="center"><i class="material-icons">wifi_tethering</i></h2>
-          <h5 class="center">Spread the Poetry!</h5>
+        <div class="stzk-c-content">
+          <h2 class="center">
+            <i class="material-icons stzk-icon">
+              wifi_tethering
+            </i>
+          </h2>
+          <h5 class="center">
+            <%= gettext "Spread the Poetry!" %>
+          </h5>
 
           <p>
             <%= gettext "Any Author can join a Movement as a Leader, Poet or Enthusiast. Leader is the author that created the movement and can invite poets and enthusiasts, add/read verses, and edit the movement settings. Poet can only add/read verses. Enthusiast can only read verses." %>
@@ -73,9 +93,12 @@
       </div>
 
     </div>
+
+    <br>
+    <br>
+
   </div>
 </div>
-
 
 <div class="parallax-container valign-wrapper">
   <div class="section no-pad-bot">
@@ -96,8 +119,11 @@
 <div class="container">
   <div class="section">
 
+    <br>
+    <br>
+
     <div class="row">
-      <div class="col s12 center white-text">
+      <div class="col s12 center stzk-c-content">
         <h4>
           <%= gettext "Born from the Ashes" %>
         </h4>
@@ -106,6 +132,9 @@
         </p>
       </div>
     </div>
+
+    <br>
+    <br>
 
   </div>
 </div>
@@ -125,70 +154,74 @@
   <div class="parallax"><img src="/images/enchanted-book.jpg"></div>
 </div>
 
-<footer class="page-footer blue-grey darken-4">
+<footer class="page-footer">
   <div class="container">
-    <div class="row center">
+
+    <br>
+    <br>
+
+    <div class="row center stzk-c-content">
       <div class="col s12">
-        <h4 class="white-text">
+        <h4>
           <%= gettext "Connect with Stiltzkey" %>
         </h4>
       </div>
 
       <div class="col s12 m4">
-        <div class="icon-block">
+        <div class="stzk-icon">
           <h1 class="center">
             <a href="https://github.com/arkye/stiltzkey" target="_blank">
-              <i class="fa fa-lg fa-github-alt white-text"></i>
+              <i class="fa fa-lg fa-github-alt stzk-c-content"></i>
             </a>
           </h1>
         </div>
       </div>
 
       <div class="col s12 m4">
-        <div class="icon-block">
+        <div class="stzk-icon">
           <h1 class="center">
             <a href="https://gitlab.com/arkye/stiltzkey" target="_blank">
-              <i class="fa fa-lg fa-gitlab white-text"></i>
+              <i class="fa fa-lg fa-gitlab stzk-c-content"></i>
             </a>
           </h1>
         </div>
       </div>
 
       <div class="col s12 m4">
-        <div class="icon-block">
+        <div class="stzk-icon">
           <h1 class="center">
             <a href="https://fga.unb.br/lappis" target="_blank">
-              <i class="fa fa-lg fa-link white-text"></i>
+              <i class="fa fa-lg fa-link stzk-c-content"></i>
             </a>
           </h1>
         </div>
       </div>
 
       <div class="col s12 m4">
-        <div class="icon-block">
+        <div class="stzk-icon">
           <h1 class="center">
             <a href="https://chat.lappis.rocks" target="_blank">
-              <i class="fa fa-lg fa-comments white-text"></i>
+              <i class="fa fa-lg fa-comments stzk-c-content"></i>
             </a>
           </h1>
         </div>
       </div>
 
       <div class="col s12 m4">
-        <div class="icon-block">
+        <div class="stzk-icon">
           <h1 class="center">
             <a href="https://t.me/lappisnews" target="_blank">
-              <i class="fa fa-lg fa-telegram white-text"></i>
+              <i class="fa fa-lg fa-telegram stzk-c-content"></i>
             </a>
           </h1>
         </div>
       </div>
 
       <div class="col s12 m4">
-        <div class="icon-block">
+        <div class="stzk-icon">
           <h1 class="center">
             <a href="https://gitlab.com/lappis-unb/docs" target="_blank">
-              <i class="fa fa-lg fa-wikipedia-w white-text"></i>
+              <i class="fa fa-lg fa-wikipedia-w stzk-c-content"></i>
             </a>
           </h1>
         </div>
