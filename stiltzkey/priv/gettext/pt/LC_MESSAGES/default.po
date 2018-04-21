@@ -74,6 +74,10 @@ msgstr "Meus Movimentos"
 #: lib/stiltzkey_web/templates/stanza/index.html.eex:18
 #: lib/stiltzkey_web/templates/stanza/new.html.eex:18
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:18
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:18
+#: lib/stiltzkey_web/templates/verse/index.html.eex:18
+#: lib/stiltzkey_web/templates/verse/new.html.eex:18
+#: lib/stiltzkey_web/templates/verse/show.html.eex:18
 msgid "My Poems"
 msgstr "Meus Poemas"
 
@@ -131,6 +135,7 @@ msgstr ""
 #: lib/stiltzkey_web/templates/stanza/form.html.eex:8
 #: lib/stiltzkey_web/templates/user/form.html.eex:8
 #: lib/stiltzkey_web/templates/user/form_new.html.eex:8
+#: lib/stiltzkey_web/templates/verse/form.html.eex:8
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Ops, algo de errado não está certo! Por favor, verifique os erros abaixo."
 
@@ -168,6 +173,9 @@ msgstr "Nome de Usuário"
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:105
 #: lib/stiltzkey_web/templates/user/edit.html.eex:31
 #: lib/stiltzkey_web/templates/user/show.html.eex:65
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:65
+#: lib/stiltzkey_web/templates/verse/index.html.eex:76
+#: lib/stiltzkey_web/templates/verse/show.html.eex:160
 msgid "Edit"
 msgstr "Atualizar"
 
@@ -185,6 +193,10 @@ msgstr "Atualizar Perfil"
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:10
 #: lib/stiltzkey_web/templates/user/edit.html.eex:10
 #: lib/stiltzkey_web/templates/user/show.html.eex:10
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:10
+#: lib/stiltzkey_web/templates/verse/index.html.eex:10
+#: lib/stiltzkey_web/templates/verse/new.html.eex:10
+#: lib/stiltzkey_web/templates/verse/show.html.eex:10
 msgid "Home"
 msgstr "Página Inicial"
 
@@ -198,6 +210,8 @@ msgstr "Visualizar Perfil"
 #: lib/stiltzkey_web/templates/poem/show.html.eex:78
 #: lib/stiltzkey_web/templates/stanza/index.html.eex:65
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:106
+#: lib/stiltzkey_web/templates/verse/index.html.eex:77
+#: lib/stiltzkey_web/templates/verse/show.html.eex:161
 msgid "Are you sure?"
 msgstr "Você tem certeza?"
 
@@ -205,6 +219,8 @@ msgstr "Você tem certeza?"
 #: lib/stiltzkey_web/templates/poem/show.html.eex:78
 #: lib/stiltzkey_web/templates/stanza/index.html.eex:65
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:106
+#: lib/stiltzkey_web/templates/verse/index.html.eex:77
+#: lib/stiltzkey_web/templates/verse/show.html.eex:161
 msgid "Delete"
 msgstr "Remover"
 
@@ -215,6 +231,7 @@ msgstr "Novo Poema"
 
 #: lib/stiltzkey_web/templates/poem/index.html.eex:47
 #: lib/stiltzkey_web/templates/stanza/index.html.eex:63
+#: lib/stiltzkey_web/templates/verse/index.html.eex:75
 msgid "Show"
 msgstr "Visualizar"
 
@@ -225,6 +242,7 @@ msgstr "Estrofes"
 
 #: lib/stiltzkey_web/templates/poem/show.html.eex:50
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:66
+#: lib/stiltzkey_web/templates/verse/show.html.eex:98
 msgid "Author"
 msgstr "Autor"
 
@@ -241,6 +259,7 @@ msgstr "Atualizar Poema"
 
 #: lib/stiltzkey_web/templates/poem/new.html.eex:25
 #: lib/stiltzkey_web/templates/stanza/new.html.eex:41
+#: lib/stiltzkey_web/templates/verse/new.html.eex:57
 msgid "New"
 msgstr "Novo"
 
@@ -251,6 +270,11 @@ msgstr "Novo"
 #: lib/stiltzkey_web/templates/stanza/new.html.eex:26
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:26
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:78
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:26
+#: lib/stiltzkey_web/templates/verse/index.html.eex:26
+#: lib/stiltzkey_web/templates/verse/new.html.eex:26
+#: lib/stiltzkey_web/templates/verse/show.html.eex:26
+#: lib/stiltzkey_web/templates/verse/show.html.eex:110
 msgid "Poem"
 msgstr "Poema"
 
@@ -268,6 +292,10 @@ msgstr "Título"
 #: lib/stiltzkey_web/templates/stanza/index.html.eex:48
 #: lib/stiltzkey_web/templates/stanza/new.html.eex:34
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:34
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:34
+#: lib/stiltzkey_web/templates/verse/index.html.eex:34
+#: lib/stiltzkey_web/templates/verse/new.html.eex:34
+#: lib/stiltzkey_web/templates/verse/show.html.eex:34
 msgid "%{poem} Stanzas"
 msgstr "Estrofes de %{poem}"
 
@@ -294,6 +322,11 @@ msgstr "Visualizar Estrofe"
 
 #: lib/stiltzkey_web/templates/stanza/edit.html.eex:42
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:41
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:42
+#: lib/stiltzkey_web/templates/verse/index.html.eex:42
+#: lib/stiltzkey_web/templates/verse/new.html.eex:42
+#: lib/stiltzkey_web/templates/verse/show.html.eex:42
+#: lib/stiltzkey_web/templates/verse/show.html.eex:122
 msgid "Stanza"
 msgstr "Estrofe"
 
@@ -301,3 +334,59 @@ msgstr "Estrofe"
 #: lib/stiltzkey_web/templates/stanza/show.html.eex:104
 msgid "Verses"
 msgstr "Versos"
+
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:50
+#: lib/stiltzkey_web/templates/verse/index.html.eex:49
+#: lib/stiltzkey_web/templates/verse/index.html.eex:64
+#: lib/stiltzkey_web/templates/verse/new.html.eex:50
+#: lib/stiltzkey_web/templates/verse/show.html.eex:50
+msgid "%{stanza} Verses"
+msgstr "Versos de %{stanza}"
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:65
+msgid "Click to hide the secret value"
+msgstr "Clique para esconder o valor secreto"
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:71
+msgid "Click to show the secret value"
+msgstr "Clique para mostrar o valor secreto"
+
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:79
+msgid "Edit Verse"
+msgstr "Atualizar Verso"
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:156
+msgid "Hide Secret Value"
+msgstr "Esconder Valor Secreto"
+
+#: lib/stiltzkey_web/templates/verse/form.html.eex:20
+#: lib/stiltzkey_web/templates/verse/show.html.eex:133
+msgid "Key"
+msgstr "Chave"
+
+#: lib/stiltzkey_web/templates/verse/new.html.eex:71
+msgid "New Verse"
+msgstr "Novo Verso"
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:158
+msgid "Show Secret Value"
+msgstr "Mostrar Valor Secreto"
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:87
+msgid "Show Verse"
+msgstr "Mostrar Verso"
+
+#: lib/stiltzkey_web/templates/verse/form.html.eex:29
+#: lib/stiltzkey_web/templates/verse/show.html.eex:150
+msgid "Value"
+msgstr "Valor"
+
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:58
+#: lib/stiltzkey_web/templates/verse/show.html.eex:57
+msgid "Verse"
+msgstr "Verso"
+
+#, fuzzy
+#: lib/stiltzkey_web/templates/verse/index.html.eex:85
+msgid "New %{stanza}'s Verse"
+msgstr "Novo Verso de %{stanza}"
