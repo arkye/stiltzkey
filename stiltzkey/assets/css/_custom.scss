@@ -31,6 +31,10 @@ body {
   color: $content-color;
 }
 
+.stzk-c-primary {
+  color: $primary-color;
+}
+
 .stzk-c-secondary {
   color: $secondary-color;
 }
@@ -176,8 +180,15 @@ p {
 
 .stkz-breadcrumbs {
   background-color: rgba(0,0,0,0);
+  height: auto;
 }
 
 .breadcrumb {
   font-size: 12px;
+}
+
+// [9] - Tooltip
+
+.material-tooltip {
+  background-color: $primary-color;
 }

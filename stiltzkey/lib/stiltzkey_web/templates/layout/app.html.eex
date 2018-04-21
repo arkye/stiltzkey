@@ -222,9 +222,10 @@
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>
-      $(".sidenav").sidenav();
       $(".collapsible").collapsible();
       $(".parallax").parallax();
+      $(".sidenav").sidenav();
+      $(".tooltip").tooltip();
       $("#alert_close").click(function () {
         $("#alert_panel").fadeOut( "slow", function(){});
       });

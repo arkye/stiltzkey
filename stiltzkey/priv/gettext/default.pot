@@ -64,17 +64,21 @@ msgstr ""
 
 #: lib/stiltzkey_web/templates/layout/app.html.eex:111
 #: lib/stiltzkey_web/templates/page/index.html.eex:22
-#: lib/stiltzkey_web/templates/poem/edit.html.eex:13
-#: lib/stiltzkey_web/templates/poem/index.html.eex:14
-#: lib/stiltzkey_web/templates/poem/index.html.eex:25
-#: lib/stiltzkey_web/templates/poem/new.html.eex:13
-#: lib/stiltzkey_web/templates/poem/show.html.eex:13
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:18
+#: lib/stiltzkey_web/templates/poem/index.html.eex:17
+#: lib/stiltzkey_web/templates/poem/index.html.eex:32
+#: lib/stiltzkey_web/templates/poem/new.html.eex:18
+#: lib/stiltzkey_web/templates/poem/show.html.eex:18
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:18
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:18
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:18
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:18
 msgid "My Poems"
 msgstr ""
 
 #: lib/stiltzkey_web/templates/layout/app.html.eex:100
-#: lib/stiltzkey_web/templates/user/edit.html.eex:13
-#: lib/stiltzkey_web/templates/user/show.html.eex:15
+#: lib/stiltzkey_web/templates/user/edit.html.eex:19
+#: lib/stiltzkey_web/templates/user/show.html.eex:18
 msgid "My Profile"
 msgstr ""
 
@@ -118,11 +122,12 @@ msgstr ""
 #: lib/stiltzkey_web/templates/session/new.html.eex:23
 #: lib/stiltzkey_web/templates/user/form.html.eex:30
 #: lib/stiltzkey_web/templates/user/form_new.html.eex:30
-#: lib/stiltzkey_web/templates/user/show.html.eex:49
+#: lib/stiltzkey_web/templates/user/show.html.eex:58
 msgid "E-mail"
 msgstr ""
 
 #: lib/stiltzkey_web/templates/poem/form.html.eex:8
+#: lib/stiltzkey_web/templates/stanza/form.html.eex:8
 #: lib/stiltzkey_web/templates/user/form.html.eex:8
 #: lib/stiltzkey_web/templates/user/form_new.html.eex:8
 msgid "Oops, something went wrong! Please check the errors below."
@@ -150,87 +155,148 @@ msgstr ""
 
 #: lib/stiltzkey_web/templates/user/form.html.eex:20
 #: lib/stiltzkey_web/templates/user/form_new.html.eex:20
-#: lib/stiltzkey_web/templates/user/show.html.eex:39
+#: lib/stiltzkey_web/templates/user/show.html.eex:48
 msgid "Username"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/edit.html.eex:16
-#: lib/stiltzkey_web/templates/poem/index.html.eex:41
-#: lib/stiltzkey_web/templates/poem/show.html.eex:62
-#: lib/stiltzkey_web/templates/user/edit.html.eex:15
-#: lib/stiltzkey_web/templates/user/show.html.eex:56
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:33
+#: lib/stiltzkey_web/templates/poem/index.html.eex:48
+#: lib/stiltzkey_web/templates/poem/show.html.eex:77
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:49
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:64
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:105
+#: lib/stiltzkey_web/templates/user/edit.html.eex:31
+#: lib/stiltzkey_web/templates/user/show.html.eex:65
 msgid "Edit"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/user/edit.html.eex:26
+#: lib/stiltzkey_web/templates/user/edit.html.eex:45
 msgid "Edit Profile"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/edit.html.eex:12
-#: lib/stiltzkey_web/templates/poem/index.html.eex:12
-#: lib/stiltzkey_web/templates/poem/new.html.eex:12
-#: lib/stiltzkey_web/templates/poem/show.html.eex:12
-#: lib/stiltzkey_web/templates/user/edit.html.eex:12
-#: lib/stiltzkey_web/templates/user/show.html.eex:12
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:10
+#: lib/stiltzkey_web/templates/poem/index.html.eex:10
+#: lib/stiltzkey_web/templates/poem/new.html.eex:10
+#: lib/stiltzkey_web/templates/poem/show.html.eex:10
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:10
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:10
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:10
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:10
+#: lib/stiltzkey_web/templates/user/edit.html.eex:10
+#: lib/stiltzkey_web/templates/user/show.html.eex:10
 msgid "Home"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/user/show.html.eex:17
-#: lib/stiltzkey_web/templates/user/show.html.eex:29
+#: lib/stiltzkey_web/templates/user/edit.html.eex:23
+#: lib/stiltzkey_web/templates/user/show.html.eex:22
+#: lib/stiltzkey_web/templates/user/show.html.eex:38
 msgid "Show Profile"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/index.html.eex:42
-#: lib/stiltzkey_web/templates/poem/show.html.eex:63
+#: lib/stiltzkey_web/templates/poem/index.html.eex:49
+#: lib/stiltzkey_web/templates/poem/show.html.eex:78
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:65
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:106
 msgid "Are you sure?"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/index.html.eex:42
-#: lib/stiltzkey_web/templates/poem/show.html.eex:63
+#: lib/stiltzkey_web/templates/poem/index.html.eex:49
+#: lib/stiltzkey_web/templates/poem/show.html.eex:78
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:65
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:106
 msgid "Delete"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/index.html.eex:50
-#: lib/stiltzkey_web/templates/poem/new.html.eex:26
+#: lib/stiltzkey_web/templates/poem/index.html.eex:57
+#: lib/stiltzkey_web/templates/poem/new.html.eex:39
 msgid "New Poem"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/index.html.eex:40
+#: lib/stiltzkey_web/templates/poem/index.html.eex:47
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:63
 msgid "Show"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/index.html.eex:39
-#: lib/stiltzkey_web/templates/poem/show.html.eex:61
+#: lib/stiltzkey_web/templates/poem/index.html.eex:46
+#: lib/stiltzkey_web/templates/poem/show.html.eex:76
 msgid "Stanzas"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/show.html.eex:36
+#: lib/stiltzkey_web/templates/poem/show.html.eex:50
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:66
 msgid "Author"
 msgstr ""
 
 #: lib/stiltzkey_web/templates/poem/form.html.eex:29
-#: lib/stiltzkey_web/templates/poem/show.html.eex:56
+#: lib/stiltzkey_web/templates/poem/show.html.eex:71
+#: lib/stiltzkey_web/templates/stanza/form.html.eex:29
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:99
 msgid "Description"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/edit.html.eex:27
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:47
 msgid "Edit Poem"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/new.html.eex:15
+#: lib/stiltzkey_web/templates/poem/new.html.eex:25
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:41
 msgid "New"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/edit.html.eex:14
-#: lib/stiltzkey_web/templates/poem/show.html.eex:15
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:26
+#: lib/stiltzkey_web/templates/poem/show.html.eex:25
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:26
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:26
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:26
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:26
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:78
 msgid "Poem"
 msgstr ""
 
-#: lib/stiltzkey_web/templates/poem/show.html.eex:27
+#: lib/stiltzkey_web/templates/poem/show.html.eex:40
 msgid "Show Poem"
 msgstr ""
 
 #: lib/stiltzkey_web/templates/poem/form.html.eex:20
-#: lib/stiltzkey_web/templates/poem/show.html.eex:46
+#: lib/stiltzkey_web/templates/poem/show.html.eex:61
 msgid "Title"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:34
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:33
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:48
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:34
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:34
+msgid "%{poem} Stanzas"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/form.html.eex:20
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:89
+msgid "Context"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:63
+msgid "Edit Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:73
+msgid "New %{poem}'s Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:55
+msgid "New Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:55
+msgid "Show Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:42
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:41
+msgid "Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:62
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:104
+msgid "Verses"
 msgstr ""

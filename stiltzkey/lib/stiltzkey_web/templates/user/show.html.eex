@@ -4,30 +4,39 @@
   <br>
 
   <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-le xl6 offset-xl3">
+      <h5>
+<%= link to: page_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Home" %>">
+          home
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= if @user.id == @current_user.id do %>
+        <i class="material-icons stzk-icon stzk-c-primary tooltip" data-position="bottom" data-tooltip="<%= gettext "My Profile" %>">
+          person
+        </i>
+<% else %>
+        <i class="material-icons stzk-icon stzk-c-primary tooltip" data-position="bottom" data-tooltip="<%= gettext "Show Profile" %>">
+          person
+        </i>
+<% end %>
+      </h5>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
 
-      <nav class="stkz-breadcrumbs">
-        <div class="nav-wrapper">
-          <div class="col s12 m10 l8 xl6">
-            <%= link gettext("Home"), to: page_path(@conn, :index), class: "breadcrumb" %>
-            <a class="breadcrumb">
-<%= if @user.id == @current_user.id do %>
-              <%= gettext "My Profile" %>
-<% else %>
-              <%= gettext "Show Profile" %> (<%= @user.username %>)
-<% end %>
-            </a>
-          </div>
-        </div>
-      </nav>
-
       <div class="card z-depth-3">
-        <h3 class="header valign-wrapper">
+        <h4 class="header valign-wrapper">
           <i class="material-icons stzk-icon">
             person
           </i>
           <%= gettext "Show Profile" %>
-        </h3>
+        </h4>
 
         <div class="card-content">
           <div class="input-field stzk-c-content">
