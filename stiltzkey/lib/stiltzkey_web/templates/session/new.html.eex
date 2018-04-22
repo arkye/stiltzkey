@@ -28,8 +28,8 @@
               <i class="material-icons stzk-icon prefix">
                 vpn_key
               </i>
-              <%= label f, :password, class: class_decorate(f, :password) %>
-              <%= password_input f, :password, do: gettext("Password") %>
+              <%= password_input f, :password, class: class_decorate(f, :password) %>
+              <%= label f, :password, do: gettext("Password") %>
               <%= error_tag f, :password %>
             </div>
           </div>
