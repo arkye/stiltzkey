@@ -60,14 +60,14 @@ defmodule StiltzkeyWeb.UserController do
         case Accounts.update_user(user, params) do
           {:ok, user} ->
             conn
-            |> put_flash(:info, "User updated successfully.")
+            |> put_flash(:info, gettext("User updated successfully."))
             |> redirect(to: user_path(conn, :show, user))
           {:error, %Ecto.Changeset{} = changeset} ->
             render(conn, "edit.html", user: user, changeset: changeset)
         end
       {:error, :unauthorized} ->
         conn
-        |> put_flash(:error, "Password invalid.")
+        |> put_flash(:error, gettext("Password invalid."))
         |> redirect(to: user_path(conn, :edit, conn.assigns.current_user.id))
     end
   end
@@ -85,7 +85,7 @@ defmodule StiltzkeyWeb.UserController do
     {:ok, _user} = Accounts.delete_user(user)
 
     conn
-    |> put_flash(:info, "User deleted successfully.")
+    |> put_flash(:info, gettext("User deleted successfully."))
     |> redirect(to: user_path(conn, :index))
   end
 
@@ -97,7 +97,7 @@ defmodule StiltzkeyWeb.UserController do
       end
     else
       conn
-      |> put_flash(:error, "You can't modify that user")
+      |> put_flash(:error, gettext("You can't modify that user."))
       |> redirect(to: page_path(conn, :index))
       |> halt()
     end

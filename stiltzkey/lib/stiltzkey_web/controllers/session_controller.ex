@@ -13,11 +13,11 @@ defmodule StiltzkeyWeb.SessionController do
       %Accounts.User{} = user ->
         conn
         |> Guardian.Plug.sign_in(user)
-        |> put_flash(:info, "Welcome #{user.username}!")
+        |> put_flash(:info, gettext("Welcome to Stiltzkey, %{username}!", username: user.username))
         |> redirect(to: page_path(conn, :index))
       {:error, :unauthorized} ->
         conn
-        |> put_flash(:error, "Bad email/password combination")
+        |> put_flash(:error, gettext("Bad email/password combination."))
         |> redirect(to: session_path(conn, :new))
     end
   end

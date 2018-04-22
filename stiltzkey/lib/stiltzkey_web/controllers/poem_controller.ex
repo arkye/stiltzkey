@@ -23,7 +23,7 @@ defmodule StiltzkeyWeb.PoemController do
     case Papyrus.create_poem(conn.assigns.current_author, poem_params) do
       {:ok, poem} ->
         conn
-        |> put_flash(:info, "Poem created successfully.")
+        |> put_flash(:info, gettext("Poem created successfully."))
         |> redirect(to: poem_path(conn, :show, poem))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule StiltzkeyWeb.PoemController do
     case Papyrus.update_poem(conn.assigns.poem, poem_params) do
       {:ok, poem} ->
         conn
-        |> put_flash(:info, "Poem updated successfully.")
+        |> put_flash(:info, gettext("Poem updated successfully."))
         |> redirect(to: poem_path(conn, :show, poem))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", changeset: changeset)
@@ -55,7 +55,7 @@ defmodule StiltzkeyWeb.PoemController do
     {:ok, _poem} = Papyrus.delete_poem(conn.assigns.poem)
 
     conn
-    |> put_flash(:info, "Poem deleted successfully.")
+    |> put_flash(:info, gettext("Poem deleted successfully."))
     |> redirect(to: poem_path(conn, :index))
   end
 
@@ -66,7 +66,7 @@ defmodule StiltzkeyWeb.PoemController do
       assign(conn, :poem, poem)
     else
       conn
-      |> put_flash(:error, "You can't see or modify that poem")
+      |> put_flash(:error, gettext("You can't see or modify that poem."))
       |> redirect(to: poem_path(conn, :index))
       |> halt()
     end

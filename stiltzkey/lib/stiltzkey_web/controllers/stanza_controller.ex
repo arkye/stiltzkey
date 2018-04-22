@@ -25,7 +25,7 @@ defmodule StiltzkeyWeb.StanzaController do
     case Papyrus.create_stanza(conn.assigns.current_author, conn.assigns.poem, stanza_params) do
       {:ok, stanza} ->
         conn
-        |> put_flash(:info, "Stanza created successfully.")
+        |> put_flash(:info, gettext("Stanza created successfully."))
         |> redirect(to: stanza_path(conn, :show, conn.assigns.poem.id, stanza))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -46,7 +46,7 @@ defmodule StiltzkeyWeb.StanzaController do
     case Papyrus.update_stanza(conn.assigns.stanza, stanza_params) do
       {:ok, stanza} ->
         conn
-        |> put_flash(:info, "Stanza updated successfully.")
+        |> put_flash(:info, gettext("Stanza updated successfully."))
         |> redirect(to: stanza_path(conn, :show, conn.assigns.poem.id, stanza))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", changeset: changeset)
@@ -57,7 +57,7 @@ defmodule StiltzkeyWeb.StanzaController do
     {:ok, _stanza} = Papyrus.delete_stanza(conn.assigns.stanza)
 
     conn
-    |> put_flash(:info, "Stanza deleted successfully.")
+    |> put_flash(:info, gettext("Stanza deleted successfully."))
     |> redirect(to: stanza_path(conn, :index, conn.assigns.poem.id))
   end
 
@@ -71,7 +71,7 @@ defmodule StiltzkeyWeb.StanzaController do
       conn
     else
       conn
-      |> put_flash(:error, "You can't see that stanzas")
+      |> put_flash(:error, gettext("You can't see that stanzas."))
       |> redirect(to: page_path(conn, :index))
       |> halt()
     end
@@ -84,7 +84,7 @@ defmodule StiltzkeyWeb.StanzaController do
       assign(conn, :stanza, stanza)
     else
       conn
-      |> put_flash(:error, "You can't see or modify that stanza")
+      |> put_flash(:error, gettext("You can't see or modify that stanza."))
       |> redirect(to: stanza_path(conn, :index, conn.assigns.poem.id))
       |> halt()
     end

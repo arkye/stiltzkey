@@ -48,7 +48,7 @@ defmodule StiltzkeyWeb.MovementController do
     case Papyrus.create_movement(conn.assigns.current_leader, movement_params) do
       {:ok, movement} ->
         conn
-        |> put_flash(:info, "Movement created successfully.")
+        |> put_flash(:info, gettext("Movement created successfully."))
         |> redirect(to: movement_path(conn, :show, movement))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -77,7 +77,7 @@ defmodule StiltzkeyWeb.MovementController do
     case Papyrus.update_movement(conn.assigns.movement, movement_params) do
       {:ok, movement} ->
         conn
-        |> put_flash(:info, "Movement updated successfully.")
+        |> put_flash(:info, gettext("Movement updated successfully."))
         |> redirect(to: movement_path(conn, :show, movement))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", changeset: changeset)
@@ -88,7 +88,7 @@ defmodule StiltzkeyWeb.MovementController do
     {:ok, _movement} = Papyrus.delete_movement(conn.assigns.movement)
 
     conn
-    |> put_flash(:info, "Movement deleted successfully.")
+    |> put_flash(:info, gettext("Movement deleted successfully."))
     |> redirect(to: movement_path(conn, :index))
   end
 
@@ -97,11 +97,11 @@ defmodule StiltzkeyWeb.MovementController do
     case Papyrus.add_poet_to_movement(conn.assigns.movement, poet) do
       {:ok, movement} ->
         conn
-        |> put_flash(:info, "Poet successfully joined the Movement")
+        |> put_flash(:info, gettext("Poet successfully joined the Movement"))
         |> redirect(to: movement_path(conn, :show, movement))
       _error ->
         conn
-        |> put_flash(:error, "Poet failed to join the Movement")
+        |> put_flash(:error, gettext("Poet failed to join the Movement"))
         |> redirect(to: movement_path(conn, :show, conn.assigns.movement))
     end
   end
@@ -111,11 +111,11 @@ defmodule StiltzkeyWeb.MovementController do
     case Papyrus.add_enthusiast_to_movement(conn.assigns.movement, enthusiast) do
       {:ok, movement} ->
         conn
-        |> put_flash(:info, "Enthusiast successfully joined the Movement")
+        |> put_flash(:info, gettext("Enthusiast successfully joined the Movement"))
         |> redirect(to: movement_path(conn, :show, movement))
       _error ->
         conn
-        |> put_flash(:error, "Enthusiast failed to join the Movement")
+        |> put_flash(:error, gettext("Enthusiast failed to join the Movement"))
         |> redirect(to: movement_path(conn, :show, conn.assigns.movement))
     end
   end
@@ -125,11 +125,11 @@ defmodule StiltzkeyWeb.MovementController do
     case Papyrus.add_verse_to_movement(conn.assigns.movement, verse) do
       {:ok, movement} ->
         conn
-        |> put_flash(:info, "Verse successfully inserted in the Movement")
+        |> put_flash(:info, gettext("Verse successfully inserted in the Movement"))
         |> redirect(to: movement_path(conn, :show, movement))
       _error ->
         conn
-        |> put_flash(:error, "Verse failed to be inserted in the Movement")
+        |> put_flash(:error, gettext("Verse failed to be inserted in the Movement"))
         |> redirect(to: movement_path(conn, :show, conn.assigns.movement))
     end
   end
@@ -151,7 +151,7 @@ defmodule StiltzkeyWeb.MovementController do
         |> assign(:role, :enthusiast)
       true ->
         conn
-        |> put_flash(:error, "You are not part of the movement")
+        |> put_flash(:error, gettext("You are not part of the movement"))
         |> redirect(to: movement_path(conn, :index))
         |> halt()
     end
@@ -164,7 +164,7 @@ defmodule StiltzkeyWeb.MovementController do
       assign(conn, :movement, movement)
     else
       conn
-      |> put_flash(:error, "You can't modify that movement")
+      |> put_flash(:error, gettext("You can't modify that movement"))
       |> redirect(to: movement_path(conn, :index))
       |> halt()
     end
@@ -177,7 +177,7 @@ defmodule StiltzkeyWeb.MovementController do
       assign(conn, :movement, movement)
     else
       conn
-      |> put_flash(:error, "You can't modify that movement")
+      |> put_flash(:error, gettext("You can't modify that movement"))
       |> redirect(to: movement_path(conn, :index))
       |> halt()
     end
@@ -196,7 +196,7 @@ defmodule StiltzkeyWeb.MovementController do
 
     if String.length(conn.assigns.requested_username) == 0 do
       conn
-      |> put_flash(:error, "Inform the username first")
+      |> put_flash(:error, gettext("Inform the username first"))
       |> redirect(to: movement_path(conn, :show, conn.assigns.movement))
       |> halt()
     else
@@ -207,7 +207,7 @@ defmodule StiltzkeyWeb.MovementController do
   defp refuse_if_self(conn, _params) do
     if conn.assigns.requested_username == conn.assigns.current_user.username do
       conn
-      |> put_flash(:error, "You can't add yourself")
+      |> put_flash(:error, gettext("You can't add yourself"))
       |> redirect(to: movement_path(conn, :show, conn.assigns.movement))
       |> halt()
     else
@@ -228,7 +228,7 @@ defmodule StiltzkeyWeb.MovementController do
     rescue
       _ ->
         conn
-        |> put_flash(:error, "User already joined the movement")
+        |> put_flash(:error, gettext("User already joined the movement"))
         |> redirect(to: movement_path(conn, :show, conn.assigns.movement))
         |> halt()
     end

@@ -243,7 +243,6 @@ msgstr "Você tem certeza?"
 msgid "Delete"
 msgstr "Remover"
 
-#: lib/stiltzkey_web/templates/movement/new.html.eex:39
 #: lib/stiltzkey_web/templates/poem/index.html.eex:57
 #: lib/stiltzkey_web/templates/poem/new.html.eex:39
 msgid "New Poem"
@@ -473,9 +472,147 @@ msgid "Name"
 msgstr "Nome"
 
 #: lib/stiltzkey_web/templates/movement/index.html.eex:56
+#: lib/stiltzkey_web/templates/movement/new.html.eex:39
 msgid "New Movement"
 msgstr "Novo Movimento"
 
 #: lib/stiltzkey_web/templates/movement/show.html.eex:40
 msgid "Show Movement"
 msgstr "Visualizar Movimento"
+
+#: lib/stiltzkey_web/controllers/session_controller.ex:20
+msgid "Bad email/password combination."
+msgstr "Combinação incorreta de e-mail e/ou senha."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:118
+msgid "Enthusiast failed to join the Movement"
+msgstr "Entusiasta falhou em ingressar no movimento."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:114
+msgid "Enthusiast successfully joined the Movement"
+msgstr "Entusiasta ingressou no movimento."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:199
+msgid "Inform the username first"
+msgstr "Informe o nome de usuário antes."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:51
+msgid "Movement created successfully."
+msgstr "Movimento criado com sucesso."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:91
+msgid "Movement deleted successfully."
+msgstr "Movimento removido com sucesso."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:80
+msgid "Movement updated successfully."
+msgstr "Movimento atualizado com sucesso."
+
+#: lib/stiltzkey_web/controllers/user_controller.ex:70
+msgid "Password invalid."
+msgstr "Senha inválida."
+
+#: lib/stiltzkey_web/controllers/poem_controller.ex:26
+msgid "Poem created successfully."
+msgstr "Poema criado com sucesso."
+
+#: lib/stiltzkey_web/controllers/poem_controller.ex:58
+msgid "Poem deleted successfully."
+msgstr "Poema removido com sucesso."
+
+#: lib/stiltzkey_web/controllers/poem_controller.ex:47
+msgid "Poem updated successfully."
+msgstr "Poema atualizado com sucesso."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:104
+msgid "Poet failed to join the Movement"
+msgstr "Poeta falhou em ingressar no movimento."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:100
+msgid "Poet successfully joined the Movement"
+msgstr "Poeta ingressou no movimento."
+
+#: lib/stiltzkey_web/controllers/stanza_controller.ex:28
+msgid "Stanza created successfully."
+msgstr "Estrofe criada com sucesso."
+
+#: lib/stiltzkey_web/controllers/stanza_controller.ex:60
+msgid "Stanza deleted successfully."
+msgstr "Estrofe removida com sucesso."
+
+#: lib/stiltzkey_web/controllers/stanza_controller.ex:49
+msgid "Stanza updated successfully."
+msgstr "Estrofe atualizada com sucesso."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:231
+msgid "User already joined the movement"
+msgstr "Usuário já ingressou no movimento."
+
+#: lib/stiltzkey_web/controllers/user_controller.ex:88
+msgid "User deleted successfully."
+msgstr "Usuário removido com sucesso."
+
+#: lib/stiltzkey_web/controllers/user_controller.ex:63
+msgid "User updated successfully."
+msgstr "Usuário atualizado com sucesso."
+
+#: lib/stiltzkey_web/controllers/verse_controller.ex:28
+msgid "Verse created successfully."
+msgstr "Verso criado com sucesso."
+
+#: lib/stiltzkey_web/controllers/verse_controller.ex:68
+msgid "Verse deleted successfully."
+msgstr "Verso removido com sucesso."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:132
+msgid "Verse failed to be inserted in the Movement"
+msgstr "Não foi possível adicionar o verso no movimento."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:128
+msgid "Verse successfully inserted in the Movement"
+msgstr "Verso adicionado com sucesso no movimento."
+
+#: lib/stiltzkey_web/controllers/verse_controller.ex:57
+msgid "Verse updated successfully."
+msgstr "Verso atualizado com sucesso."
+
+#: lib/stiltzkey_web/controllers/session_controller.ex:16
+msgid "Welcome to Stiltzkey, %{username}!"
+msgstr "Bem-vindo ao Stiltzkey, %{username}!"
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:154
+msgid "You are not part of the movement"
+msgstr "Você não faz parte deste movimento."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:210
+msgid "You can't add yourself"
+msgstr "Você não pode se adicionar."
+
+#: lib/stiltzkey_web/controllers/movement_controller.ex:167
+#: lib/stiltzkey_web/controllers/movement_controller.ex:180
+msgid "You can't modify that movement"
+msgstr "Você não pode modificar esse movimento."
+
+#: lib/stiltzkey_web/controllers/user_controller.ex:100
+msgid "You can't modify that user."
+msgstr "Você não pode modificar esse usuário."
+
+#: lib/stiltzkey_web/controllers/poem_controller.ex:69
+msgid "You can't see or modify that poem."
+msgstr "Você não pode ver ou modificar esse poema."
+
+#: lib/stiltzkey_web/controllers/stanza_controller.ex:87
+msgid "You can't see or modify that stanza."
+msgstr "Você não pode ver ou modificar essa estrofe."
+
+#: lib/stiltzkey_web/controllers/verse_controller.ex:95
+msgid "You can't see or modify that verse"
+msgstr "Você não pode ver ou modificar esse verso."
+
+#: lib/stiltzkey_web/controllers/stanza_controller.ex:74
+msgid "You can't see that stanzas."
+msgstr "Você não pode ver essas estrofes."
+
+#: lib/stiltzkey_web/controllers/verse_controller.ex:82
+msgid "You can't see that verses."
+msgstr "Você não pode ver esses versos."

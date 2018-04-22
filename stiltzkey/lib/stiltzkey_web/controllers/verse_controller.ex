@@ -25,7 +25,7 @@ defmodule StiltzkeyWeb.VerseController do
     case Papyrus.create_verse(conn.assigns.current_author, conn.assigns.stanza, verse_params) do
       {:ok, verse} ->
         conn
-        |> put_flash(:info, "Verse created successfully.")
+        |> put_flash(:info, gettext("Verse created successfully."))
         |> redirect(to: verse_path(conn, :show, conn.assigns.stanza.poem_id, conn.assigns.stanza.id, verse))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -54,7 +54,7 @@ defmodule StiltzkeyWeb.VerseController do
     case Papyrus.update_verse(conn.assigns.verse, verse_params) do
       {:ok, verse} ->
         conn
-        |> put_flash(:info, "Verse updated successfully.")
+        |> put_flash(:info, gettext("Verse updated successfully."))
         |> redirect(to: verse_path(conn, :show, conn.assigns.stanza.poem_id, conn.assigns.stanza.id, verse))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", changeset: changeset)
@@ -65,7 +65,7 @@ defmodule StiltzkeyWeb.VerseController do
     {:ok, _verse} = Papyrus.delete_verse(conn.assigns.verse)
 
     conn
-    |> put_flash(:info, "Verse deleted successfully.")
+    |> put_flash(:info, gettext("Verse deleted successfully."))
     |> redirect(to: verse_path(conn, :index, conn.assigns.stanza.poem_id, conn.assigns.stanza.id))
   end
 
@@ -79,7 +79,7 @@ defmodule StiltzkeyWeb.VerseController do
       conn
     else
       conn
-      |> put_flash(:error, "You can't see that verses")
+      |> put_flash(:error, gettext("You can't see that verses."))
       |> redirect(to: page_path(conn, :index))
       |> halt()
     end
@@ -92,7 +92,7 @@ defmodule StiltzkeyWeb.VerseController do
       assign(conn, :verse, verse)
     else
       conn
-      |> put_flash(:error, "You can't see or modify that verse")
+      |> put_flash(:error, gettext("You can't see or modify that verse"))
       |> redirect(to: verse_path(conn, :index, conn.assigns.stanza.poem_id, conn.assigns.stanza.id))
       |> halt()
     end
