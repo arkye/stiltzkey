@@ -23,7 +23,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
-# Configure your database
+# Configures i18n
+config :stiltzkey, StiltzkeyWeb.Gettext,
+  default_locale: "pt",
+  locales: ~w(en pt)
+
+# Configures database
 config :stiltzkey, Stiltzkey.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: System.get_env("POSTGRES_USER"),

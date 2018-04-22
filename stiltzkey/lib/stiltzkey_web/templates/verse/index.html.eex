@@ -1,28 +1,90 @@
-<h2>Listing <%= link @stanza.context, to: stanza_path(@conn, :show, @stanza.poem_id, @stanza) %> Verses</h2>
+<div class="container">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Key</th>
-      <th>Value</th>
+  <br>
+  <br>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for verse <- @verses do %>
-    <tr>
-      <td><%= verse.key %></td>
-      <td><%= verse.value %></td>
-
-      <td class="text-right">
-        <span><%= link "Show", to: verse_path(@conn, :show, @stanza.poem_id, @stanza.id, verse), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: verse_path(@conn, :edit, @stanza.poem_id, @stanza.id, verse), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: verse_path(@conn, :delete, @stanza.poem_id, @stanza.id, verse), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-le xl6 offset-xl3">
+      <h5>
+<%= link to: page_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Home" %>">
+          home
+        </i>
 <% end %>
-  </tbody>
-</table>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: poem_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "My Poems" %>">
+          chrome_reader_mode
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: poem_path(@conn, :show, @stanza.poem) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Poem" %>: <%= @stanza.poem.title %>">
+          book
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: stanza_path(@conn, :index, @stanza.poem) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "%{poem} Stanzas", poem: @stanza.poem.title %>">
+          line_style
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: stanza_path(@conn, :show, @stanza.poem, @stanza) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Stanza" %>: <%= @stanza.context %>">
+          view_headline
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+        <i class="material-icons stzk-icon stzk-c-primary tooltip" data-position="bottom" data-tooltip="<%= gettext "%{stanza} Verses", stanza: @stanza.context %>">
+          format_list_bulleted
+        </i>
+      </h5>
+    </div>
+  </div>
 
-<span><%= link "New Verse", to: verse_path(@conn, :new, @stanza.poem_id, @stanza.id) %></span>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
+
+      <div class="card z-depth-3">
+        <h4 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            format_list_bulleted
+          </i>
+          <%= gettext "%{stanza} Verses", stanza: @stanza.context %>
+        </h4>
+        <div class="card-content">
+          <ul class="collapsible">
+<%= for verse <- @verses do %>
+            <li>
+              <div class="collapsible-header">
+                <%= verse.key %>
+              </div>
+              <div class="collapsible-body stzk-bg-primary-l">
+                <div class="card-action center">
+                  <%= link gettext("Show"), to: verse_path(@conn, :show, @stanza.poem, @stanza, verse) %>
+                  <%= link gettext("Edit"), to: verse_path(@conn, :edit, @stanza.poem, @stanza, verse) %>
+                  <%= link gettext("Delete"), to: verse_path(@conn, :delete, @stanza.poem, @stanza, verse), method: :delete, data: [confirm: gettext("Are you sure?")] %>
+                </div>
+              </div>
+            </li>
+<% end %>
+          </ul>
+        </div>
+        <div class="card-action">
+          <%= link gettext("New %{stanza}'s Verse", stanza: @stanza.context), to: verse_path(@conn, :new, @stanza.poem, @stanza) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

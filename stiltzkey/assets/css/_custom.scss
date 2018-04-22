@@ -1,0 +1,214 @@
+/*
+ * Content:
+ * [1] - Colors
+ * [2] - Fonts
+ * [3] - Alerts
+ * [4] - Icons
+ * [5] - Sidenav
+ * [6] - Parallax
+ * [7] - Cards
+ */
+
+// [1] - Colors
+
+body {
+  background-color: $primary-color-light;
+}
+
+.stzk-bg-primary {
+  background-color: $primary-color;
+}
+
+.stzk-bg-primary-l {
+  background-color: $primary-color-light;
+}
+
+.stzk-bg-secondary {
+  background-color: $secondary-color;
+}
+
+.stzk-c-content {
+  color: $content-color;
+}
+
+.stzk-c-primary {
+  color: $primary-color;
+}
+
+.stzk-c-secondary {
+  color: $secondary-color;
+}
+
+// [2] - Fonts
+
+p {
+  line-height: 2rem;
+}
+
+.stzk-f {
+  font-family: "Times New Roman", Times, serif;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+
+// [3] - Alerts
+
+.stzk-alert {
+  position: fixed;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  z-index: 10;
+}
+
+// [4] - Icons
+
+.stzk-icon {
+  font-size: inherit;
+}
+
+// [5] - Sidenav
+
+.sidenav-footer {
+  margin-bottom: 0px;
+  padding: 0;
+
+  .row {
+
+    margin-bottom: 0;
+
+    .stzk-sidenav-social {
+      a {
+        opacity: 0.7;
+        padding: 0;
+        text-align: center;
+
+        &:hover {
+          background-color:inherit;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.stzk-country {
+  display: inline-block;
+  vertical-align: middle;
+  height: 16px;
+  width: 20px;
+  margin-left: 3px;
+}
+
+.stzk-language {
+  margin-left: 15px;
+}
+
+.stzk-language-li {
+  margin-left: 30px;
+}
+
+// [6] - Parallax
+
+.parallax-container {
+  min-height: 500px;
+  height: auto;
+}
+
+.parallax-container .section {
+  width: 100%;
+  height: inherit;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.parallax-text {
+  color: white;
+  text-shadow:
+   -1px -1px 0 rgba(0, 0, 0, 0.5),
+    1px -1px 0 rgba(0, 0, 0, 0.5),
+    -1px 1px 0 rgba(0, 0, 0, 0.5),
+     1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+// [7] - Cards
+
+.card {
+  background-color: $primary-color-l;
+  color: $content-color;
+
+  .header {
+    padding-top: 10px;
+    margin-left: 20px;
+
+    .stzk-icon {
+      margin-right: 20px;
+    }
+  }
+
+  .card-content {
+    background-color: $primary-color;
+  }
+
+  .card-action {
+    border-top: 1px solid $primary-color;
+  }
+}
+
+// [8] - Breadcrumbs
+
+.stkz-breadcrumbs {
+  background-color: rgba(0,0,0,0);
+  height: auto;
+}
+
+.breadcrumb {
+  font-size: 12px;
+}
+
+// [9] - Tooltip
+
+.material-tooltip {
+  background-color: $primary-color;
+}
+
+// [10] - Code
+
+.stzk-code {
+  background-color: $primary-color;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+// [11] - Input
+
+.select-dropdown {
+  color: $content-color;
+}
+
+.select-wrapper .caret {
+  fill: $content-color;
+}

@@ -1,5 +1,85 @@
-<h2>Edit Verse</h2>
+<div class="container">
 
-<%= render "form.html", Map.put(assigns, :action, verse_path(@conn, :update, @stanza.poem_id, @stanza.id, @verse)) %>
+  <br>
+  <br>
 
-<span><%= link "Back", to: verse_path(@conn, :index, @stanza.poem_id, @stanza.id) %></span>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-le xl6 offset-xl3">
+      <h5>
+<%= link to: page_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Home" %>">
+          home
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: poem_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "My Poems" %>">
+          chrome_reader_mode
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: poem_path(@conn, :show, @stanza.poem) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Poem" %>: <%= @stanza.poem.title %>">
+          book
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: stanza_path(@conn, :index, @stanza.poem) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "%{poem} Stanzas", poem: @stanza.poem.title %>">
+          line_style
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: stanza_path(@conn, :show, @stanza.poem, @stanza) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Stanza" %>: <%= @stanza.context %>">
+          view_headline
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: verse_path(@conn, :index, @stanza.poem, @stanza) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "%{stanza} Verses", stanza: @stanza.context %>">
+          format_list_bulleted
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: verse_path(@conn, :show, @stanza.poem, @stanza, @verse) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Verse" %>: <%= @verse.key %>">
+          drag_handle
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+        <i class="material-icons stzk-icon stzk-c-primary tooltip" data-position="bottom" data-tooltip="<%= gettext "Edit" %>">
+          edit
+        </i>
+      </h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
+      <div class="card z-depth-3">
+        <h4 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            view_headline
+          </i>
+          <%= gettext "Edit Verse" %>
+        </h4>
+        <%= render "form.html", Map.put(assigns, :action, verse_path(@conn, :update, @stanza.poem, @stanza, @verse)) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,23 +1,263 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Stiltzkey" %></h2>
-  <p class="lead">A websystem to save and share sensible data information!</p>
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <h1 class="header row center stzk-f stzk-c-secondary">
+        Stiltzkey
+      </h1>
+
+      <br>
+      <br>
+
+      <div class="row center">
+        <h5 class="col s12 header parallax-text">
+          <%= gettext "A platform designed to allow you whisper your secrets safely!" %>
+        </h5>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="row center">
+<%= if assigns[:current_user] do %>
+        <%= link gettext("My Poems"), to: poem_path(@conn, :index), class: "btn-large waves-effect" %>
+<% else %>
+        <%= link gettext("Get started"), to: user_path(@conn, :new), class: "btn-large waves-effect" %>
+<% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="parallax"><img src="/images/library.jpg"></div>
 </div>
 
-<div class="row marketing">
-  <%= if assigns[:current_user] do %>
-    <div class="col-lg-6">
-      <h4>My Account</h4>
-      <ul>
-        <li>
-          <%= link "My Profile", to: user_path(@conn, :show, @current_user) %>
-        </li>
-        <li>
-          <%= link "My Poems", to: poem_path(@conn, :index) %>
-        </li>
-        <li>
-          <%= link "My Movements", to: movement_path(@conn, :index) %>
-        </li>
-      </ul>
+
+<div class="container">
+  <div class="section">
+
+    <br>
+    <br>
+
+    <div class="row">
+
+      <div class="col s12 m4">
+        <div class="stzk-c-content">
+          <h2 class="center">
+            <i class="material-icons stzk-icon">
+              verified_user
+            </i>
+          </h2>
+          <h5 class="center">
+            <%= gettext "Safe and Private" %>
+          </h5>
+
+          <p>
+            <%= gettext "Stiltzkey uses two-staged encryption in order to protect your secrets from malicious attacks. Only you and your movement partners can see the secrets defined by you. You can choose which secret you want to share to your comrades and which secrets you want to keep private." %>
+          </p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="stzk-c-content">
+          <h2 class="center">
+            <i class="material-icons stzk-icon">
+              format_align_left
+            </i>
+          </h2>
+
+          <h5 class="center">
+            <%= gettext "Make Your Verses" %>
+          </h5>
+
+          <p>
+            <%= gettext "Your secret is called by Stiltzkey as Verse. A collection of verses is a Stanza. A collection of stanzas is a Poem. Every verse, stanza, and poem is defined by an Author, which can share its secrets by defining a Movement - a group interested in a specific type of poetry." %>
+          </p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="stzk-c-content">
+          <h2 class="center">
+            <i class="material-icons stzk-icon">
+              wifi_tethering
+            </i>
+          </h2>
+          <h5 class="center">
+            <%= gettext "Spread the Poetry!" %>
+          </h5>
+
+          <p>
+            <%= gettext "Any Author can join a Movement as a Leader, Poet or Enthusiast. Leader is the author that created the movement and can invite poets and enthusiasts, add/read verses, and edit the movement settings. Poet can only add/read verses. Enthusiast can only read verses." %>
+          </p>
+        </div>
+      </div>
+
     </div>
-  <% end %>
+
+    <br>
+    <br>
+
+  </div>
 </div>
+
+<div class="parallax-container valign-wrapper">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <div class="row center">
+
+        <h5 class="header col s12 parallax-text">
+          <%= gettext "Developed as free software using Elixir's Framework Phoenix" %>
+        </h5>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="parallax"><img src="/images/writing.jpg"></div>
+</div>
+
+<div class="container">
+  <div class="section">
+
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col s12 center stzk-c-content">
+        <h4>
+          <%= gettext "Born from the Ashes" %>
+        </h4>
+        <p class="left-align">
+          <%= gettext "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the brazillian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}.", vsn: @vsn, contributors: @contributors %>
+        </p>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+  </div>
+</div>
+
+
+<div class="parallax-container valign-wrapper">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <div class="row center">
+        <h5 class="header col s12 parallax-text">
+          <%= gettext "Follow and chat with the Stiltzkey magic movement!" %>
+        </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="parallax"><img src="/images/enchanted-book.jpg"></div>
+</div>
+
+<footer class="page-footer">
+  <div class="container">
+
+    <br>
+    <br>
+
+    <div class="row center stzk-c-content">
+      <div class="col s12">
+        <h4>
+          <%= gettext "Connect with Stiltzkey" %>
+        </h4>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="stzk-icon">
+          <h1 class="center">
+            <a href="https://github.com/arkye/stiltzkey" target="_blank">
+              <i class="fa fa-lg fa-github-alt stzk-c-content"></i>
+            </a>
+          </h1>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="stzk-icon">
+          <h1 class="center">
+            <a href="https://gitlab.com/arkye/stiltzkey" target="_blank">
+              <i class="fa fa-lg fa-gitlab stzk-c-content"></i>
+            </a>
+          </h1>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="stzk-icon">
+          <h1 class="center">
+            <a href="https://fga.unb.br/lappis" target="_blank">
+              <i class="fa fa-lg fa-link stzk-c-content"></i>
+            </a>
+          </h1>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="stzk-icon">
+          <h1 class="center">
+            <a href="https://chat.lappis.rocks" target="_blank">
+              <i class="fa fa-lg fa-comments stzk-c-content"></i>
+            </a>
+          </h1>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="stzk-icon">
+          <h1 class="center">
+            <a href="https://t.me/lappisnews" target="_blank">
+              <i class="fa fa-lg fa-telegram stzk-c-content"></i>
+            </a>
+          </h1>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="stzk-icon">
+          <h1 class="center">
+            <a href="https://gitlab.com/lappis-unb/docs" target="_blank">
+              <i class="fa fa-lg fa-wikipedia-w stzk-c-content"></i>
+            </a>
+          </h1>
+        </div>
+      </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      <%= gettext "Made with ❤ by " %>
+      <a class="brown-text text-lighten-3" href="https://fga.unb.br/lappis" target="_blank">
+        LAPPIS
+      </a>
+      <%= gettext " using " %>
+      <a class="brown-text text-lighten-3" href="https://www.docker.com/" target="_blank">
+       Docker
+      </a>
+      ,
+      <a class="brown-text text-lighten-3" href="https://elixir-lang.org/" target="_blank">
+       Elixir
+      </a>
+      ,
+      <a class="brown-text text-lighten-3" href="https://github.com/" target="_blank">
+       Github
+      </a>
+      ,
+      <a class="brown-text text-lighten-3" href="https://about.gitlab.com/features/gitlab-ci-cd/" target="_blank">
+       GitLab CI/CD
+      </a>
+      ,
+      <a class="brown-text text-lighten-3" href="http://materializecss.com/" target="_blank">
+       Materialize
+      </a>
+      <%= gettext ", and " %>
+      <a class="brown-text text-lighten-3" href="http://phoenixframework.org/" target="_blank">
+       Phoenix
+      </a>
+      .
+    </div>
+  </div>
+</footer>

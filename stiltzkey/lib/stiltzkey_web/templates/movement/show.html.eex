@@ -1,135 +1,262 @@
-<ol class="breadcrumb">
-  <li>
-    <%= link "Home", to: page_path(@conn, :index) %>
-  </li>
-  <li>
-    <%= link "Movements", to: movement_path(@conn, :index) %>
-  </li>
-  <li class="active">
-    <%= @movement.name %>
-  </li>
-</ol>
+<div class="container">
 
-<div class="page-header">
-  <h1>Movement: <small><%= @movement.name %></small></h1>
-</div>
+  <br>
+  <br>
 
-<ul class="list-group">
-
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Description
-    </h4>
-    <p class="list-group-item-text">
-      <%= @movement.description %>
-    </p>
-  </li>
-
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Leader
-    </h4>
-    <p class="list-group-item-text">
-      <%= link leader_username(@movement), to: user_path(@conn, :show, leader_user(@movement)) %>
-    </p>
-  </li>
-
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Verses
-    </h4>
-    <p class="list-group-item-text">
-      The values below are NOT the real values for the key!
-    </p>
-    <p class="list-group-item-text">
-      Click on the button <code>Show Value</code> to pop out the real value.
-    </p>
-    <ul class="list-group">
-      <%= for verse <- @movement.verses do %>
-      <li class="list-group-item">
-        <span class="badge">
-          <%= link "Show Value", to: movement_path(@conn, :show_value, @movement, verse), class: "badge" %>
-        </span>
-        <h5 class="list-group-item-heading">
-          <%= verse.stanza.poem.title %> /
-          <%= verse.stanza.context %> /
-          <%= verse.key %>
-        </h5>
-        <p class="list-group-item-text">
-          <%= verse.value %>
-        </p>
-      </li>
-      <% end %>
-    </ul>
-    <%= if @role == :leader or @role == :poet do %>
-    <%= form_for @verse, movement_path(@conn, :add_verse, @movement), fn f -> %>
-    <div class="form-group">
-      <%= label f, :key, class: "control-label" %>
-      <%= select f, :id, @my_verses, class: "form-control" %>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-le xl6 offset-xl3">
+      <h5>
+<%= link to: page_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Home" %>">
+          home
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: movement_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "My Movements" %>">
+          screen_share
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+        <i class="material-icons stzk-icon stzk-c-primary tooltip" data-position="bottom" data-tooltip="<%= gettext "Movement" %>: <%= @movement.name %>">
+          group_work
+        </i>
+      </h5>
     </div>
-    <div class="form-group">
-      <%= submit "Add Verse", class: "btn btn-block btn-primary" %>
-    </div>
-    <% end %>
-    <% end %>
-  </li>
+  </div>
 
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Poets
-    </h4>
-    <p class="list-group-item-text">
-      Poets can add verses to the Movement
-    </p>
-    <ul class="list-group">
-      <%= for poet <- @movement.poets do %>
-      <li class="list-group-item">
-        <%= link poet.user.username, to: user_path(@conn, :show, poet.user.id) %>
-      </li>
-      <% end %>
-    </ul>
-    <%= if @role == :leader do %>
-    <%= form_for @poet, movement_path(@conn, :add_poet, @movement), fn f -> %>
-    <div class="form-group">
-      <%= label f, :username, class: "control-label" %>
-      <%= text_input f, :username, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= submit "Add Poet", class: "btn btn-block btn-primary" %>
-    </div>
-    <% end %>
-    <% end %>
-  </li>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
 
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Enthusiasts
-    </h4>
-    <p class="list-group-item-text">
-      Enthusiasts can ONLY read Movement's verses
-    </p>
-    <ul class="list-group">
-      <%= for enthusiast <- @movement.enthusiasts do %>
-      <li class="list-group-item">
-        <%= link enthusiast.user.username, to: user_path(@conn, :show, enthusiast.user.id) %>
-      </li>
-      <% end %>
-    </ul>
-    <%= if @role == :leader do %>
-    <%= form_for @enthusiast, movement_path(@conn, :add_enthusiast, @movement), fn f -> %>
-      <div class="form-group">
-        <%= label f, :username, class: "control-label" %>
-        <%= text_input f, :username, class: "form-control" %>
+      <div class="card z-depth-3">
+        <h4 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            group_work
+          </i>
+          <%= gettext "Show Movement" %>
+        </h4>
+
+        <div class="card-content">
+
+<%= link to: user_path(@conn, :show, leader_user(@movement)) do %>
+        <div class="input-field stzk-c-content">
+          <i class="material-icons stzk-icon prefix">
+            person
+          </i>
+          <input disabled value="<%= leader_username(@movement) %>" type="text" class="stzk-c-content">
+          <label class="stzk-c-content">
+            <%= gettext("Leader") %>
+          </label>
+        </div>
+<% end %>
+
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              label
+            </i>
+            <input disabled value="<%= @movement.name %>" type="text" class="stzk-c-content">
+            <label class="stzk-c-content">
+              <%= gettext("Name") %>
+            </label>
+          </div>
+
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              assignment
+            </i>
+            <input disabled value="<%= @movement.description %>" type="text" class="stzk-c-content">
+            <label class="stzk-c-content">
+              <%= gettext("Description") %>
+            </label>
+          </div>
+        </div>
+
+<%= if @movement.leader.id == @current_leader.id do %>
+        <div class="card-action">
+          <%= link gettext("Edit"), to: movement_path(@conn, :edit, @movement) %>
+          <%= link gettext("Delete"), to: movement_path(@conn, :delete, @movement), method: :delete, data: [confirm: gettext("Are you sure?")] %>
+        </div>
+<% end %>
       </div>
-      <div class="form-group">
-        <%= submit "Add Enthusiast", class: "btn btn-block btn-primary" %>
-      </div>
-    <% end %>
-    <% end %>
-  </li>
+    </div>
+  </div>
 
-</ul>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
+
+      <div class="card z-depth-3">
+        <h4 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            format_list_bulleted
+          </i>
+          <%= gettext "Movement Verses" %>
+        </h4>
+
+        <div class="card-content">
+
+          <ul class="collapsible">
+<%= for verse <- @movement.verses do %>
+            <li>
+              <div class="collapsible-header">
+                <span class="stzk-c-primary">
+                  <%= verse.author.user.username %> /
+                  <%= verse.stanza.poem.title %> /
+                  <%= verse.stanza.context %>
+                </span>
+                <code class="stzk-code">
+                  <%= verse.key %>
+                </code>
+              </div>
+              <div class="collapsible-body stzk-bg-primary-l">
+<%= link to: user_path(@conn, :show, verse.author.user) do %>
+                <div class="input-field stzk-c-content">
+                  <i class="material-icons stzk-icon prefix">
+                    person
+                  </i>
+                  <input disabled value="<%= verse.author.user.username %>" type="text" class="stzk-c-content">
+                  <label class="stzk-c-content">
+                    <%= gettext("Author") %>
+                  </label>
+                </div>
+<% end %>
+                <div class="input-field stzk-c-content">
+                  <i class="material-icons stzk-icon prefix">
+                    book
+                  </i>
+                  <input disabled value="<%= verse.stanza.poem.title %>" type="text" class="stzk-c-content">
+                  <label class="stzk-c-content">
+                    <%= gettext("Poem") %>
+                  </label>
+                </div>
+
+                <div class="input-field stzk-c-content">
+                  <i class="material-icons stzk-icon prefix">
+                    view_headline
+                  </i>
+                  <input disabled value="<%= verse.stanza.context %>" type="text" class="stzk-c-content">
+                  <label class="stzk-c-content">
+                    <%= gettext("Stanza") %>
+                  </label>
+                </div>
+
+                <div class="input-field stzk-c-content">
+                  <i class="material-icons stzk-icon prefix">
+                    info
+                  </i>
+                  <input disabled value="<%= verse.key %>" type="text" class="stzk-c-content">
+                  <label class="stzk-c-content">
+                    <%= gettext("Key") %>
+                  </label>
+                </div>
+
+                <div class="input-field stzk-c-content">
+                  <i class="material-icons stzk-icon prefix">
+                    visibility
+                  </i>
+                  <input disabled value="<%= verse.value %>" type="text" class="stzk-c-content">
+                  <label class="stzk-c-content">
+                    <%= gettext("Value") %>
+                  </label>
+                </div>
+              </div>
+            </li>
+<% end %>
+          </ul>
+        </div>
+
+<%= if @role == :leader or @role == :poet do %>
+        <div class="card-action">
+<%= form_for @verse, movement_path(@conn, :add_verse, @movement), fn f -> %>
+          <div class="input-field">
+            <%= select f, :id, @my_verses, class: "stzk-c-content" %>
+            <%= label f, :key, do: gettext("Key") %>
+          </div>
+          <%= submit gettext("Add Verse"), class: "btn-small" %>
+<% end %>
+<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
+
+      <div class="card z-depth-3">
+        <h4 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            person
+          </i>
+          <%= gettext "Movement Poets" %>
+        </h4>
+
+        <div class="card-content">
+
+          <ul class="collection">
+<%= for poet <- @movement.poets do %>
+            <li class="collection-item">
+              <%= link poet.user.username, to: user_path(@conn, :show, poet.user.id), class: "stzk-c-content" %>
+            </li>
+<% end %>
+          </ul>
+
+        </div>
 
 <%= if @role == :leader do %>
-<%= link "Edit", to: movement_path(@conn, :edit, @movement), class: "btn btn-block btn-primary"%>
-<%= end %>
+<%= form_for @poet, movement_path(@conn, :add_poet, @movement), fn f -> %>
+        <div class="card-action">
+          <div class="input-field">
+            <%= text_input f, :username, class: "stzk-c-content" %>
+            <%= label f, :username, do: gettext("Username") %>
+          </div>
+          <%= submit gettext("Add Poet"), class: "btn-small" %>
+        </div>
+<% end %>
+<% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
+
+      <div class="card z-depth-3">
+        <h4 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            person
+          </i>
+          <%= gettext "Movement Enthusiasts" %>
+        </h4>
+
+        <div class="card-content">
+
+          <ul class="collection">
+<%= for enthusiast <- @movement.enthusiasts do %>
+            <li class="collection-item">
+              <%= link enthusiast.user.username, to: user_path(@conn, :show, enthusiast.user.id), class: "stzk-c-content" %>
+            </li>
+<% end %>
+          </ul>
+
+        </div>
+
+<%= if @role == :leader do %>
+<%= form_for @poet, movement_path(@conn, :add_enthusiast, @movement), fn f -> %>
+        <div class="card-action">
+          <div class="input-field">
+            <%= text_input f, :username, class: "stzk-c-content" %>
+            <%= label f, :username, do: gettext("Username") %>
+          </div>
+          <%= submit gettext("Add Enthusiast"), class: "btn-small" %>
+        </div>
+<% end %>
+<% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

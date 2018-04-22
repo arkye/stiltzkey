@@ -1,38 +1,57 @@
 <%= form_for @changeset, @action, fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
+<div class="card-content">
 
-  <div class="form-group">
-    <%= label f, :username, class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
+<%= if @changeset.action do %>
+  <div id="alert_panel" class="row">
+    <div class="col s12">
+      <div class="card-panel red lighten-3 z-depth-3 black-text">
+        <%= gettext "Oops, something went wrong! Please check the errors below." %>
+        <i id="alert_close" class="fa fa-times right"></i>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+  <div class="input-field">
+    <i class="material-icons stzk-icon prefix">
+      person
+    </i>
+    <%= text_input f, :username, class: class_decorate(f, :username)%>
+    <%= label f, :username, do: gettext("Username") %>
     <%= error_tag f, :username %>
   </div>
 
-  <%= inputs_for f, :credential, fn cf -> %>
-    <div class="form-group">
-        <%= label cf, :email, class: "control-label" %>
-        <%= text_input cf, :email, class: "form-control" %>
-        <%= error_tag cf, :email %>
-    </div>
-
-    <div class="form-group">
-      <%= label cf, :password, class: "control-label" %>
-      <%= password_input cf, :password, class: "form-control" %>
-      <%= error_tag cf, :password %>
-    </div>
-
-    <div class="form-group">
-      <%= label cf, :password_confirmation, class: "control-label" %>
-      <%= password_input cf, :password_confirmation, class: "form-control" %>
-      <%= error_tag cf, :password_confirmation %>
-    </div>
-  <% end %>
-
-
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+<%= inputs_for f, :credential, fn cf -> %>
+  <div class="input-field">
+    <i class="material-icons stzk-icon prefix">
+      email
+    </i>
+    <%= text_input cf, :email, class: class_decorate(cf, :email) %>
+    <%= label cf, :email, do: gettext("E-mail") %>
+    <%= error_tag cf, :email %>
   </div>
+
+  <div class="input-field">
+    <i class="material-icons stzk-icon prefix">
+      vpn_key
+    </i>
+    <%= password_input cf, :password, class: class_decorate(cf, :password) %>
+    <%= label cf, :password, do: gettext("Password") %>
+    <%= error_tag cf, :password %>
+  </div>
+
+  <div class="input-field">
+    <i class="material-icons stzk-icon prefix">
+      vpn_key
+    </i>
+    <%= password_input cf, :password_confirmation, class: class_decorate(cf, :password_confirmation) %>
+    <%= label cf, :password_confirmation, do: gettext("Password Confirmation") %>
+    <%= error_tag cf, :password_confirmation %>
+  </div>
+<% end %>
+</div>
+
+<div class="card-action">
+  <%= submit gettext("Submit"), class: "btn-small" %>
+</div>
 <% end %>

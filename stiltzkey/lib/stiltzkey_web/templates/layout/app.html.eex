@@ -12,53 +12,224 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <%= if assigns[:current_user] do %>
-            <li>
-              <%= link @current_user.username, to: user_path(@conn, :show, @current_user), class: "btn btn-default btn-xs" %>
-            </li>
-            <li>
-              <%= link "Sign out", to: session_path(@conn, :delete), method: :delete, class: "btn btn-default btn-xs" %>
-            </li>
-            <% else %>
-            <li>
-              <%= link "Sign in", to: session_path(@conn, :new), class: "btn btn-default btn-xs" %>
-            </li>
-            <li>
-              <%= link "Sign up", to: user_path(@conn, :new), class: "btn btn-default btn-xs" %>
-            </li>
-            <% end %>
-          </ul>
-        </nav>
+    <nav class="z-depth-2" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="<%= page_path(@conn, :index) %>" class="brand-logo stzk-f">
+          Stiltzkey
+        </a>
 
-        <a href="<%= page_path(@conn, :index) %>"<span class="logo"></span></a>
-      </header>
+        <ul class="right hide-on-med-and-down">
+<%= if assigns[:current_user] do %>
+          <li>
+            <%= link @current_user.username, to: user_path(@conn, :show, @current_user) %>
+          </li>
+          <li>
+            <%= link gettext("Sign out"), to: session_path(@conn, :delete), method: :delete %>
+          </li>
+<% else %>
+          <li>
+            <%= link gettext("Sign in"), to: session_path(@conn, :new) %>
+          </li>
+          <li>
+            <%= link gettext("Sign up"), to: user_path(@conn, :new) %>
+          </li>
+<% end %>
+        </ul>
 
-      <%= if get_flash(@conn, :info) do %>
-      <div class="alert alert-info alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-          &times;
-        </button>
-        <%= get_flash(@conn, :info) %>
+        <ul id="nav-mobile" class="sidenav">
+          <li class="sidenav-header">
+            <div class="row">
+              <div class="col s12">
+                <p class="center-align">
+<%= if assigns[:current_user] do %>
+                  <%= link @current_user.username, to: user_path(@conn, :show, @current_user) %>
+<% else %>
+                  <%= gettext "Guest" %>
+<% end %>
+                </p>
+              </div>
+            </div>
+
+            <ul class="collapsible">
+              <li>
+                <a class="collapsible-header waves-effect">
+                  <i class="material-icons">
+                    <span class="stzk-icon stzk-c-content stzk-language">
+                      language
+                    </span>
+                  </i>
+                  <span class="stzk-language">
+                    <%= gettext "Language" %>
+                  </span>
+                </a>
+                <div class="collapsible-body z-depth-3">
+                  <ul>
+                    <li>
+                      <a href="<%= page_path(@conn, :index, locale: :en) %>" class="waves-effect">
+                        <img src="/images/country_flag_us.svg" class="stzk-country"></img>
+                        <span class="stzk-language-li">
+                          English
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<%= page_path(@conn, :index, locale: :pt) %>" class="waves-effect">
+                        <img src="/images/country_flag_br.svg" class="stzk-country"></img>
+                        <span class="stzk-language-li">
+                          Português
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="divider stzk-bg-primary"></div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+<%= if assigns[:current_user] do %>
+          <li class="stzk-bg-primary-l">
+            <a href="<%= user_path(@conn, :show, @current_user) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-icon stzk-c-content">
+                  account_circle
+                </span>
+              </i>
+              <%= gettext "My Profile" %>
+            </a>
+          </li>
+
+          <li class="stzk-bg-primary-l">
+            <a href="<%= poem_path(@conn, :index) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  chrome_reader_mode
+                </span>
+              </i>
+              <%= gettext "My Poems" %>
+            </a>
+          </li>
+
+          <li class="stzk-bg-primary-l">
+            <a href="<%= movement_path(@conn, :index) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  screen_share
+                </span>
+              </i>
+              <%= gettext "My Movements" %>
+            </a>
+          </li>
+
+          <li class="stzk-bg-primary-l">
+            <a href="#" data-csrf="<%= get_csrf_token() %>" data-method="delete" data-to="<%= session_path(@conn, :delete) %>" rel="nofollow" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  exit_to_app
+                </span>
+              </i>
+              <%= gettext "Sign out" %>
+            </a>
+          </li>
+<% else %>
+          <li class="stzk-bg-primary-l">
+            <a href="<%= session_path(@conn, :new) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  person
+                </span>
+              </i>
+              <%= gettext "Sign in" %>
+            </a>
+          </li>
+
+          <li class="stzk-bg-primary-l">
+            <a href="<%= user_path(@conn, :new) %>" class="waves-effect">
+              <i class="material-icons">
+                <span class="stzk-c-content">
+                  person_add
+                </span>
+              </i>
+              <%= gettext "Sign up" %>
+            </a>
+          </li>
+<% end %>
+          <li class="sidenav-footer">
+            <div class="row">
+              <div class="stzk-sidenav-social">
+                <div class="col s2">
+                  <a href="https://github.com/arkye/stiltzkey" target="_blank">
+                    <i class="fa fa-lg fa-github-alt"></i>
+                  </a>
+                </div>
+                <div class="col s2">
+                  <a href="https://gitlab.com/arkye/stiltzkey" target="_blank">
+                    <i class="fa fa-lg fa-gitlab"></i>
+                  </a>
+                </div>
+                <div class="col s2">
+                  <a href="https://fga.unb.br/lappis" target="_blank">
+                    <i class="fa fa-lg fa-link"></i>
+                  </a>
+                </div>
+                <div class="col s2">
+                  <a href="https://chat.lappis.rocks" target="_blank">
+                    <i class="fa fa-lg fa-comments"></i>
+                  </a>
+                </div>
+                <div class="col s2">
+                  <a href="https://t.me/lappisnews" target="_blank">
+                    <i class="fa fa-lg fa-telegram"></i>
+                  </a>
+                </div>
+                <div class="col s2">
+                  <a href="https://gitlab.com/lappis-unb/docs" target="_blank">
+                    <i class="fa fa-lg fa-wikipedia-w"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+          <i class="material-icons">
+            menu
+          </i>
+        </a>
       </div>
-      <% end %>
-      <%= if get_flash(@conn, :error) do %>
-      <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-          &times;
-        </button>
+    </nav>
+
+<%= if get_flash(@conn, :info) do %>
+    <div id="alert_panel" class="card-panel stzk-alert blue lighten-3">
+      <%= get_flash(@conn, :info) %>
+      <i id="alert_close" class="fa fa-times right"></i>
+    </div>
+<% end %>
+
+<%= if get_flash(@conn, :error) do %>
+    <div id="alert_panel" class="card-panel stzk-alert red lighten-3">
         <%= get_flash(@conn, :error) %>
-      </div>
-      <% end %>
+        <i id="alert_close" class="fa fa-times right"></i>
+    </div>
+<% end %>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+    <main role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
 
-    </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script>
+      $("select").formSelect();
+      $(".collapsible").collapsible();
+      $(".parallax").parallax();
+      $(".sidenav").sidenav();
+      $(".tooltip").tooltip();
+      $("#alert_close").click(function () {
+        $("#alert_panel").fadeOut( "slow", function(){});
+      });
+    </script>
   </body>
 </html>

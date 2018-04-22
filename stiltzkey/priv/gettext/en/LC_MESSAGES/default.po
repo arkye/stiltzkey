@@ -1,0 +1,481 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2\n"
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:236
+msgid " using "
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:13
+msgid "A platform designed to allow you whisper your secrets safely!"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:90
+msgid "Any Author can join a Movement as a Leader, Poet or Enthusiast. Leader is the author that created the movement and can invite poets and enthusiasts, add/read verses, and edit the movement settings. Poet can only add/read verses. Enthusiast can only read verses."
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:128
+msgid "Born from the Ashes"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:166
+msgid "Connect with Stiltzkey"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:109
+msgid "Developed as free software using Elixir's Framework Phoenix"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:148
+msgid "Follow and chat with the Stiltzkey magic movement!"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:24
+msgid "Get started"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/layout/app.html.eex:47
+msgid "Guest"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/layout/app.html.eex:62
+msgid "Language"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:232
+msgid "Made with ❤ by "
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:69
+msgid "Make Your Verses"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/layout/app.html.eex:122
+#: lib/stiltzkey_web/templates/movement/edit.html.eex:18
+#: lib/stiltzkey_web/templates/movement/index.html.eex:17
+#: lib/stiltzkey_web/templates/movement/index.html.eex:32
+#: lib/stiltzkey_web/templates/movement/new.html.eex:18
+#: lib/stiltzkey_web/templates/movement/show.html.eex:18
+msgid "My Movements"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/layout/app.html.eex:111
+#: lib/stiltzkey_web/templates/page/index.html.eex:22
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:18
+#: lib/stiltzkey_web/templates/poem/index.html.eex:17
+#: lib/stiltzkey_web/templates/poem/index.html.eex:32
+#: lib/stiltzkey_web/templates/poem/new.html.eex:18
+#: lib/stiltzkey_web/templates/poem/show.html.eex:18
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:18
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:18
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:18
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:18
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:18
+#: lib/stiltzkey_web/templates/verse/index.html.eex:18
+#: lib/stiltzkey_web/templates/verse/new.html.eex:18
+#: lib/stiltzkey_web/templates/verse/show.html.eex:18
+msgid "My Poems"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/layout/app.html.eex:100
+#: lib/stiltzkey_web/templates/user/edit.html.eex:19
+#: lib/stiltzkey_web/templates/user/show.html.eex:18
+msgid "My Profile"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:51
+msgid "Safe and Private"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/layout/app.html.eex:31
+#: lib/stiltzkey_web/templates/layout/app.html.eex:144
+#: lib/stiltzkey_web/templates/session/new.html.eex:13
+msgid "Sign in"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/layout/app.html.eex:27
+#: lib/stiltzkey_web/templates/layout/app.html.eex:133
+msgid "Sign out"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/layout/app.html.eex:34
+#: lib/stiltzkey_web/templates/layout/app.html.eex:155
+#: lib/stiltzkey_web/templates/user/new.html.eex:13
+msgid "Sign up"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:55
+msgid "Stiltzkey uses two-staged encryption in order to protect your secrets from malicious attacks. Only you and your movement partners can see the secrets defined by you. You can choose which secret you want to share to your comrades and which secrets you want to keep private."
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:73
+msgid "Your secret is called by Stiltzkey as Verse. A collection of verses is a Stanza. A collection of stanzas is a Poem. Every verse, stanza, and poem is defined by an Author, which can share its secrets by defining a Movement - a group interested in a specific type of poetry."
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:131
+msgid "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the brazillian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}."
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:256
+msgid ", and "
+msgstr ""
+
+#: lib/stiltzkey_web/templates/session/new.html.eex:23
+#: lib/stiltzkey_web/templates/user/form.html.eex:30
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:30
+#: lib/stiltzkey_web/templates/user/show.html.eex:58
+msgid "E-mail"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/form.html.eex:8
+#: lib/stiltzkey_web/templates/poem/form.html.eex:8
+#: lib/stiltzkey_web/templates/stanza/form.html.eex:8
+#: lib/stiltzkey_web/templates/user/form.html.eex:8
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:8
+#: lib/stiltzkey_web/templates/verse/form.html.eex:8
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr ""
+
+#: lib/stiltzkey_web/templates/session/new.html.eex:32
+#: lib/stiltzkey_web/templates/user/form.html.eex:39
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:39
+msgid "Password"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:48
+msgid "Password Confirmation"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:86
+msgid "Spread the Poetry!"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/session/new.html.eex:37
+#: lib/stiltzkey_web/templates/user/form.html.eex:46
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:55
+msgid "Submit"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:214
+#: lib/stiltzkey_web/templates/movement/show.html.eex:252
+#: lib/stiltzkey_web/templates/user/form.html.eex:20
+#: lib/stiltzkey_web/templates/user/form_new.html.eex:20
+#: lib/stiltzkey_web/templates/user/show.html.eex:48
+msgid "Username"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/edit.html.eex:33
+#: lib/stiltzkey_web/templates/movement/index.html.eex:47
+#: lib/stiltzkey_web/templates/movement/show.html.eex:80
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:33
+#: lib/stiltzkey_web/templates/poem/index.html.eex:48
+#: lib/stiltzkey_web/templates/poem/show.html.eex:77
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:49
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:64
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:105
+#: lib/stiltzkey_web/templates/user/edit.html.eex:31
+#: lib/stiltzkey_web/templates/user/show.html.eex:65
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:65
+#: lib/stiltzkey_web/templates/verse/index.html.eex:76
+#: lib/stiltzkey_web/templates/verse/show.html.eex:160
+msgid "Edit"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/user/edit.html.eex:45
+msgid "Edit Profile"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/edit.html.eex:10
+#: lib/stiltzkey_web/templates/movement/index.html.eex:10
+#: lib/stiltzkey_web/templates/movement/new.html.eex:10
+#: lib/stiltzkey_web/templates/movement/show.html.eex:10
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:10
+#: lib/stiltzkey_web/templates/poem/index.html.eex:10
+#: lib/stiltzkey_web/templates/poem/new.html.eex:10
+#: lib/stiltzkey_web/templates/poem/show.html.eex:10
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:10
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:10
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:10
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:10
+#: lib/stiltzkey_web/templates/user/edit.html.eex:10
+#: lib/stiltzkey_web/templates/user/show.html.eex:10
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:10
+#: lib/stiltzkey_web/templates/verse/index.html.eex:10
+#: lib/stiltzkey_web/templates/verse/new.html.eex:10
+#: lib/stiltzkey_web/templates/verse/show.html.eex:10
+msgid "Home"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/user/edit.html.eex:23
+#: lib/stiltzkey_web/templates/user/show.html.eex:22
+#: lib/stiltzkey_web/templates/user/show.html.eex:38
+msgid "Show Profile"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/index.html.eex:48
+#: lib/stiltzkey_web/templates/movement/show.html.eex:81
+#: lib/stiltzkey_web/templates/poem/index.html.eex:49
+#: lib/stiltzkey_web/templates/poem/show.html.eex:78
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:65
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:106
+#: lib/stiltzkey_web/templates/verse/index.html.eex:77
+#: lib/stiltzkey_web/templates/verse/show.html.eex:161
+msgid "Are you sure?"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/index.html.eex:48
+#: lib/stiltzkey_web/templates/movement/show.html.eex:81
+#: lib/stiltzkey_web/templates/poem/index.html.eex:49
+#: lib/stiltzkey_web/templates/poem/show.html.eex:78
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:65
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:106
+#: lib/stiltzkey_web/templates/verse/index.html.eex:77
+#: lib/stiltzkey_web/templates/verse/show.html.eex:161
+msgid "Delete"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/new.html.eex:39
+#: lib/stiltzkey_web/templates/poem/index.html.eex:57
+#: lib/stiltzkey_web/templates/poem/new.html.eex:39
+msgid "New Poem"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/index.html.eex:46
+#: lib/stiltzkey_web/templates/movement/index.html.eex:84
+#: lib/stiltzkey_web/templates/movement/index.html.eex:117
+#: lib/stiltzkey_web/templates/poem/index.html.eex:47
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:63
+#: lib/stiltzkey_web/templates/verse/index.html.eex:75
+msgid "Show"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/poem/index.html.eex:46
+#: lib/stiltzkey_web/templates/poem/show.html.eex:76
+msgid "Stanzas"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:122
+#: lib/stiltzkey_web/templates/poem/show.html.eex:50
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:66
+#: lib/stiltzkey_web/templates/verse/show.html.eex:98
+msgid "Author"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/form.html.eex:29
+#: lib/stiltzkey_web/templates/movement/show.html.eex:73
+#: lib/stiltzkey_web/templates/poem/form.html.eex:29
+#: lib/stiltzkey_web/templates/poem/show.html.eex:71
+#: lib/stiltzkey_web/templates/stanza/form.html.eex:29
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:99
+msgid "Description"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:47
+msgid "Edit Poem"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/new.html.eex:25
+#: lib/stiltzkey_web/templates/poem/new.html.eex:25
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:41
+#: lib/stiltzkey_web/templates/verse/new.html.eex:57
+msgid "New"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:132
+#: lib/stiltzkey_web/templates/poem/edit.html.eex:26
+#: lib/stiltzkey_web/templates/poem/show.html.eex:25
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:26
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:26
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:26
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:26
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:78
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:26
+#: lib/stiltzkey_web/templates/verse/index.html.eex:26
+#: lib/stiltzkey_web/templates/verse/new.html.eex:26
+#: lib/stiltzkey_web/templates/verse/show.html.eex:26
+#: lib/stiltzkey_web/templates/verse/show.html.eex:110
+msgid "Poem"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/poem/show.html.eex:40
+msgid "Show Poem"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/poem/form.html.eex:20
+#: lib/stiltzkey_web/templates/poem/show.html.eex:61
+msgid "Title"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:34
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:33
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:48
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:34
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:34
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:34
+#: lib/stiltzkey_web/templates/verse/index.html.eex:34
+#: lib/stiltzkey_web/templates/verse/new.html.eex:34
+#: lib/stiltzkey_web/templates/verse/show.html.eex:34
+msgid "%{poem} Stanzas"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/form.html.eex:20
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:89
+msgid "Context"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:63
+msgid "Edit Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:73
+msgid "New %{poem}'s Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/new.html.eex:55
+msgid "New Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:55
+msgid "Show Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:142
+#: lib/stiltzkey_web/templates/stanza/edit.html.eex:42
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:41
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:42
+#: lib/stiltzkey_web/templates/verse/index.html.eex:42
+#: lib/stiltzkey_web/templates/verse/new.html.eex:42
+#: lib/stiltzkey_web/templates/verse/show.html.eex:42
+#: lib/stiltzkey_web/templates/verse/show.html.eex:122
+msgid "Stanza"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/stanza/index.html.eex:62
+#: lib/stiltzkey_web/templates/stanza/show.html.eex:104
+msgid "Verses"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:50
+#: lib/stiltzkey_web/templates/verse/index.html.eex:49
+#: lib/stiltzkey_web/templates/verse/index.html.eex:64
+#: lib/stiltzkey_web/templates/verse/new.html.eex:50
+#: lib/stiltzkey_web/templates/verse/show.html.eex:50
+msgid "%{stanza} Verses"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:65
+msgid "Click to hide the secret value"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:71
+msgid "Click to show the secret value"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:79
+msgid "Edit Verse"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:156
+msgid "Hide Secret Value"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:152
+#: lib/stiltzkey_web/templates/movement/show.html.eex:176
+#: lib/stiltzkey_web/templates/verse/form.html.eex:20
+#: lib/stiltzkey_web/templates/verse/show.html.eex:133
+msgid "Key"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/new.html.eex:71
+msgid "New Verse"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:158
+msgid "Show Secret Value"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/show.html.eex:87
+msgid "Show Verse"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:162
+#: lib/stiltzkey_web/templates/verse/form.html.eex:29
+#: lib/stiltzkey_web/templates/verse/show.html.eex:150
+msgid "Value"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/edit.html.eex:58
+#: lib/stiltzkey_web/templates/verse/show.html.eex:57
+msgid "Verse"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/verse/index.html.eex:85
+msgid "New %{stanza}'s Verse"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:254
+msgid "Add Enthusiast"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:216
+msgid "Add Poet"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:178
+msgid "Add Verse"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/edit.html.eex:47
+msgid "Edit Movement"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:52
+msgid "Leader"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/edit.html.eex:26
+#: lib/stiltzkey_web/templates/movement/show.html.eex:25
+msgid "Movement"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:232
+msgid "Movement Enthusiasts"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:194
+msgid "Movement Poets"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:96
+msgid "Movement Verses"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/index.html.eex:103
+msgid "Movements as Enthusiast"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/index.html.eex:70
+msgid "Movements as Poet"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/form.html.eex:20
+#: lib/stiltzkey_web/templates/movement/show.html.eex:63
+msgid "Name"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/index.html.eex:56
+msgid "New Movement"
+msgstr ""
+
+#: lib/stiltzkey_web/templates/movement/show.html.eex:40
+msgid "Show Movement"
+msgstr ""
