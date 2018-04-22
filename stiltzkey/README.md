@@ -1,20 +1,28 @@
-# Stiltzkey
+# Stiltzkey Phoenix Cheat Sheet
 
-To start your Phoenix server:
+## Start Learning
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+* Official website: http://www.phoenixframework.org/
+* Guides: http://phoenixframework.org/docs/overview
+* Docs: https://hexdocs.pm/phoenix
+* Mailing list: http://groups.google.com/group/phoenix-talk
+* Source: https://github.com/phoenixframework/phoenix
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Cheat Sheet
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+### i18n with [GNU gettext](https://www.gnu.org/software/gettext/)
 
-## Learn more
+#### Update i18n Files
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+```bash
+sudo docker-compose -p stzk exec phoenix mix gettext.extract
+sudo docker-compose -p stzk exec phoenix mix gettext.merge priv/gettext
+```
+
+### Routes
+
+#### List Routes
+
+```bash
+sudo docker-compose -p stzk exec phoenix mix phx.routes
+```
