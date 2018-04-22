@@ -61,29 +61,10 @@ defmodule StiltzkeyWeb.MovementController do
     verse = Papyrus.change_verse(%Verse{})
 
     my_verses = Papyrus.list_verses_from_author(conn.assigns.current_author) -- conn.assigns.movement.verses
-    |> Enum.map(&{"#{&1.key}", &1.id})
+    |> Enum.map(&{"#{&1.stanza.poem.title} / #{&1.stanza.context} / #{&1.key}", &1.id})
 
     conn
     |> assign(:my_verses, my_verses)
-    |> render("show.html", poet: poet, enthusiast: enthusiast, verse: verse)
-  end
-
-  def show_value(conn, %{"verse_id" => id}) do
-    poet = Papyrus.change_poet(%Poet{})
-    enthusiast = Papyrus.change_enthusiast(%Enthusiast{})
-    verse = Papyrus.change_verse(%Verse{})
-
-    my_verses = Papyrus.list_verses_from_author(conn.assigns.current_author) -- conn.assigns.movement.verses
-    |> Enum.map(&{"#{&1.key}", &1.id})
-
-    id  = String.to_integer(id)
-    verse_to_show = Enum.find(conn.assigns.movement.verses, fn(verse) ->
-      verse.id == id
-    end)
-
-    conn
-    |> assign(:my_verses, my_verses)
-    |> put_flash(:info, Cipher.decrypt(verse_to_show.value))
     |> render("show.html", poet: poet, enthusiast: enthusiast, verse: verse)
   end
 

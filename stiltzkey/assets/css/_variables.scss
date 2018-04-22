@@ -159,9 +159,9 @@ $collapsible-border-color: $primary-color;
 // // 9. Dropdown
 // // ==========================================================================
 //
-// $dropdown-bg-color: #fff;
+$dropdown-bg-color: $primary-color;
 // $dropdown-hover-bg-color: #eee;
-// $dropdown-color: $secondary-color;
+$dropdown-color: $content-color;
 // $dropdown-item-height: 50px;
 //
 //
@@ -339,12 +339,12 @@ $sidenav-bg-color: $primary-color;
 // // 23. Collections
 // // ==========================================================================
 //
-// $collection-border-color: #e0e0e0;
-// $collection-bg-color: #fff;
+$collection-border-color: $primary-color-light;
+$collection-bg-color: $primary-color;
 // $collection-active-bg-color: $secondary-color;
 // $collection-active-color: lighten($secondary-color, 55%);
 // $collection-hover-bg-color: #ddd;
-// $collection-link-color: $secondary-color;
+$collection-link-color: $content-color;
 // $collection-line-height: 1.5rem;
 //
 //

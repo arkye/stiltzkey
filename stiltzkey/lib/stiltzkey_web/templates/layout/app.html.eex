@@ -116,7 +116,7 @@
             <a href="<%= movement_path(@conn, :index) %>" class="waves-effect">
               <i class="material-icons">
                 <span class="stzk-c-content">
-                  volume_up
+                  screen_share
                 </span>
               </i>
               <%= gettext "My Movements" %>
@@ -222,6 +222,7 @@
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>
+      $("select").formSelect();
       $(".collapsible").collapsible();
       $(".parallax").parallax();
       $(".sidenav").sidenav();
