@@ -36,7 +36,7 @@
           <i class="material-icons stzk-icon">
             book
           </i>
-          <%= gettext "New Poem" %>
+          <%= gettext "New Movement" %>
         </h4>
         <%= render "form.html", Map.put(assigns, :action, movement_path(@conn, :create)) %>
       </div>
