@@ -364,6 +364,7 @@ defmodule Stiltzkey.Papyrus do
     Repo.all(query)
     |> Repo.preload(author: [user: :credential])
     |> Repo.preload(stanza: :poem)
+    |> maybe_decrypt_values()
   end
 
   def list_verses_from_stanza(%Stanza{id: id}) do
@@ -843,6 +844,24 @@ defmodule Stiltzkey.Papyrus do
     |> Repo.preload(poets: [:movements, [user: :credential]])
     |> Repo.preload(enthusiasts: [:movements, [user: :credential]])
     |> Repo.preload(verses: [stanza: :poem, author: [user: :credential]])
+    |> maybe_decrypt_values()
+  end
+
+  def maybe_decrypt_values(%Movement{verses: verses} = movement) do
+    open_verses = for verse <- verses do
+      %{ verse | value: Cipher.decrypt(verse.value)}
+    end
+    %{ movement | verses: open_verses }
+  end
+
+  def maybe_decrypt_values(verses) when is_list(verses) do
+    for verse <- verses do
+      %{ verse | value: Cipher.decrypt(verse.value)}
+    end
+  end
+
+  def maybe_decrypt_values(result) do
+    result
   end
 
   @doc """

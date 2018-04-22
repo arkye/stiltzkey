@@ -1,87 +1,166 @@
-<ol class="breadcrumb">
-  <li>
-    <%= link "Home", to: page_path(@conn, :index) %>
-  </li>
-  <li>
-    <%= link "Poems", to: poem_path(@conn, :index) %>
-  </li>
-  <li>
-    <%= link @stanza.poem.title, to: poem_path(@conn, :show, @stanza.poem_id) %>
-  </li>
-  <li>
-    <%= link "Stanzas", to: stanza_path(@conn, :index, @stanza.poem_id) %>
-  </li>
-  <li>
-    <%= link @stanza.context, to: stanza_path(@conn, :show, @stanza.poem_id, @stanza) %>
-  </li>
-  <li>
-    <%= link "Verses", to: verse_path(@conn, :index, @stanza.poem_id, @stanza) %>
-  </li>
-  <li class="active">
-    <%= @verse.key %>
-  </li>
-</ol>
+<div class="container">
 
-<div class="page-header">
-  <h1>Verse: <small><%= @verse.key %></small></h1>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-le xl6 offset-xl3">
+      <h5>
+<%= link to: page_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Home" %>">
+          home
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: poem_path(@conn, :index) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "My Poems" %>">
+          chrome_reader_mode
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: poem_path(@conn, :show, @stanza.poem) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Poem" %>: <%= @stanza.poem.title %>">
+          book
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: stanza_path(@conn, :index, @stanza.poem) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "%{poem} Stanzas", poem: @stanza.poem.title %>">
+          line_style
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: stanza_path(@conn, :show, @stanza.poem, @stanza) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Stanza" %>: <%= @stanza.context %>">
+          view_headline
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= link to: verse_path(@conn, :index, @stanza.poem, @stanza) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "%{stanza} Verses", stanza: @stanza.context %>">
+          format_list_bulleted
+        </i>
+<% end %>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+        <i class="material-icons stzk-icon stzk-c-primary tooltip" data-position="bottom" data-tooltip="<%= gettext "Verse" %>: <%= @verse.key %>">
+          drag_handle
+        </i>
+        <i class="material-icons stzk-icon stzk-c-content">
+          navigate_next
+        </i>
+<%= if assigns[:secret] do %>
+<%= link to: verse_path(@conn, :show, @stanza.poem, @stanza, @verse) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Click to hide the secret value" %>">
+          visibility
+        </i>
+<% end %>
+<% else %>
+<%= link to: verse_path(@conn, :show_value, @stanza.poem, @stanza, @verse) do %>
+        <i class="material-icons stzk-icon stzk-c-content tooltip" data-position="bottom" data-tooltip="<%= gettext "Click to show the secret value" %>">
+          visibility_off
+        </i>
+<% end %>
+<% end %>
+      </h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
+      <div class="card z-depth-3">
+        <h4 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            view_headline
+          </i>
+          <%= gettext "Show Verse" %>
+        </h4>
+        <div class="card-content">
+
+<%= link to: user_path(@conn, :show, @stanza.author.user) do %>
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              person
+            </i>
+            <input disabled value="<%= author_username(@verse) %>" type="text" class="stzk-c-content">
+            <label class="stzk-c-content">
+              <%= gettext("Author") %>
+            </label>
+          </div>
+<% end %>
+
+<%= link to: poem_path(@conn, :show, @stanza.poem) do %>
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              book
+            </i>
+            <input disabled value="<%= @stanza.poem.title %>" type="text" class="stzk-c-content">
+            <label class="stzk-c-content">
+              <%= gettext("Poem") %>
+            </label>
+          </div>
+<% end %>
+
+<%= link to: stanza_path(@conn, :show, @stanza.poem, @stanza) do %>
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              view_headline
+            </i>
+            <input disabled value="<%= @stanza.context %>" type="text" class="stzk-c-content">
+            <label class="stzk-c-content">
+              <%= gettext("Stanza") %>
+            </label>
+          </div>
+<% end %>
+
+          <div class="input-field stzk-c-content">
+            <i class="material-icons stzk-icon prefix">
+              info
+            </i>
+            <input disabled value="<%= @verse.key %>" type="text" class="stzk-c-content">
+            <label class="stzk-c-content">
+              <%= gettext("Key") %>
+            </label>
+          </div>
+
+          <div class="input-field stzk-c-content">
+<%= if assigns[:secret] do %>
+            <i class="material-icons stzk-icon prefix">
+              visibility
+            </i>
+            <input disabled value="<%= @secret %>" type="text" class="stzk-c-content">
+<% else %>
+            <i class="material-icons stzk-icon prefix">
+              visibility_off
+            </i>
+            <input disabled value="********" type="text" class="stzk-c-content">
+<% end %>
+            <label class="stzk-c-content">
+              <%= gettext("Value") %>
+            </label>
+          </div>
+        </div>
+        <div class="card-action">
+<%= if assigns[:secret] do %>
+          <%= link gettext("Hide Secret Value"), to: verse_path(@conn, :show, @stanza.poem, @stanza, @verse) %>
+<% else %>
+          <%= link gettext("Show Secret Value"), to: verse_path(@conn, :show_value, @stanza.poem, @stanza, @verse) %>
+<% end %>
+          <%= link gettext("Edit"), to: verse_path(@conn, :edit, @stanza.poem, @stanza, @verse) %>
+          <%= link gettext("Delete"), to: verse_path(@conn, :delete, @stanza.poem, @stanza, @verse), method: :delete, data: [confirm: gettext("Are you sure?")] %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<ul class="list-group">
-
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Author
-    </h4>
-    <p class="list-group-item-text">
-      <%= link author_username(@verse), to: user_path(@conn, :show, author_user(@verse)) %>
-    </p>
-  </li>
-
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Poem
-    </h4>
-    <p class="list-group-item-text">
-      <%= link @stanza.poem.title, to: poem_path(@conn, :show, @stanza.poem_id) %>
-    </p>
-  </li>
-
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Stanza
-    </h4>
-    <p class="list-group-item-text">
-      <%= link @stanza.context, to: stanza_path(@conn, :show, @stanza.poem_id, @stanza) %>
-    </p>
-  </li>
-
-  <li class="list-group-item">
-    <h4 class="list-group-item-heading">
-      Key
-    </h4>
-    <p class="list-group-item-text">
-      <%= @verse.key %>
-    </p>
-  </li>
-
-  <li class="list-group-item">
-    <span class="badge">
-      <%= link "Show Value", to: verse_path(@conn, :show_value, @stanza.poem_id, @stanza, @verse), class: "badge" %>
-    </span>
-    <h4 class="list-group-item-heading">
-      Value
-    </h4>
-    <p class="list-group-item-text">
-      The value below is NOT the real value for the key!
-    </p>
-    <p class="list-group-item-text">
-      Click on the button <code>Show Value</code> to pop out the real value.
-    </p>
-    <p class="list-group-item-text">
-      <%= @verse.value %>
-    </p>
-  </li>
-</ul>
-
-  <%= link "Edit", to: verse_path(@conn, :edit, @stanza.poem_id, @stanza.id, @verse), class: "btn btn-primary btn-block" %>

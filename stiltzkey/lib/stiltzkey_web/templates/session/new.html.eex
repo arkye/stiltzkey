@@ -1,19 +1,43 @@
-<h1>Sign in</h1>
+<div class="container">
 
-<%= form_for @conn, session_path(@conn, :create), [method: :post, as: :user], fn f -> %>
-  <div class="form-group">
-    <%= label f, :email, class: "control-label" %>
-    <%= text_input f, :email, class: "form-control" %>
-    <%= error_tag f, :email %>
-  </div>
+  <br>
+  <br>
 
-  <div class="form-group">
-    <%= label f, :password, class: "control-label" %>
-    <%= password_input f, :password, class: "form-control" %>
-    <%= error_tag f, :password %>
-  </div>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 xl6 offset-xl3">
+      <div class="card z-depth-3">
+        <h4 class="header valign-wrapper">
+          <i class="material-icons stzk-icon">
+            person
+          </i>
+          <%= gettext "Sign in" %>
+        </h4>
+        <%= form_for @conn, session_path(@conn, :create), [method: :post, as: :user], fn f -> %>
+          <div class="card-content">
 
-  <div class="form-group">
-    <%= submit "Login", class: "btn btn-primary" %>
+            <div class="input-field">
+              <i class="material-icons stzk-icon prefix">
+                email
+              </i>
+              <%= text_input f, :email, class: class_decorate(f, :email) %>
+              <%= label f, :email, do: gettext("E-mail") %>
+              <%= error_tag f, :email %>
+            </div>
+
+            <div class="input-field">
+              <i class="material-icons stzk-icon prefix">
+                vpn_key
+              </i>
+              <%= label f, :password, class: class_decorate(f, :password) %>
+              <%= password_input f, :password, do: gettext("Password") %>
+              <%= error_tag f, :password %>
+            </div>
+          </div>
+          <div class="card-action">
+            <%= submit gettext("Submit"), class: "btn-small" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
