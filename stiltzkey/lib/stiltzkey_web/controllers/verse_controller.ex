@@ -6,7 +6,7 @@ defmodule StiltzkeyWeb.VerseController do
   plug :assign_author
   plug :require_stanza
   plug :require_stanza_ownership when action in [:index]
-  plug :authorize_if_leader when action in [:show, :edit, :update, :delete]
+  plug :authorize_if_author when action in [:show, :show_value, :edit, :update, :delete]
 
   alias Stiltzkey.Papyrus
   alias Stiltzkey.Papyrus.Verse
@@ -85,7 +85,7 @@ defmodule StiltzkeyWeb.VerseController do
     end
   end
 
-  defp authorize_if_leader(conn, _) do
+  defp authorize_if_author(conn, _) do
     verse = Papyrus.get_verse!(conn.params["id"])
 
     if conn.assigns.current_author.id == verse.author_id do
