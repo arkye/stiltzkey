@@ -48,13 +48,12 @@ deploy staging:
   tags:
     - docker
 
-# Not yet on production
-# deploy production:
-#   stage: deploy
-#   environment: production
-#   script:
-#     - upgrade --environment $RANCHER_ENVIRONMENT --stack $RANCHER_STACK --service phoenix --no-finish-upgrade
-#   only:
-#     - /master/
-#   tags:
-#     - docker
+deploy production:
+  stage: deploy
+  environment: production
+  script:
+    - upgrade --environment $RANCHER_ENVIRONMENT --stack $RANCHER_STACK --service phoenix --no-finish-upgrade
+  only:
+    - /master/
+  tags:
+    - docker
