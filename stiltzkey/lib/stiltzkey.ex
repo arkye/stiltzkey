@@ -10,7 +10,8 @@ defmodule Stiltzkey do
   @doc false
   def contributors do
     [
-      [name: "Jonathan Henrique Maia de Moraes", github: "@arkye"]
+      [name: "Jonathan Moraes", github: "@arkye"],
+      [name: "Edson Ma", github: "@edsonma"]
     ]
   end
 end
