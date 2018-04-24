@@ -121,10 +121,6 @@ msgstr "Stiltzkey utiliza encriptação em dois estágios com o objetivo de prot
 msgid "Your secret is called by Stiltzkey as Verse. A collection of verses is a Stanza. A collection of stanzas is a Poem. Every verse, stanza, and poem is defined by an Author, which can share its secrets by defining a Movement - a group interested in a specific type of poetry."
 msgstr "Seu segredo é chamado pelo Stiltzkey de Verso. Um conjunto de versos forma uma Estrofe. Um conjunto de estrofes forma um Poema. Cada verso, estrofe e poema é definido por um Autor, este que pode compartilhar seus segredos ao definir um Movimento - um grupo interessado em um tipo específico de poesia."
 
-#: lib/stiltzkey_web/templates/page/index.html.eex:131
-msgid "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the brazillian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}."
-msgstr "Desenvolvido pelo LAPPIS - Laboratório Avançado de Pesquisa, Produção e Inovação de Software, localizado na Universidade de Brasília (UnB/FGA), na qual segue os princípios de software livre e desenvolvimento ágil. Stiltzkey é escrito utilizando a linguagem de programação funcional brasileira Elixir e o framework Phoenix. Com o Github, Docker, Docker Compose, GitLab CI/CD e Rancher, Stiltzkey segue a estrutura do Git Flow para integração e entrega contínua. O projeto está em seu estágio inicial, iniciado em 9 de Abril de 2018, atualmente na versão %{vsn} e com os seguintes contribuidores: %{contributors}."
-
 #: lib/stiltzkey_web/templates/page/index.html.eex:256
 msgid ", and "
 msgstr " e "
@@ -616,3 +612,8 @@ msgstr "Você não pode ver essas estrofes."
 #: lib/stiltzkey_web/controllers/verse_controller.ex:82
 msgid "You can't see that verses."
 msgstr "Você não pode ver esses versos."
+
+#, fuzzy
+#: lib/stiltzkey_web/templates/page/index.html.eex:131
+msgid "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the Brazilian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}."
+msgstr "Desenvolvido pelo LAPPIS - Laboratório Avançado de Pesquisa, Produção e Inovação de Software, localizado na Universidade de Brasília (UnB/FGA), na qual segue os princípios de software livre e desenvolvimento ágil. Stiltzkey é escrito utilizando a linguagem de programação funcional brasileira Elixir e o framework Phoenix. Com o Github, Docker, Docker Compose, GitLab CI/CD e Rancher, Stiltzkey segue a estrutura do Git Flow para integração e entrega contínua. O projeto está em seu estágio inicial, iniciado em 9 de Abril de 2018, atualmente na versão %{vsn} e com os seguintes contribuidores: %{contributors}."

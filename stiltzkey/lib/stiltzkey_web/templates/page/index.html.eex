@@ -128,7 +128,7 @@
           <%= gettext "Born from the Ashes" %>
         </h4>
         <p class="left-align">
-          <%= gettext "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the brazillian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}.", vsn: @vsn, contributors: @contributors %>
+          <%= gettext "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the Brazilian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}.", vsn: @vsn, contributors: @contributors %>
         </p>
       </div>
     </div>

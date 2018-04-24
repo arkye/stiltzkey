@@ -120,10 +120,6 @@ msgstr ""
 msgid "Your secret is called by Stiltzkey as Verse. A collection of verses is a Stanza. A collection of stanzas is a Poem. Every verse, stanza, and poem is defined by an Author, which can share its secrets by defining a Movement - a group interested in a specific type of poetry."
 msgstr ""
 
-#: lib/stiltzkey_web/templates/page/index.html.eex:131
-msgid "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the brazillian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}."
-msgstr ""
-
 #: lib/stiltzkey_web/templates/page/index.html.eex:256
 msgid ", and "
 msgstr ""
@@ -614,4 +610,8 @@ msgstr ""
 
 #: lib/stiltzkey_web/controllers/verse_controller.ex:82
 msgid "You can't see that verses."
+msgstr ""
+
+#: lib/stiltzkey_web/templates/page/index.html.eex:131
+msgid "Developed by LAPPIS - Advanced Software Research, Production, and Inovation Laboratory, located at Brasilia's University (UnB/FGA - Brazil), which follows the principles of free software and agile development. Stiltzkey is written using the Brazilian functional programming language Elixir and the framework Phoenix. With Github, Docker, Docker Compose, GitLab CI/CD, and Rancher, Stiltzkey follows the Git Flow structure for continuous integration and continuous delivery. The project is at its beginning stage, started at 9th April of 2018, currently in the version %{vsn} and with the following contributors: %{contributors}."
 msgstr ""
