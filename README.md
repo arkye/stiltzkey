@@ -6,8 +6,8 @@ A platform designed to allow you whisper your secrets safely.
 
 | Environment | CI Status |  Website |
 |:-:|:-:|:-:|
-| Development | [![pipeline status](https://gitlab.com/arkye/stiltzkey/badges/master/pipeline.svg)](https://gitlab.com/arkye/stiltzkey/commits/master) | [stiltzkey.dev.lappis.rocks](http://stiltzkey.dev.lappis.rocks) |
-| Production | [![pipeline status](https://gitlab.com/arkye/stiltzkey/badges/develop/pipeline.svg)](https://gitlab.com/arkye/stiltzkey/commits/develop) | [stiltzkey.lappis.rocks](https://stiltzkey.lappis.rocks) |
+| Production | [![pipeline status](https://gitlab.com/arkye/stiltzkey/badges/master/pipeline.svg)](https://gitlab.com/arkye/stiltzkey/commits/master) | [stiltzkey.lappis.rocks](https://stiltzkey.lappis.rocks) |
+| Development | [![pipeline status](https://gitlab.com/arkye/stiltzkey/badges/develop/pipeline.svg)](https://gitlab.com/arkye/stiltzkey/commits/develop) | [stiltzkey.dev.lappis.rocks](http://stiltzkey.dev.lappis.rocks) |
 
 ## What is it?
 
